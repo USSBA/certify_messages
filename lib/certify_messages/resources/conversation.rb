@@ -6,5 +6,9 @@ module CertifyMessages
     def initialize
       @status = "I'm alive"
     end
+
+    def self.find(id)
+      nil
+    end
   end
 end
