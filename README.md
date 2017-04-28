@@ -1,41 +1,37 @@
 # CertifyMessages
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/certify_messages`. To experiment with that code, run `bin/console` for an interactive prompt.
-
 This is a thin wrapper for the [Certify Messaging API](https://github.com/SBA-ONE/message-api) to handle basic GET and POST operations for both conversations/threads and messages.
 
-## Installation
+## Installation - *UNDER DEVELOPMENT*
 
-Add this line to your application's Gemfile:
+### Including the Certify Messages Gem
 
-```ruby
-gem 'certify_messages'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install certify_messages
+This gem is a Ruby wrapper for the messaging API, allowing for cleaner code and calls for the [Messages Prototype app side](https://github.com/SBA-ONE/message-prototype) of messaging.  Since this is still in dev, requiring `certify_messages` in the prototype requires a manual gem build (which is also documented on the messages prototype repo site):
+* Pull down the latest branch for the gem
+* `bundle install` to build it
+* You can run tests `rspec` to make sure it built okay.
+* Then `rake build` to build the gem, this builds the .gem file in /pkg
+* Jump over to the folder of the prototype app
+* In the Gemfile for the prototype App, change the local path for the `certify_messages` gem to the full path of where it is on your env.
+* `bundle install` in the app repo
+* If this worked correctly, you should see `certify_messages` with its own path at the top of your `Gemfile.lock`
+* Start the API
+* Start the App
+* Calls from the App to the API will now go through the Gem, greatly reducing the code footprint in the App.
 
 ## Usage
 
-TODO: Write usage instructions here
+### Conversations
+
+#### Finding (GET) messages
+* calling `CertifyMessages::Conversation.find({})` will query for all conversations, returning an array of hashes
+* calling `CertifyMessages::Conversation.find({application_id: 1})` will query for all conversations for application_id = 1, returning an array of hashes
+  * This also applies for subject, analyst_id, contributor_id, and id (aka conversation_id)
+* Calling the `.find` method with invalid parameters will result in an error:
+  * `CertifyMessages::Conversation.find({foo: 'bar'})` returns: `Invalid parameters submitted`
+
+### Messages
+*TODO*
 
 ## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/certify_messages. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
+Use `bundle console` to access a console environment for testing development of the gem.
