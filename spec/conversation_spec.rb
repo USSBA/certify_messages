@@ -1,18 +1,28 @@
 require "spec_helper"
-
+#rubocop:disable Style/BracesAroundHashParameters
 RSpec.describe CertifyMessages::Conversation do
 
   context "for getting conversations" do
     before do
-      @conversation = CertifyMessages::Conversation.find(1)
+      @conversations = CertifyMessages::Conversation.find({application_id: 1})
     end
 
-    it "should return a single conversation" do
-      expect(@conversation.analyst_id).to exist
-      expect(@conversation.application_id).to exist
-      expect(@conversation.contributor_id).to exist
-      expect(@conversation.id).to exist
-      expect(@conversation.subject).to exist
+    it "should return an array of conversations" do
+      expect(@conversations.length).to be > 0
+      expect(@conversations[0]["analyst_id"]).to be
+      expect(@conversations[0]["application_id"]).to be
+      expect(@conversations[0]["contributor_id"]).to be
+      expect(@conversations[0]["id"]).to be
+      expect(@conversations[0]["subject"]).to be
+    end
+  end
+
+  context "handles bad parameters" do
+    before do
+      @conversations = CertifyMessages::Conversation.find({foo: 'bar'})
+    end
+    it "should return an error message when a bad parameter is sent" do
+      expect(@conversations).to eq("Invalid parameters submitted")
     end
   end
 end
