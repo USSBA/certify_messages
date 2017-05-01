@@ -19,7 +19,7 @@ module MessageSpecHelper
   end
 
   def self.mock_message(sender, recipient, owner)
-    { message_id: Faker::Number.number(5),
+    { message_id: Faker::Number.number(3),
       conversation_id: 1,
       body: Faker::StarWars.wookie_sentence,
       sender_id: sender,
