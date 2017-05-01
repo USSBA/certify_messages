@@ -32,8 +32,9 @@ module CertifyMessages
     def self.message_params(params)
       permitted_keys = %w[body sender_id recipient_id conversation_id read sent]
       params = params.select { |key, _| permitted_keys.include? key.to_s }
-      URI.encode_www_form(params)
     end
+
+
 
     # checks to confirm if the parameters are valid
     def self.valid_params(params)
@@ -41,7 +42,7 @@ module CertifyMessages
     end
 
     def self.build_find_url(params)
-      conversations_path + "/#{params['conversation_id']}/" + messages_path + "?" + params
+      conversations_path + "/#{params['conversation_id']}/" + messages_path + "?" + URI.encode_www_form(params)
     end
   end
 end

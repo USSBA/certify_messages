@@ -8,7 +8,7 @@ module CertifyMessages
       return return_response("Invalid parameters submitted", 400) if safe_params.empty? && !params_except_ac(params).empty?
       response = connection.request(method: :get,
                                     path: conversations_path + "?" +
-                                    safe_params)
+                                    URI.encode_www_form(safe_params))
       return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error::Socket => error
       return_response(error.message, 503)
@@ -52,7 +52,6 @@ module CertifyMessages
     def self.conversation_safe_params(params)
       permitted_keys = %w[id subject application_id analyst_id contributor_id]
       params = params.select { |key, _| permitted_keys.include? key.to_s }
-      URI.encode_www_form(params)
     end
   end
 end
