@@ -13,5 +13,9 @@ module CertifyMessages
     def self.json(response)
       JSON.parse(response.body)
     end
+
+    def self.error_response(message, status)
+      { body: message, status: status }
+    end
   end
 end

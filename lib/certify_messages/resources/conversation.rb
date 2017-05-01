@@ -4,7 +4,7 @@ module CertifyMessages
     # base conversation finder
     def self.find(params)
       safe_params = conversation_params params
-      return "Invalid parameters submitted" if safe_params.empty? && !params.empty?
+      return error_response("Invalid parameters submitted", 400) if safe_params.empty? && !params.empty?
       response = connection.request(method: :get,
                                     path: conversations_path + "?" +
                                     safe_params)
