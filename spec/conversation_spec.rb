@@ -3,6 +3,14 @@ require "spec_helper"
 #rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
 RSpec.describe CertifyMessages::Conversation do
   describe "find operations" do
+    # a hack, set the endpoint at a config level
+    before do
+      def CertifyMessages.endpoint
+        super
+        'http://foo.bar'
+      end
+    end
+
     context "for getting conversations" do
       before do
         @mock = MessageSpecHelper.mock_conversations
@@ -46,16 +54,23 @@ RSpec.describe CertifyMessages::Conversation do
 
       # this will work if the API is disconnected, but I can't figure out how to
       # fake the Excon connection to force it to fail in a test env.
-      # context "api not found" do
-      #   before do
-      #     Excon.defaults[:mock] = false
-      #     @conversations = CertifyMessages::Conversation.find({application_id: 1})
-      #   end
+      context "api not found" do
+        before do
+          Excon.defaults[:mock] = false
+          # reextend the endpoint to a dummy url
 
-      #   it "should return a 503" do
-      #     expect(@conversations[:status]).to eq(503)
-      #   end
-      # end
+          @conversations = CertifyMessages::Conversation.find({application_id: 1})
+        end
+
+        after do
+          Excon.defaults[:mock] = true
+        end
+
+        it "should return a 503" do
+          expect(@conversations[:status]).to eq(503)
+        end
+      end
+
     end
   end
 
@@ -68,13 +83,16 @@ RSpec.describe CertifyMessages::Conversation do
         @body = @conversation.body
       end
 
-
       it "should return the correct post response" do
         expect(@conversation.status).to eq(201)
       end
 
       it "should return the new conversation object" do
-        expect(@body).to eq(@mock)
+        expect(@body["id"]).to eq(@mock[:id])
+        expect(@body["application_id"]).to eq(@mock[:application_id])
+        expect(@body["analyst_id"]).to eq(@mock[:analyst_id])
+        expect(@body["contributor_id"]).to eq(@mock[:contributor_id])
+        expect(@body["subject"]).to eq(@mock[:subject])
       end
     end
 
@@ -93,6 +111,24 @@ RSpec.describe CertifyMessages::Conversation do
           expect(@conversation[:status]).to eq(400)
         end
       end
+
+      # this will work if the API is disconnected, but I can't figure out how to
+      # fake the Excon connection to force it to fail in a test env.
+      context "api not found" do
+        before do
+          Excon.defaults[:mock] = false
+          @conversation = CertifyMessages::Conversation.create({application_id: 1})
+        end
+
+        after do
+          Excon.defaults[:mock] = true
+        end
+
+        it "should return a 503" do
+          expect(@conversation[:status]).to eq(503)
+        end
+      end
+
     end
   end
 end
