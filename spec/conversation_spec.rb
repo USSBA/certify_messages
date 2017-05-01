@@ -43,5 +43,17 @@ RSpec.describe CertifyMessages::Conversation do
         expect(@conversations[:status]).to eq(400)
       end
     end
+
+    context "api not found" do
+      before do
+        Excon.defaults[:mock] = false
+        @conversations = CertifyMessages::Conversation.find({application_id: 1})
+      end
+
+      it "should return the 404" do
+        expect(@conversations[:status]).to eq(503)
+      end
+
+    end
   end
 end
