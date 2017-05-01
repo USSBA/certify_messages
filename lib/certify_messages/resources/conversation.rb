@@ -2,13 +2,14 @@ module CertifyMessages
   # conversation class that handles getting and posting new conversations
   class Conversation < Resource
     # base conversation finder
+    # rubocop:disable Metrics/AbcSize
     def self.find(params)
       safe_params = conversation_safe_params params
       return return_response("Invalid parameters submitted", 400) if safe_params.empty? && !params.empty?
       response = connection.request(method: :get,
                                     path: conversations_path + "?" +
                                     safe_params)
-      return_response( json(response.data[:body]), response.data[:status] )
+      return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error::Socket => error
       return_response(error.message, 503)
     end
@@ -21,7 +22,7 @@ module CertifyMessages
                                     path: conversations_path,
                                     body: safe_params.to_json,
                                     headers:  { "Content-Type" => "application/json" })
-      return_response( json(response.data[:body]), response.data[:status])
+      return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error::Socket => error
       return_response(error.message, 503)
     end
@@ -29,8 +30,8 @@ module CertifyMessages
     def self.create_with_message(params)
       combined_response = {}
       combined_response[:conversation] = create params
-      combined_response[:message] = if combined_response[:conversation].status == 201
-                                      message_params = parse_conversation_response combined_response[:conversation], params
+      combined_response[:message] = if combined_response[:conversation][:status] == 201
+                                      message_params = parse_conversation_response combined_response[:conversation][:body], params
                                       CertifyMessages::Message.create message_params
                                     else
                                       return_response("An error occurred creating the conversation", 422)
@@ -41,7 +42,7 @@ module CertifyMessages
     private_class_method
 
     def self.parse_conversation_response(response, params)
-      params[:conversation_id] = response.data[:body]["id"]
+      params[:conversation_id] = response["id"]
       params[:sender_id] = params[:analyst_id]
       params[:recipient_id] = params[:contributor_id]
       params
