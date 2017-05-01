@@ -21,7 +21,7 @@ module CertifyMessages
                          path: "/conversations/#{params[:conversation_id]}/messages",
                          body: safe_params.to_json,
                          headers:  { "Content-Type" => "application/json" })
-      return_response( json(response.data[:body]), response.data[:status])
+      return_response( '', response.data[:status])
     rescue Excon::Error::Socket => error
       return_response(error.message, 503)
     end
