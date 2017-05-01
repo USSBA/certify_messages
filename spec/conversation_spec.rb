@@ -137,13 +137,27 @@ RSpec.describe CertifyMessages::Conversation do
           @response = CertifyMessages::Conversation.create_with_message(@mock)
         end
 
-        it "should return with the correct status code for the conversation object" do
-          expect(@response[:conversation].status).to eq(201)
+        context "the newly created conversation" do
+          it "should return 201" do
+            expect(@response[:conversation].status).to eq(201)
+          end
+
+          it "should have the correct subject" do
+            expect(@response[:conversation][:body][:subject]).to eq(@mock["subject"])
+          end
+
         end
 
-        it "should return with the correct status code for the message object" do
-          expect(@response[:message].status).to eq(201)
+        context "the newly created message" do
+          it "should return 201" do
+            expect(@response[:message].status).to eq(201)
+          end
+
+          it "should have the correct body" do
+            expect(@response[:conversation][:body][:body]).to eq(@mock["body"])
+          end
         end
+
 
       end
 
