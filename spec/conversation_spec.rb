@@ -3,14 +3,6 @@ require "spec_helper"
 #rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
 RSpec.describe CertifyMessages::Conversation do
   describe "find operations" do
-    # a hack, set the endpoint at a config level
-    before do
-      def CertifyMessages.endpoint
-        super
-        'http://foo.bar'
-      end
-    end
-
     context "for getting conversations" do
       before do
         @mock = MessageSpecHelper.mock_conversations
@@ -157,7 +149,6 @@ RSpec.describe CertifyMessages::Conversation do
             expect(@response[:conversation][:body][:body]).to eq(@mock["body"])
           end
         end
-
 
       end
 

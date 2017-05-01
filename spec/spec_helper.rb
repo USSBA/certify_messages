@@ -5,6 +5,11 @@ require "faker"
 
 Dir['./spec/support/**/*.rb'].each { |f| require f }
 
+# configure the CertifyMessages module for testing
+CertifyMessages.configure do |config|
+  config.api_url = "http://foo.bar/"
+end
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"

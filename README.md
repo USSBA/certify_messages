@@ -21,6 +21,15 @@ This gem is a Ruby wrapper for the messaging API, allowing for cleaner code and 
 
 ## Usage
 
+### Configuration
+Set the messages API URL in your apps `config/initializers` folder, you probably also want to include a `messages.yml` under `config` to be able to specify the URL based on your environment.
+
+```
+CertifyMessages.configure do |config|
+  config.api_url = "http://foo.bar/"
+end
+```
+
 ### Conversations
 
 #### Finding (GET) messages
@@ -35,3 +44,5 @@ This gem is a Ruby wrapper for the messaging API, allowing for cleaner code and 
 
 ## Development
 Use `bundle console` to access a console environment for testing development of the gem.
+
+

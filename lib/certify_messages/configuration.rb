@@ -1,19 +1,13 @@
 module CertifyMessages
   # configuration module
-  module Configuration
+  class Configuration
+    attr_accessor :api_url, :conversations_path, :messages_path
+
     # main api endpoint
-    # TODO: set to env
-    def endpoint
-      "http://localhost:3001/"
-    end
-
-    # default conversations path
-    def conversations_path
-      "conversations"
-    end
-
-    def messages_path
-      "messages"
+    def initialize
+      @api_url = nil
+      @conversations_path = "conversations"
+      @messages_path = "messages"
     end
   end
 end

@@ -6,7 +6,7 @@ RSpec.describe CertifyMessages do
   end
 
   it "should have an endpoint url" do
-    expect(CertifyMessages.endpoint).to eq('http://localhost:3001/')
+    expect(CertifyMessages.configuration.api_url).to eq('http://foo.bar/')
   end
 
   it "should have a Conversation class" do

@@ -6,7 +6,19 @@ module CertifyMessages
   class Resource
     # excon connection
     def self.connection
-      Excon.new(CertifyMessages.endpoint)
+      Excon.new(api_url)
+    end
+
+    def self.api_url
+      CertifyMessages.configuration.api_url
+    end
+
+    def self.conversations_path
+      CertifyMessages.configuration.conversations_path
+    end
+
+    def self.messages_path
+      CertifyMessages.configuration.messages_path
     end
 
     # json parse helper

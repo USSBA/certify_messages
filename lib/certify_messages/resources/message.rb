@@ -26,14 +26,6 @@ module CertifyMessages
 
     private_class_method
 
-    def self.conversations_path
-      CertifyMessages.conversations_path
-    end
-
-    def self.messages_path
-      CertifyMessages.messages_path
-    end
-
     # Sanitizes the provided paramaters
     def self.message_params(params)
       permitted_keys = %w[body sender_id recipient_id conversation_id read sent]

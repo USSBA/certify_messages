@@ -4,13 +4,6 @@ require 'spec_helper'
 
 RSpec.describe CertifyMessages::Message do
   describe 'Getting messages' do
-    before do
-      def CertifyMessages.endpoint
-        super
-        'http://foo.bar'
-      end
-    end
-
     context 'for getting messages' do
       before do
         @mock = MessageSpecHelper.mock_messages 1

@@ -7,5 +7,19 @@ require "certify_messages/resources/message"
 
 # the base CertifyMessages module that wraps all conversation and message calls
 module CertifyMessages
-  extend Configuration
+  class << self
+    attr_accessor :configuration
+  end
+
+  def self.configuration
+    @configuration ||= Configuration.new
+  end
+
+  def self.reset
+    @configuration = Configuration.new
+  end
+
+  def self.configure
+    yield(configuration)
+  end
 end

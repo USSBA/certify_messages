@@ -45,11 +45,6 @@ module CertifyMessages
       params
     end
 
-    # helper for the conversations path
-    def self.conversations_path
-      CertifyMessages.conversations_path
-    end
-
     # helper for white listing parameters
     def self.conversation_safe_params(params)
       permitted_keys = %w[id subject application_id analyst_id contributor_id]
