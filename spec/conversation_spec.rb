@@ -8,11 +8,11 @@ RSpec.describe CertifyMessages::Conversation do
         @mock = MessageSpecHelper.mock_conversations
         Excon.stub({}, body: @mock.to_json, status: 200)
         @conversations = CertifyMessages::Conversation.find({application_id: 1})
-        @body = @conversations.body
+        @body = @conversations[:body]
       end
 
       it "should return a good status code" do
-        expect(@conversations.status).to eq(200)
+        expect(@conversations[:status]).to eq(200)
       end
 
       it "should return an array of conversations" do
@@ -20,11 +20,12 @@ RSpec.describe CertifyMessages::Conversation do
       end
 
       it "should contain valid conversation attributes" do
-        expect(@body[0]["analyst_id"]).to be
-        expect(@body[0]["application_id"]).to be
-        expect(@body[0]["contributor_id"]).to be
-        expect(@body[0]["id"]).to be
-        expect(@body[0]["subject"]).to be
+        puts @body
+        expect(@body[0][:analyst_id]).to be
+        expect(@body[0][:application_id]).to be
+        expect(@body[0][:contributor_id]).to be
+        expect(@body[0][:id]).to be
+        expect(@body[0][:subject]).to be
       end
     end
 

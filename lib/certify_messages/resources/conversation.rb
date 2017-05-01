@@ -8,8 +8,8 @@ module CertifyMessages
       response = connection.request(method: :get,
                                     path: conversations_path + "?" +
                                     safe_params)
-      response.body = json response
-      response
+      # response.body = json response
+      response.data
     rescue Excon::Error::Socket => error
       error_response(error.message, 503)
     end
@@ -22,8 +22,8 @@ module CertifyMessages
                                     path: conversations_path,
                                     body: safe_params.to_json,
                                     headers:  { "Content-Type" => "application/json" })
-      response.body = json response
-      response
+      # response.body = json response
+      response.data
     rescue Excon::Error::Socket => error
       error_response(error.message, 503)
     end
@@ -35,7 +35,7 @@ module CertifyMessages
                                       message_params = parse_conversation_response combined_response[:conversation], params
                                       CertifyMessages::Message.create message_params
                                     else
-                                      { body: "An error occurred creating the conversation", status: 422 }
+                                      error_response("An error occurred creating the conversation", 422)
                                     end
       combined_response
     end
