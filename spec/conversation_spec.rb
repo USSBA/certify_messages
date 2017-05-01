@@ -1,9 +1,12 @@
 require "spec_helper"
+
 #rubocop:disable Style/BracesAroundHashParameters
 RSpec.describe CertifyMessages::Conversation do
 
   context "for getting conversations" do
     before do
+      @mock = MessageSpecHelper.mock_conversations
+      Excon.stub({}, body: @mock.to_json, status: 200)
       @conversations = CertifyMessages::Conversation.find({application_id: 1})
     end
 
