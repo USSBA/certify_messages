@@ -6,9 +6,10 @@ module CertifyMessages
       return error_response("Invalid parameters submitted", 400) if valid_params(params)
       safe_params = message_params params
       response = connection.request(method: :get,
-                                    path: conversations_path + "/#{safe_params['conversation_id']}/" + messages_path + "?" +
-                                    safe_params)
+                                    path: build_find_url(safe_params))
       json response
+    rescue Excon::Error::Socket => error
+      error_response(error.message, 503)
     end
 
     # Message creator
@@ -19,7 +20,11 @@ module CertifyMessages
                          path: "/conversations/#{params[:conversation_id]}/messages",
                          body: safe_params.to_json,
                          headers:  { "Content-Type" => "application/json" })
+    rescue Excon::Error::Socket => error
+      error_response(error.message, 503)
     end
+
+    private_class_method
 
     def self.conversations_path
       CertifyMessages.conversations_path
@@ -39,6 +44,10 @@ module CertifyMessages
     # checks to confirm if the parameters are valid
     def self.valid_params(params)
       message_params(params).empty? && !params.empty?
+    end
+
+    def self.build_find_url(params)
+      conversations_path + "/#{params['conversation_id']}/" + messages_path + "?" + params
     end
   end
 end
