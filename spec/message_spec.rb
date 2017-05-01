@@ -62,7 +62,7 @@ RSpec.describe CertifyMessages::Message do
     context 'for creating valid new messages' do
       before do
         new_message = MessageSpecHelper.mock_message(1, 2, 1)
-        Excon.stub({}, status: 201)
+        Excon.stub({}, body: new_message.to_json, status: 201)
         @new_message_response = CertifyMessages::Message.create(new_message)
       end
 

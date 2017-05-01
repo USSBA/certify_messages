@@ -18,10 +18,10 @@ module CertifyMessages
       safe_params = message_params params
       return return_response("Invalid parameters submitted", 422) if safe_params.empty? && !params.empty?
       response = connection.request(method: :post,
-                         path: "/conversations/#{params[:conversation_id]}/messages",
-                         body: safe_params.to_json,
-                         headers:  { "Content-Type" => "application/json" })
-      return_response( '', response.data[:status])
+                                    path: "/conversations/#{params[:conversation_id]}/messages",
+                                    body: safe_params.to_json,
+                                    headers:  { "Content-Type" => "application/json" })
+      return_response( json(response.data[:body]), response.data[:status])
     rescue Excon::Error::Socket => error
       return_response(error.message, 503)
     end

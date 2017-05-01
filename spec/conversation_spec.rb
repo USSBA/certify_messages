@@ -161,7 +161,7 @@ RSpec.describe CertifyMessages::Conversation do
           end
 
           it "should have the correct body" do
-            expect(JSON.parse(@response[:message][:body])["body"]).to eq(@mock[:body])
+            expect(@response[:message][:body]["body"]).to eq(@mock[:body])
           end
         end
       end
