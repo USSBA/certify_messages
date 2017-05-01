@@ -1,12 +1,12 @@
 module CertifyMessages
+  # message class that handles geting and posting messages
   class Message < Resource
     def self.find(params)
       safe_params = message_params params
       return "Invalid parameters submitted" if safe_params.empty? && !params.empty?
       response = connection.request(method: :get,
-                                    path: conversations_path + "/#{safe_params["conversation_id"]}/" + messages_path + "?" +
+                                    path: conversations_path + "/#{safe_params['conversation_id']}/" + messages_path + "?" +
                                     safe_params)
-                                    # .except("conversation_id"))
       json response
     end
 
