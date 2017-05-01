@@ -5,7 +5,7 @@ module CertifyMessages
     # rubocop:disable Metrics/AbcSize
     def self.find(params)
       safe_params = conversation_safe_params params
-      return return_response("Invalid parameters submitted", 400) if safe_params.empty? && !params.empty?
+      return return_response("Invalid parameters submitted", 400) if safe_params.empty? && !params_except_ac(params).empty?
       response = connection.request(method: :get,
                                     path: conversations_path + "?" +
                                     safe_params)
@@ -17,7 +17,7 @@ module CertifyMessages
     # create a new conversation and a new message along with it
     def self.create(params)
       safe_params = conversation_safe_params params
-      return return_response("Invalid parameters submitted", 422) if safe_params.empty? || params.empty?
+      return return_response("Invalid parameters submitted", 422) if safe_params.empty? || params_except_ac(params).empty?
       response = connection.request(method: :post,
                                     path: conversations_path,
                                     body: safe_params.to_json,
