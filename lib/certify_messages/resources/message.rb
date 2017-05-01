@@ -2,13 +2,13 @@ module CertifyMessages
   # message class that handles geting and posting messages
   class Message < Resource
     # Basic message finder
+    # rubocop:disable Metrics/AbcSize
     def self.find(params)
       return return_response("Invalid parameters submitted", 400) if valid_params(params)
       safe_params = message_params params
       response = connection.request(method: :get,
                                     path: build_find_url(safe_params))
-      # json response
-      return_response( json(response.data[:body]), response.data[:status] )
+      return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error::Socket => error
       return_response(error.message, 503)
     end
@@ -21,7 +21,7 @@ module CertifyMessages
                                     path: "/conversations/#{params[:conversation_id]}/messages",
                                     body: safe_params.to_json,
                                     headers:  { "Content-Type" => "application/json" })
-      return_response( json(response.data[:body]), response.data[:status])
+      return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error::Socket => error
       return_response(error.message, 503)
     end
