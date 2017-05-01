@@ -20,11 +20,11 @@ RSpec.describe CertifyMessages::Conversation do
       end
 
       it "should contain valid conversation attributes" do
-        expect(@body[0][:analyst_id]).to be
-        expect(@body[0][:application_id]).to be
-        expect(@body[0][:contributor_id]).to be
-        expect(@body[0][:id]).to be
-        expect(@body[0][:subject]).to be
+        expect(@body[0]["analyst_id"]).to be
+        expect(@body[0]["application_id"]).to be
+        expect(@body[0]["contributor_id"]).to be
+        expect(@body[0]["id"]).to be
+        expect(@body[0]["subject"]).to be
       end
     end
 
@@ -72,11 +72,11 @@ RSpec.describe CertifyMessages::Conversation do
         @mock = MessageSpecHelper.mock_conversation
         Excon.stub({}, body: @mock.to_json, status: 201)
         @conversation = CertifyMessages::Conversation.create(@mock)
-        @body = @conversation.body
+        @body = @conversation[:body]
       end
 
       it "should return the correct post response" do
-        expect(@conversation.status).to eq(201)
+        expect(@conversation[:status]).to eq(201)
       end
 
       it "should return the new conversation object" do
@@ -147,7 +147,7 @@ RSpec.describe CertifyMessages::Conversation do
 
         context "the newly created conversation" do
           it "should return 201" do
-            expect(@response[:conversation].status).to eq(201)
+            expect(@response[:conversation][:status]).to eq(201)
           end
 
           it "should have the correct subject" do
@@ -157,11 +157,11 @@ RSpec.describe CertifyMessages::Conversation do
 
         context "the newly created message" do
           it "should return 201" do
-            expect(@response[:message].status).to eq(201)
+            expect(@response[:message][:status]).to eq(201)
           end
 
           it "should have the correct body" do
-            expect(JSON.parse(@response[:message].data[:body])["body"]).to eq(@mock[:body])
+            expect(JSON.parse(@response[:message][:body])["body"]).to eq(@mock[:body])
           end
         end
       end
@@ -176,7 +176,7 @@ RSpec.describe CertifyMessages::Conversation do
 
         context "the newly created conversation" do
           it "should return 422" do
-            expect(@response[:conversation].status).to eq(422)
+            expect(@response[:conversation][:status]).to eq(422)
           end
 
           it "should have the correct subject" do
