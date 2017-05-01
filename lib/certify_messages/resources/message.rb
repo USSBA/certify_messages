@@ -3,25 +3,25 @@ module CertifyMessages
   class Message < Resource
     # Basic message finder
     def self.find(params)
-      return error_response("Invalid parameters submitted", 400) if valid_params(params)
+      return return_response("Invalid parameters submitted", 400) if valid_params(params)
       safe_params = message_params params
       response = connection.request(method: :get,
                                     path: build_find_url(safe_params))
       json response
     rescue Excon::Error::Socket => error
-      error_response(error.message, 503)
+      return_response(error.message, 503)
     end
 
     # Message creator
     def self.create(params)
       safe_params = message_params params
-      return error_response("Invalid parameters submitted", 422) if safe_params.empty? && !params.empty?
+      return return_response("Invalid parameters submitted", 422) if safe_params.empty? && !params.empty?
       connection.request(method: :post,
                          path: "/conversations/#{params[:conversation_id]}/messages",
                          body: safe_params.to_json,
                          headers:  { "Content-Type" => "application/json" })
     rescue Excon::Error::Socket => error
-      error_response(error.message, 503)
+      return_response(error.message, 503)
     end
 
     private_class_method

@@ -4,28 +4,26 @@ module CertifyMessages
     # base conversation finder
     def self.find(params)
       safe_params = conversation_safe_params params
-      return error_response("Invalid parameters submitted", 400) if safe_params.empty? && !params.empty?
+      return return_response("Invalid parameters submitted", 400) if safe_params.empty? && !params.empty?
       response = connection.request(method: :get,
                                     path: conversations_path + "?" +
                                     safe_params)
-      # response.body = json response
-      response.data
+      return_response( json(response.data[:body]), response.data[:status] )
     rescue Excon::Error::Socket => error
-      error_response(error.message, 503)
+      return_response(error.message, 503)
     end
 
     # create a new conversation and a new message along with it
     def self.create(params)
       safe_params = conversation_safe_params params
-      return error_response("Invalid parameters submitted", 422) if safe_params.empty? || params.empty?
+      return return_response("Invalid parameters submitted", 422) if safe_params.empty? || params.empty?
       response = connection.request(method: :post,
                                     path: conversations_path,
                                     body: safe_params.to_json,
                                     headers:  { "Content-Type" => "application/json" })
-      # response.body = json response
-      response.data
+      return_response( json(response.data[:body]), response.data[:status])
     rescue Excon::Error::Socket => error
-      error_response(error.message, 503)
+      return_response(error.message, 503)
     end
 
     def self.create_with_message(params)
@@ -35,7 +33,7 @@ module CertifyMessages
                                       message_params = parse_conversation_response combined_response[:conversation], params
                                       CertifyMessages::Message.create message_params
                                     else
-                                      error_response("An error occurred creating the conversation", 422)
+                                      return_response("An error occurred creating the conversation", 422)
                                     end
       combined_response
     end

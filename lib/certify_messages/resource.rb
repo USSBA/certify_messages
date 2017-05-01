@@ -23,11 +23,11 @@ module CertifyMessages
 
     # json parse helper
     def self.json(response)
-      JSON.parse(response.body)
+      JSON.parse(response)
     end
 
-    def self.error_response(message, status)
-      { body: message, status: status }
+    def self.return_response(body, status)
+      { body: body, status: status }
     end
   end
 end

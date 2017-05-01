@@ -20,7 +20,6 @@ RSpec.describe CertifyMessages::Conversation do
       end
 
       it "should contain valid conversation attributes" do
-        puts @body
         expect(@body[0][:analyst_id]).to be
         expect(@body[0][:application_id]).to be
         expect(@body[0][:contributor_id]).to be
