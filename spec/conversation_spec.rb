@@ -107,8 +107,8 @@ RSpec.describe CertifyMessages::Conversation do
           expect(@body).to eq("Invalid parameters submitted")
         end
 
-        it "should return a 400 http status" do
-          expect(@conversation[:status]).to eq(400)
+        it "should return a 422 http status" do
+          expect(@conversation[:status]).to eq(422)
         end
       end
 
@@ -127,6 +127,24 @@ RSpec.describe CertifyMessages::Conversation do
         it "should return a 503" do
           expect(@conversation[:status]).to eq(503)
         end
+      end
+
+      context "create a conversation with a new message" do
+        before do
+          @mock = MessageSpecHelper.mock_conversation
+          @mock[:body] = Faker::HarryPotter.quote
+          Excon.stub({}, body: @mock.to_json, status: 201)
+          @response = CertifyMessages::Conversation.create_with_message(@mock)
+        end
+
+        it "should return with the correct status code for the conversation object" do
+          expect(@response[:conversation].status).to eq(201)
+        end
+
+        it "should return with the correct status code for the message object" do
+          expect(@response[:message].status).to eq(201)
+        end
+
       end
 
     end
