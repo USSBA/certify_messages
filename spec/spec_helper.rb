@@ -9,4 +9,9 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.before(:all) do
+    Excon.defaults[:mock] = true
+    Excon.stub({}, body: { message: 'Fallback stub response' }.to_json, status: 598)
+  end
 end
