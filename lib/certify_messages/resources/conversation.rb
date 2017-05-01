@@ -8,6 +8,7 @@ module CertifyMessages
       response = connection.request(method: :get,
                                     path: conversations_path + "?" +
                                     safe_params)
+      response.body = json response
       response
     end
 

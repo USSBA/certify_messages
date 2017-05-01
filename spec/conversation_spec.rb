@@ -11,12 +11,14 @@ RSpec.describe CertifyMessages::Conversation do
     end
 
     it "should return an array of conversations" do
-      expect(@conversations.length).to be > 0
-      expect(@conversations[0]["analyst_id"]).to be
-      expect(@conversations[0]["application_id"]).to be
-      expect(@conversations[0]["contributor_id"]).to be
-      expect(@conversations[0]["id"]).to be
-      expect(@conversations[0]["subject"]).to be
+      expect(@conversations.status).to eq(200)
+      body = @conversations.body
+      expect(body.length).to be > 0
+      expect(body[0]["analyst_id"]).to be
+      expect(body[0]["application_id"]).to be
+      expect(body[0]["contributor_id"]).to be
+      expect(body[0]["id"]).to be
+      expect(body[0]["subject"]).to be
     end
   end
 
@@ -26,6 +28,7 @@ RSpec.describe CertifyMessages::Conversation do
     end
     it "should return an error message when a bad parameter is sent" do
       expect(@conversations).to eq("Invalid parameters submitted")
+      expect(@conversations.status).to eq(400)
     end
   end
 end
