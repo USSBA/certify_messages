@@ -32,12 +32,15 @@ end
 
 ### Conversations
 
-#### Finding (GET) messages
+#### Finding (GET) Conversations
 * calling `CertifyMessages::Conversation.find({})` will query for all conversations, returning an array of hashes
 * calling `CertifyMessages::Conversation.find({application_id: 1})` will query for all conversations for application_id = 1, returning an array of hashes
   * This also applies for subject, analyst_id, contributor_id, and id (aka conversation_id)
 * Calling the `.find` method with invalid parameters will result in an error:
   * `CertifyMessages::Conversation.find({foo: 'bar'})` returns: `Invalid parameters submitted`
+
+#### Creating (POST) Conversations
+* calling `CertifyMessages::Conversation.create({})
 
 ### Messages
 *TODO*

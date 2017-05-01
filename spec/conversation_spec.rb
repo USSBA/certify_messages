@@ -89,12 +89,26 @@ RSpec.describe CertifyMessages::Conversation do
     end
 
     context "handles errors" do
-      before do
-        @conversation = CertifyMessages::Conversation.create({foo: 'bar'})
-        @body = @conversation[:body]
+
+      context "empty parameters" do
+        before do
+          @conversation = CertifyMessages::Conversation.create({})
+          @body = @conversation[:body]
+        end
+        it "should return an error message when a no parameters are sent" do
+          expect(@body).to eq("Invalid parameters submitted")
+        end
+
+        it "should return a 422 http status" do
+          expect(@conversation[:status]).to eq(422)
+        end
       end
 
       context "bad parameters" do
+        before do
+          @conversation = CertifyMessages::Conversation.create({foo: 'bar'})
+          @body = @conversation[:body]
+        end
         it "should return an error message when a bad parameter is sent" do
           expect(@body).to eq("Invalid parameters submitted")
         end
@@ -120,8 +134,10 @@ RSpec.describe CertifyMessages::Conversation do
           expect(@conversation[:status]).to eq(503)
         end
       end
+    end
 
-      context "create a conversation with a new message" do
+    context "should create a conversation with a new message" do
+      context "when given good parameters" do
         before do
           @mock = MessageSpecHelper.mock_conversation
           @mock[:body] = Faker::HarryPotter.quote
@@ -137,7 +153,6 @@ RSpec.describe CertifyMessages::Conversation do
           it "should have the correct subject" do
             expect(@response[:conversation][:body][:subject]).to eq(@mock["subject"])
           end
-
         end
 
         context "the newly created message" do
@@ -146,12 +161,39 @@ RSpec.describe CertifyMessages::Conversation do
           end
 
           it "should have the correct body" do
-            expect(@response[:conversation][:body][:body]).to eq(@mock["body"])
+            expect(JSON.parse(@response[:message].data[:body])["body"]).to eq(@mock[:body])
+          end
+        end
+      end
+
+      context "when given bad parameters" do
+        before do
+          @mock = MessageSpecHelper.mock_conversation
+          @mock[:subject] = nil
+          Excon.stub({}, body: @mock.to_json, status: 422)
+          @response = CertifyMessages::Conversation.create_with_message(@mock)
+        end
+
+        context "the newly created conversation" do
+          it "should return 422" do
+            expect(@response[:conversation].status).to eq(422)
+          end
+
+          it "should have the correct subject" do
+            expect(@response[:conversation][:body][:subject]).to eq(@mock["subject"])
           end
         end
 
-      end
+        context "the newly created message" do
+          it "should return 422" do
+            expect(@response[:message][:status]).to eq(422)
+          end
 
+          it "should have an error message" do
+            expect(@response[:message][:body]).to eq("An error occurred creating the conversation")
+          end
+        end
+      end
     end
   end
 end

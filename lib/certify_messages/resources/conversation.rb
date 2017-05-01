@@ -17,7 +17,7 @@ module CertifyMessages
     # create a new conversation and a new message along with it
     def self.create(params)
       safe_params = conversation_safe_params params
-      return error_response("Invalid parameters submitted", 422) if safe_params.empty? && !params.empty?
+      return error_response("Invalid parameters submitted", 422) if safe_params.empty? || params.empty?
       response = connection.request(method: :post,
                                     path: conversations_path,
                                     body: safe_params.to_json,
@@ -31,8 +31,12 @@ module CertifyMessages
     def self.create_with_message(params)
       combined_response = {}
       combined_response[:conversation] = create params
-      message_params = parse_conversation_response combined_response[:conversation], params
-      combined_response[:message] = CertifyMessages::Message.create message_params
+      combined_response[:message] = if combined_response[:conversation].status == 201
+                                      message_params = parse_conversation_response combined_response[:conversation], params
+                                      CertifyMessages::Message.create message_params
+                                    else
+                                      { body: "An error occurred creating the conversation", status: 422 }
+                                    end
       combined_response
     end
 
