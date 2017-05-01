@@ -40,12 +40,56 @@ end
   * `CertifyMessages::Conversation.find({foo: 'bar'})` returns: `Invalid parameters submitted`
 
 #### Creating (POST) Conversations
-* calling `CertifyMessages::Conversation.create({})
+* to create a new conversation:
+```
+  CertifyMessages::Conversation.create({
+    analyst_id: <int>,
+    contributor_id: <int>,
+    application_id: <int>,
+    subject: <string>
+  })
+```
+  * This will return a JSON hash with a `body` containing the data of the conversation along with `status` of 201.
+* to create a conversation with a message:
+```
+  CertifyMessages::Conversation.create_with_message({
+    analyst_id: <int>,
+    contributor_id: <int>,
+    application_id: <int>,
+    subject: <string>,
+    body: <string>
+  })
+```
+  * This will return a nested JSON hash for both the conversation and message:
+  ```
+  response:
+    conversation:
+      body: ...
+      status: ...
+    message:
+      body: ...
+      status: ...
+  ```
 
 ### Messages
-*TODO*
+#### Finding (GET) Messages
+* calling `CertifyMessages::Message.find({conversation_id: 1})` will query for all conversations for conversation_id = 1, returning an array of hashes
+  * Combining the above with other parameters (e.g, subject, sender_id, will query messages within that thread)
+* Calling the `.find` method with invalid parameters will result in an error:
+  * `CertifyMessages::Message.find({foo: 'bar'})` returns: `Invalid parameters submitted`
+
+
+#### Creating (POST) Messages
+* to create a new message:
+```
+  CertifyMessages::Message.create({
+    conversation_id: <int>,
+    sender_id: <int>,
+    recipient_id: <int>,
+    subject: <string>
+  })
+```
+  * This will return a JSON hash with a `body` containing the data of the message along with `status` of 201.
 
 ## Development
 Use `bundle console` to access a console environment for testing development of the gem.
-
-
