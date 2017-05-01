@@ -11,5 +11,9 @@ module CertifyMessages
     def conversations_path
       "conversations"
     end
+
+    def messages_path
+      "messages"
+    end
   end
 end

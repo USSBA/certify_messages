@@ -43,5 +43,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency "excon"
   spec.add_dependency "excon-rails"
   spec.add_dependency "json"
-
 end
