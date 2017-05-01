@@ -8,10 +8,11 @@ RSpec.describe CertifyMessages::Message do
       before do
         @mock = MessageSpecHelper.mock_messages 1
         Excon.stub({}, body: @mock.to_json)
-        @messages = CertifyMessages::Message.find(conversation_id: 1)
+        @messages = CertifyMessages::Message.find(conversation_id: 1)[:body]
       end
 
       it 'should return an array of messages' do
+        # puts(@messages[:body])
         expect(@messages.length).to be
         expect(@messages[0]["sender_id"]).to be
         expect(@messages[0]["recipient_id"]).to be
