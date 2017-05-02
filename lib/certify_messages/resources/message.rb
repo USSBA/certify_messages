@@ -31,10 +31,8 @@ module CertifyMessages
     # Sanitizes the provided paramaters
     def self.message_params(params)
       permitted_keys = %w[body sender_id recipient_id conversation_id read sent]
-      params = params.select { |key, _| permitted_keys.include? key.to_s }
+      params.select { |key, _| permitted_keys.include? key.to_s }
     end
-
-
 
     # checks to confirm if the parameters are valid
     def self.valid_params(params)

@@ -51,7 +51,7 @@ module CertifyMessages
     # helper for white listing parameters
     def self.conversation_safe_params(params)
       permitted_keys = %w[id subject application_id analyst_id contributor_id]
-      params = params.select { |key, _| permitted_keys.include? key.to_s }
+      params.select { |key, _| permitted_keys.include? key.to_s }
     end
   end
 end
