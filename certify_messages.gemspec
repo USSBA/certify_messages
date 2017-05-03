@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "byebug"
+  spec.add_development_dependency "faker"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rubocop"
@@ -42,5 +43,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency "excon"
   spec.add_dependency "excon-rails"
   spec.add_dependency "json"
-
 end
