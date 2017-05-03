@@ -11,10 +11,12 @@ This gem is a Ruby wrapper for the messaging API, allowing for cleaner code and 
 * `bundle install` to build it
 * You can run tests `rspec` to make sure it built okay.
 * Then `rake build` to build the gem, this builds the .gem file in /pkg
-* Jump over to the folder of the prototype app
-* In the Gemfile for the prototype App, change the local path for the `certify_messages` gem to the full path of where it is on your env.
-* `bundle install` in the app repo
-* If this worked correctly, you should see `certify_messages` with its own path at the top of your `Gemfile.lock`
+* Jump over to the folder of the the app where you want to use them and follow the instructions below within that app/repo, for example, if working with the [Messages Prototype](https://github.com/SBA-ONE/message-prototype):
+  * Copy the .gem into the folder `vendor/gems/certify_messages`
+  * In the app where you want to use the gem, do `gem install <path to gem>` e.g. `gem install vendor/gems/certify_messages/certify_messages-0.1.0.gem`
+  * `bundle install`
+  * If this worked correctly, you should see `certify_messages` in your `Gemfile.lock`
+  * Follow Configuration instructions below.
 * Start the API
 * Start the App
 * Calls from the App to the API will now go through the Gem, greatly reducing the code footprint in the App.
