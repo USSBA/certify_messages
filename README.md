@@ -29,7 +29,7 @@ Set the messages API URL in your apps `config/initializers` folder, you probably
 
 ```
 CertifyMessages.configure do |config|
-  config.api_url = "http://foo.bar/"
+  config.api_url = "http://localhost:3001"
 end
 ```
 
