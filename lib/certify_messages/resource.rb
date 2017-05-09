@@ -24,16 +24,17 @@ module CertifyMessages
   end
 
   # base resource class
+  # rubocop:disable Style/ClassVars
   class Resource
-    @connection = nil
+    @@connection = nil
 
     # excon connection
     def self.connection
-      @connection = ApiConnection.new api_url
+      @@connection ||= ApiConnection.new api_url
     end
 
     def self.clear_connection
-      @connection = nil
+      @@connection = nil
     end
 
     def self.api_url
