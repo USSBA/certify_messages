@@ -48,13 +48,16 @@ RSpec.describe CertifyMessages::Conversation do
       # fake the Excon connection to force it to fail in a test env.
       context "api not found" do
         before do
+          CertifyMessages::Resource.clear_connection
           Excon.defaults[:mock] = false
+          
           # reextend the endpoint to a dummy url
 
           @conversations = CertifyMessages::Conversation.find({application_id: 1})
         end
 
         after do
+          CertifyMessages::Resource.clear_connection
           Excon.defaults[:mock] = true
         end
 
@@ -122,11 +125,13 @@ RSpec.describe CertifyMessages::Conversation do
       # fake the Excon connection to force it to fail in a test env.
       context "api not found" do
         before do
+          CertifyMessages::Resource.clear_connection
           Excon.defaults[:mock] = false
           @conversation = CertifyMessages::Conversation.create({application_id: 1})
         end
 
         after do
+          CertifyMessages::Resource.clear_connection
           Excon.defaults[:mock] = true
         end
 

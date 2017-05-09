@@ -7,7 +7,7 @@ module CertifyMessages
       return return_response("Invalid parameters submitted", 400) if valid_params(params)
       safe_params = message_params params
       response = connection.request(method: :get,
-                                    path: build_find_url(safe_params))
+                                    path: build_find_path(safe_params))
       return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error::Socket => error
       return_response(error.message, 503)
@@ -18,7 +18,7 @@ module CertifyMessages
       safe_params = message_params params
       return return_response("Invalid parameters submitted", 422) if safe_params.empty? && !params.empty?
       response = connection.request(method: :post,
-                                    path: "/conversations/#{params[:conversation_id]}/messages",
+                                    path: build_create_path(params),
                                     body: safe_params.to_json,
                                     headers:  { "Content-Type" => "application/json" })
       return_response(json(response.data[:body]), response.data[:status])
@@ -39,8 +39,12 @@ module CertifyMessages
       message_params(params).empty? && !params.empty?
     end
 
-    def self.build_find_url(params)
-      conversations_path + "/#{params['conversation_id']}/" + messages_path + "?" + URI.encode_www_form(params)
+    def self.build_find_path(params)
+      "#{path_prefix}/#{conversations_path}/#{params['conversation_id']}/#{messages_path}"
+    end
+
+    def self.build_create_path(params)
+      "#{path_prefix}/#{conversations_path}/#{params[:conversation_id]}/#{messages_path}"
     end
   end
 end
