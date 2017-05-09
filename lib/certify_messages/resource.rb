@@ -13,8 +13,8 @@ module CertifyMessages
     end
 
     def add_version_to_header(options)
-      version = CertifyMessages.configuration.hubzone_api_version
-      if options[:headers].present?
+      version = CertifyMessages.configuration.msg_api_version
+      if options[:headers]
         options[:headers].merge!('Accept' => "application/sba.msg-api.v#{version}")
       else
         options.merge!(headers: { 'Accept' => "application/sba.msg-api.v#{version}" })

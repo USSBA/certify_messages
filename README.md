@@ -30,7 +30,7 @@ Set the messages API URL in your apps `config/initializers` folder, you probably
 ```
 CertifyMessages.configure do |config|
   config.api_url = "http://localhost:3001"
-  config.hubzone_api_version = 1
+  config.msg_api_version = 1
 end
 ```
 

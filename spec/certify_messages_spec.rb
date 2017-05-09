@@ -10,7 +10,7 @@ RSpec.describe CertifyMessages do
   end
 
   it "should specify the message API version" do
-    expect(CertifyMessages.configuration.hubzone_api_version).to eq(1)
+    expect(CertifyMessages.configuration.msg_api_version).to eq(1)
   end
 
   it "should have a Conversation class" do
