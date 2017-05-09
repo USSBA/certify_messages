@@ -2,15 +2,45 @@ require 'json'
 require 'excon'
 
 module CertifyMessages
+  class ApiConnection
+    def initialize(url)
+      @conn = Excon.new(url)
+    end
+
+    def request(options)
+      add_version_to_header options
+      @conn.request(options)
+    end
+
+    def add_version_to_header(options)
+      version = CertifyMessages.configuration.msg_api_version
+      if options[:headers]
+        options[:headers].merge!('Accept' => "application/sba.msg-api.v#{version}")
+      else
+        options.merge!(headers: { 'Accept' => "application/sba.msg-api.v#{version}" })
+      end
+    end
+  end
+
   # base resource class
   class Resource
+    @@connection = nil
+
     # excon connection
     def self.connection
-      Excon.new(api_url)
+      @@connection = ApiConnection.new api_url
+    end
+
+    def self.clear_connection
+      @@connection = nil
     end
 
     def self.api_url
       CertifyMessages.configuration.api_url
+    end
+
+    def self.path_prefix
+      CertifyMessages.configuration.path_prefix
     end
 
     def self.conversations_path
