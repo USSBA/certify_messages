@@ -2,6 +2,7 @@ require 'json'
 require 'excon'
 
 module CertifyMessages
+  # Controls the API connection
   class ApiConnection
     def initialize(url)
       @conn = Excon.new(url)
@@ -24,15 +25,15 @@ module CertifyMessages
 
   # base resource class
   class Resource
-    @@connection = nil
+    @connection = nil
 
     # excon connection
     def self.connection
-      @@connection = ApiConnection.new api_url
+      @connection = ApiConnection.new api_url
     end
 
     def self.clear_connection
-      @@connection = nil
+      @connection = nil
     end
 
     def self.api_url

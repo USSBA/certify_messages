@@ -50,9 +50,7 @@ RSpec.describe CertifyMessages::Conversation do
         before do
           CertifyMessages::Resource.clear_connection
           Excon.defaults[:mock] = false
-          
           # reextend the endpoint to a dummy url
-
           @conversations = CertifyMessages::Conversation.find({application_id: 1})
         end
 
