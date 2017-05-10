@@ -4,28 +4,6 @@ Welcome to your new gem! In this directory, you'll find the files you need to be
 
 This is a thin wrapper for the [Certify Messaging API](https://github.com/SBA-ONE/message-api) to handle basic GET and POST operations for both conversations/threads and messages.
 
-## Installation
+## UNDER DEVELOPMENT
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'certify_messages'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install certify_messages
-
-## Usage
-
-TODO: Write usage instructions here
-
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
+All work on this gem is being done on the `develop` branch.
