@@ -34,7 +34,8 @@ module CertifyMessages
                                     path: build_update_path(safe_params),
                                     body: safe_params.to_json,
                                     headers:  { "Content-Type" => "application/json" })
-      return_response(json(response.data[:body]), response.data[:status])
+      body = response.data[:body].empty? ? 'No Content' : response.data[:body]
+      return_response(json(body), response.data[:status])
     rescue Excon::Error::Socket => error
       return_response(error.message, 503)
     end
