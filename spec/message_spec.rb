@@ -106,4 +106,23 @@ RSpec.describe CertifyMessages::Message do
       end
     end
   end
+
+  describe 'Updating messages' do
+    context 'for editing message read/unread status' do
+      before do
+        read_message = MessageSpecHelper.mock_message(1, 2, 1)
+        read_message[:read] = true
+        Excon.stub({}, body: read_message.to_json, status: 201)
+        @updated_message_response = CertifyMessages::Message.update({
+                                                                      id: read_message[:id],
+                                                                      read: read_message[:read],
+                                                                      conversation_id: read_message[:conversation_id]
+                                                                    })
+      end
+
+      it "should return a message" do
+        expect(@updated_message_response[:body]['read']).to be(true)
+      end
+    end
+  end
 end
