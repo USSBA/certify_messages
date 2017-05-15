@@ -34,6 +34,7 @@ module CertifyMessages
                                     path: build_update_path(safe_params),
                                     body: safe_params.to_json,
                                     headers:  { "Content-Type" => "application/json" })
+      byebug
       return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error::Socket => error
       return_response(error.message, 503)
