@@ -42,8 +42,6 @@ module CertifyMessages
 
     def self.parse_conversation_response(response, params)
       params[:conversation_id] = response["id"]
-      params[:sender_id] = params[:analyst_id]
-      params[:recipient_id] = params[:contributor_id]
       params
     end
 
