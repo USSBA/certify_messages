@@ -1,17 +1,17 @@
 # CertifyMessages
 
-This is a thin wrapper for the [Certify Messaging API](https://github.com/SBA-ONE/message-api) to handle basic GET and POST operations for both conversations/threads and messages.
+This is a thin wrapper for the [Certify Messaging API](https://github.com/USSBA/message-api) to handle basic GET and POST operations for both conversations/threads and messages.
 
 ## Installation - *UNDER DEVELOPMENT*
 
 ### Building the Certify Messages Gem
 
-This gem is a Ruby wrapper for the messaging API, allowing for cleaner code and calls for the [Messages Prototype app side](https://github.com/SBA-ONE/message-prototype) of messaging.  Since this is still in dev, requiring `certify_messages` in the prototype requires a manual gem build (which is also documented on the messages prototype repo site):
+This gem is a Ruby wrapper for the messaging API, allowing for cleaner code and calls for the [Messages Prototype app side](https://github.com/USSBA/message-prototype) of messaging.  Since this is still in dev, requiring `certify_messages` in the prototype requires a manual gem build (which is also documented on the messages prototype repo site):
 * Pull down the latest branch for the gem
 * `bundle install` to build it
 * You can run tests `rspec` to make sure it built okay.
 * Then `rake build` to build the gem, this builds the .gem file in /pkg
-* Jump over to the folder of the the app where you want to use them and follow the instructions below within that app/repo, for example, if working with the [Messages Prototype](https://github.com/SBA-ONE/message-prototype):
+* Jump over to the folder of the the app where you want to use them and follow the instructions below within that app/repo, for example, if working with the [Messages Prototype](https://github.com/USSBA/message-prototype):
   * Copy the .gem into the folder `vendor/gems/certify_messages`
   * In the app where you want to use the gem, do `gem install <path to gem>` e.g. `gem install vendor/gems/certify_messages/certify_messages-0.1.0.gem`
   * add `gem 'certify_messages'` to your Gemfile
@@ -23,7 +23,7 @@ This gem is a Ruby wrapper for the messaging API, allowing for cleaner code and 
 Alternatively, you can add the following to your Gemfile to bring in the gem from GitHub:
 
 ```
-gem 'certify_messages', git: 'git@github.com:SBA-ONE/certify_messages.git', branch: 'develop' # Certify messaging service
+gem 'certify_messages', git: 'git@github.com:USSBA/certify_messages.git', branch: 'develop' # Certify messaging service
 ```
 
 This will pull the head of the develop branch in as a gem.  If there are updates to the gem repository, you will need to run `bundle update certify-messages` to get them.
