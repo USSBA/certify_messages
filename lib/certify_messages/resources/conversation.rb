@@ -4,9 +4,9 @@ module CertifyMessages
     # base conversation finder
     # rubocop:disable Metrics/AbcSize
     def self.find(params = nil)
-      return CertifyMessages.BadRequest if empty_params(params)
+      return CertifyMessages.bad_request if empty_params(params)
       safe_params = conversation_safe_params params
-      return CertifyMessages.Unprocessable if safe_params.empty?
+      return CertifyMessages.unprocessable if safe_params.empty?
       response = connection.request(method: :get,
                                     path: build_find_conversations_path(safe_params))
       return_response(json(response.data[:body]), response.data[:status])
@@ -16,9 +16,9 @@ module CertifyMessages
 
     # create a new conversation and a new message along with it
     def self.create(params = nil)
-      return CertifyMessages.BadRequest if empty_params(params)
+      return CertifyMessages.bad_request if empty_params(params)
       safe_params = conversation_safe_params params
-      return CertifyMessages.Unprocessable if safe_params.empty?
+      return CertifyMessages.unprocessable if safe_params.empty?
       response = connection.request(method: :post,
                                     path: build_create_conversations_path,
                                     body: safe_params.to_json,

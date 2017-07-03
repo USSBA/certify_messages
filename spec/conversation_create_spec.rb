@@ -32,11 +32,11 @@ RSpec.describe "CertifyMessages::Conversation.create" do
           @body = @conversation[:body]
         end
         it "should return an error message when a no parameters are sent" do
-          expect(@body).to eq(CertifyMessages.BadRequest[:body])
+          expect(@body).to eq(CertifyMessages.bad_request[:body])
         end
 
         it "should return a 400 http status" do
-          expect(@conversation[:status]).to eq(CertifyMessages.BadRequest[:status])
+          expect(@conversation[:status]).to eq(CertifyMessages.bad_request[:status])
         end
       end
 
@@ -46,11 +46,11 @@ RSpec.describe "CertifyMessages::Conversation.create" do
           @body = @conversation[:body]
         end
         it "should return an error message when a bad parameter is sent" do
-          expect(@body).to eq(CertifyMessages.Unprocessable[:body])
+          expect(@body).to eq(CertifyMessages.unprocessable[:body])
         end
 
         it "should return a 422 http status" do
-          expect(@conversation[:status]).to eq(CertifyMessages.Unprocessable[:status])
+          expect(@conversation[:status]).to eq(CertifyMessages.unprocessable[:status])
         end
       end
 
@@ -106,19 +106,18 @@ RSpec.describe "CertifyMessages::Conversation.create" do
 
       context "when given bad parameters" do
         before do
-          @mock = MessageSpecHelper.mock_conversation
-          @mock[:subject] = nil
-          Excon.stub({}, body: @mock.to_json, status: 422)
+          @mock = CertifyMessages.unprocessable
+          Excon.stub({}, body: @mock[:body], status: @mock[:status])
           @response = CertifyMessages::Conversation.create_with_message(@mock)
         end
 
         context "the newly created conversation" do
           it "should return 422" do
-            expect(@response[:conversation][:status]).to eq(CertifyMessages.Unprocessable[:status])
+            expect(@response[:conversation][:status]).to eq(CertifyMessages.unprocessable[:status])
           end
 
           it "should have a error status message in the message" do
-            expect(@response[:conversation][:subject]).to eq(@mock["subject"])
+            expect(@response[:conversation][:body]).to eq(@mock[:body])
           end
         end
 

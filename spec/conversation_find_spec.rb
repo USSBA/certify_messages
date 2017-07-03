@@ -35,10 +35,10 @@ RSpec.describe "CertifyMessages::Conversation.find" do
           @body = @conversations[:body]
         end
         it "should return an error message}" do
-          expect(@body).to eq(CertifyMessages.BadRequest[:body])
+          expect(@body).to eq(CertifyMessages.bad_request[:body])
         end
         it "should return a 400" do
-          expect(@conversations[:status]).to eq(CertifyMessages.BadRequest[:status])
+          expect(@conversations[:status]).to eq(CertifyMessages.bad_request[:status])
         end
 
       end
@@ -49,11 +49,11 @@ RSpec.describe "CertifyMessages::Conversation.find" do
           @body = @conversations[:body]
         end
         it "should return an error message when a bad parameter is sent" do
-          expect(@body).to eq(CertifyMessages.Unprocessable[:body])
+          expect(@body).to eq(CertifyMessages.unprocessable[:body])
         end
 
         it "should return a 422 http status" do
-          expect(@conversations[:status]).to eq(CertifyMessages.Unprocessable[:status])
+          expect(@conversations[:status]).to eq(CertifyMessages.unprocessable[:status])
         end
       end
 
