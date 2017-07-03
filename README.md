@@ -133,8 +133,5 @@ will return an unprocessable entity error:
 * Any other errors that the Gem experiences when connecting to the API will return a service error and the Excon error class:
 `    {body: "Service Unavailable: There was a problem connecting to the messages API. Type: Excon::Error::Socket", status: 503}`
 
-
 ## Development
-Use `rake console` to access the irb console.
-
-
+Use `rake console` to access the pry console.  While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console.
