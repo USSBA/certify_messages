@@ -6,9 +6,8 @@ RSpec::Core::RakeTask.new(:spec)
 task default: :spec
 
 task :console do
-  require 'irb'
-  require 'irb/completion'
+  require 'pry'
   require 'certify_messages'
   ARGV.clear
-  IRB.start
+  Pry.start
 end
