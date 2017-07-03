@@ -12,6 +12,10 @@ module CertifyMessages
   # Raised when Messsages API returns the HTTP status code 503
   class ServiceUnavailable < Error; end
 
+  def self.service_unavailable(error)
+    {body: "There was a problem connecting to the messages API. Type: #{error}", status: 503}
+  end
+
   # Raised when Messsages API returns the HTTP status code 400
   def self.bad_request
     {body: "No parameters submitted", status: 400}

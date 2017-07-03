@@ -10,8 +10,8 @@ module CertifyMessages
       response = connection.request(method: :get,
                                     path: build_find_conversations_path(safe_params))
       return_response(json(response.data[:body]), response.data[:status])
-    rescue Excon::Error::Socket => error
-      return_response(error.message, 503)
+    rescue Excon::Error => error
+      CertifyMessages.service_unavailable error.class
     end
 
     # create a new conversation and a new message along with it
@@ -24,8 +24,8 @@ module CertifyMessages
                                     body: safe_params.to_json,
                                     headers:  { "Content-Type" => "application/json" })
       return_response(json(response.data[:body]), response.data[:status])
-    rescue Excon::Error::Socket => error
-      return_response(error.message, 503)
+    rescue Excon::Error => error
+      CertifyMessages.service_unavailable error.class
     end
 
     def self.create_with_message(params)

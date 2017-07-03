@@ -65,6 +65,7 @@ RSpec.describe "CertifyMessages::Conversation.find" do
           Excon.defaults[:mock] = false
           # reextend the endpoint to a dummy url
           @conversations = CertifyMessages::Conversation.find({application_id: 1})
+          @error = CertifyMessages.service_unavailable 'Excon::Error::Socket'
         end
 
         after do
@@ -73,7 +74,11 @@ RSpec.describe "CertifyMessages::Conversation.find" do
         end
 
         it "should return a 503" do
-          expect(@conversations[:status]).to eq(503)
+          expect(@conversations[:status]).to eq(@error[:status])
+        end
+
+        it "should return an error message" do
+          expect(@conversations[:body]).to eq(@error[:body])
         end
       end
     end
