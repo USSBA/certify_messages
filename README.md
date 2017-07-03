@@ -101,5 +101,13 @@ end
 ```
   * This will return a JSON hash with a `body` containing the data of the message along with `status` of 201.
 
+## Error Handling
+### Messages / Conversations
+#### CertifyMessages::Conversation.find
+
+
+
 ## Development
 Use `bundle console` to access a console environment for testing development of the gem.
+
+

@@ -4,8 +4,9 @@ module CertifyMessages
     # Basic message finder
     # rubocop:disable Metrics/AbcSize
     def self.find(params)
-      return return_response("Invalid parameters submitted", 400) if valid_params(params)
-      safe_params = message_params params
+      return CertifyMessages.BadRequest if empty_params(params)
+      safe_params = message_safe_params params
+      return CertifyMessages.Unprocessable if safe_params.empty?
       response = connection.request(method: :get,
                                     path: build_find_path(safe_params))
       return_response(json(response.data[:body]), response.data[:status])
@@ -15,15 +16,16 @@ module CertifyMessages
 
     # Message creator
     def self.create(params)
-      safe_params = message_params params
-      return return_response("Invalid parameters submitted", 422) if safe_params.empty? && !params.empty?
+      return CertifyMessages.BadRequest if empty_params(params)
+      safe_params = message_safe_params params
+      return CertifyMessages.Unprocessable if safe_params.empty?
       response = connection.request(method: :post,
                                     path: build_create_path(safe_params),
                                     body: safe_params.to_json,
                                     headers:  { "Content-Type" => "application/json" })
       return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error::Socket => error
-      return_response(error.message, 503)
+      return_response(error.message, status: 503)
     end
 
     #Message editor
@@ -43,14 +45,9 @@ module CertifyMessages
     private_class_method
 
     # Sanitizes the provided paramaters
-    def self.message_params(params)
+    def self.message_safe_params(params)
       permitted_keys = %w[body sender_id recipient_id conversation_id read sent id]
       params.select { |key, _| permitted_keys.include? key.to_s }
-    end
-
-    # checks to confirm if the parameters are valid
-    def self.valid_params(params)
-      message_params(params).empty? && !params.empty?
     end
 
     def self.build_find_path(params)

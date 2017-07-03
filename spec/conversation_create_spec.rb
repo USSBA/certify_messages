@@ -1,72 +1,7 @@
 require "spec_helper"
 
 #rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
-RSpec.describe CertifyMessages::Conversation do
-  describe "find operations" do
-    context "for getting conversations" do
-      before do
-        @mock = MessageSpecHelper.mock_conversations
-        Excon.stub({}, body: @mock.to_json, status: 200)
-        @conversations = CertifyMessages::Conversation.find({application_id: 1})
-        @body = @conversations[:body]
-      end
-
-      it "should return a good status code" do
-        expect(@conversations[:status]).to eq(200)
-      end
-
-      it "should return an array of conversations" do
-        expect(@body.length).to be > 0
-      end
-
-      it "should contain valid conversation attributes" do
-        expect(@body[0]["analyst_id"]).to be
-        expect(@body[0]["application_id"]).to be
-        expect(@body[0]["contributor_id"]).to be
-        expect(@body[0]["id"]).to be
-        expect(@body[0]["subject"]).to be
-      end
-    end
-
-    context "handles errors" do
-      before do
-        @conversations = CertifyMessages::Conversation.find({foo: 'bar'})
-        @body = @conversations[:body]
-      end
-
-      context "bad parameters" do
-        it "should return an error message when a bad parameter is sent" do
-          expect(@body).to eq("Invalid parameters submitted")
-        end
-
-        it "should return a 400 http status" do
-          expect(@conversations[:status]).to eq(400)
-        end
-      end
-
-      # this will work if the API is disconnected, but I can't figure out how to
-      # fake the Excon connection to force it to fail in a test env.
-      context "api not found" do
-        before do
-          CertifyMessages::Resource.clear_connection
-          Excon.defaults[:mock] = false
-          # reextend the endpoint to a dummy url
-          @conversations = CertifyMessages::Conversation.find({application_id: 1})
-        end
-
-        after do
-          CertifyMessages::Resource.clear_connection
-          Excon.defaults[:mock] = true
-        end
-
-        it "should return a 503" do
-          expect(@conversations[:status]).to eq(503)
-        end
-      end
-
-    end
-  end
-
+RSpec.describe "CertifyMessages::Conversation.create" do
   describe "create operations" do
     context "for creating new conversations" do
       before do
@@ -97,11 +32,11 @@ RSpec.describe CertifyMessages::Conversation do
           @body = @conversation[:body]
         end
         it "should return an error message when a no parameters are sent" do
-          expect(@body).to eq("Invalid parameters submitted")
+          expect(@body).to eq(CertifyMessages.BadRequest[:body])
         end
 
-        it "should return a 422 http status" do
-          expect(@conversation[:status]).to eq(422)
+        it "should return a 400 http status" do
+          expect(@conversation[:status]).to eq(CertifyMessages.BadRequest[:status])
         end
       end
 
@@ -111,11 +46,11 @@ RSpec.describe CertifyMessages::Conversation do
           @body = @conversation[:body]
         end
         it "should return an error message when a bad parameter is sent" do
-          expect(@body).to eq("Invalid parameters submitted")
+          expect(@body).to eq(CertifyMessages.Unprocessable[:body])
         end
 
         it "should return a 422 http status" do
-          expect(@conversation[:status]).to eq(422)
+          expect(@conversation[:status]).to eq(CertifyMessages.Unprocessable[:status])
         end
       end
 
@@ -179,11 +114,11 @@ RSpec.describe CertifyMessages::Conversation do
 
         context "the newly created conversation" do
           it "should return 422" do
-            expect(@response[:conversation][:status]).to eq(422)
+            expect(@response[:conversation][:status]).to eq(CertifyMessages.Unprocessable[:status])
           end
 
-          it "should have the correct subject" do
-            expect(@response[:conversation][:body][:subject]).to eq(@mock["subject"])
+          it "should have a error status message in the message" do
+            expect(@response[:conversation][:subject]).to eq(@mock["subject"])
           end
         end
 
