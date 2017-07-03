@@ -8,6 +8,13 @@ task default: :spec
 task :console do
   require 'pry'
   require 'certify_messages'
+
+  def reload!
+    files = $LOADED_FEATURES.select { |feat| feat =~ /\/certify_messages\// }
+    files.each { |file| load file }
+  end
+
   ARGV.clear
   Pry.start
 end
+
