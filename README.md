@@ -135,6 +135,6 @@ will return an unprocessable entity error:
 
 
 ## Development
-Use `bundle console` to access a console environment for testing development of the gem.
+Use `rake console` to access the irb console.
 
 
