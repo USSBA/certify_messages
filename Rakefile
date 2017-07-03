@@ -10,11 +10,10 @@ task :console do
   require 'certify_messages'
 
   def reload!
-    files = $LOADED_FEATURES.select { |feat| feat =~ /\/certify_messages\// }
+    files = $LOADED_FEATURES.select { |feat| feat =~ %r{/certify_messages/} }
     files.each { |file| load file }
   end
 
   ARGV.clear
   Pry.start
 end
-
