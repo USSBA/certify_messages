@@ -53,18 +53,24 @@ module CertifyMessages
       CertifyMessages.configuration.messages_path
     end
 
+    # empty params
+    def self.empty_params(params)
+      if params.nil?
+        true
+      elsif params.empty?
+        true
+      else
+        false
+      end
+    end
+
     # json parse helper
     def self.json(response)
       JSON.parse(response)
     end
 
-    # return params without ActionController default params
-    def self.params_except_ac(params)
-      params.except('controller', 'action')
-    end
-
     def self.return_response(body, status)
-      { body: body, status: status }
+      {body: body, status: status}
     end
   end
 end

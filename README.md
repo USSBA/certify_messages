@@ -43,11 +43,9 @@ end
 ### Conversations
 
 #### Finding (GET) Conversations
-* calling `CertifyMessages::Conversation.find({})` will query for all conversations, returning an array of hashes
 * calling `CertifyMessages::Conversation.find({application_id: 1})` will query for all conversations for application_id = 1, returning an array of hashes
   * This also applies for subject, analyst_id, contributor_id, and id (aka conversation_id)
-* Calling the `.find` method with invalid parameters will result in an error:
-  * `CertifyMessages::Conversation.find({foo: 'bar'})` returns: `Invalid parameters submitted`
+* Calling the `.find` method with empty or invalid parameters will result in an error (see below)
 
 #### Creating (POST) Conversations
 * to create a new conversation:
@@ -85,8 +83,7 @@ end
 #### Finding (GET) Messages
 * calling `CertifyMessages::Message.find({conversation_id: 1})` will query for all conversations for conversation_id = 1, returning an array of hashes
   * Combining the above with other parameters (e.g, subject, sender_id, will query messages within that thread)
-* Calling the `.find` method with invalid parameters will result in an error:
-  * `CertifyMessages::Message.find({foo: 'bar'})` returns: `Invalid parameters submitted`
+* Calling the `.find` method with empty or invalid parameters will result in an error (see below)
 
 
 #### Creating (POST) Messages
@@ -101,5 +98,43 @@ end
 ```
   * This will return a JSON hash with a `body` containing the data of the message along with `status` of 201.
 
+#### Updating (PUT) Messages
+* to update a message,for example to mark it as read:
+```
+  CertifyMessages::Message.update({
+    conversation_id: <int>,
+    read: true
+  })
+```
+  * This will return a status of 204.
+
+
+## Error Handling
+* Calling a Gem method with no or empty parameters:
+```
+CertifyMessage::Conversation.find   {}
+CertifyMessage::Conversation.create {}
+CertifyMessage::Message.find        {}
+CertifyMessage::Message.create      {}
+CertifyMessage::Message.update      {}
+```
+will return a bad request:
+`{body: "Bad Request: No parameters submitted", status: 400}`
+* Calling a Gem method with invalid parameters:
+```
+CertifyMessage::Conversation.find   {foo: 'bar'}
+CertifyMessage::Conversation.create {foo: 'bar'}
+CertifyMessage::Message.find        {foo: 'bar'}
+CertifyMessage::Message.create      {foo: 'bar'}
+CertifyMessage::Message.update      {foo: 'bar'}
+```
+will return an unprocessable entity error:
+`{body: "Unprocessable Entity: Invalid parameters submitted", status: 422}`
+* Any other errors that the Gem experiences when connecting to the API will return a service error and the Excon error class:
+`    {body: "Service Unavailable: There was a problem connecting to the messages API. Type: Excon::Error::Socket", status: 503}`
+
+
 ## Development
 Use `bundle console` to access a console environment for testing development of the gem.
+
+
