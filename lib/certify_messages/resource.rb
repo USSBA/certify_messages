@@ -55,13 +55,7 @@ module CertifyMessages
 
     # empty params
     def self.empty_params(params)
-      if params.nil?
-        true
-      elsif params.empty?
-        true
-      else
-        false
-      end
+      params.nil? || params.empty?
     end
 
     # json parse helper
