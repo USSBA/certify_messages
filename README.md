@@ -65,6 +65,8 @@ end
     contributor_id: <int>,
     application_id: <int>,
     subject: <string>,
+    sender_id: <int>,
+    recipient_id: <int>,
     body: <string>
   })
 ```
@@ -93,7 +95,7 @@ end
     conversation_id: <int>,
     sender_id: <int>,
     recipient_id: <int>,
-    subject: <string>
+    body: <string>
   })
 ```
   * This will return a JSON hash with a `body` containing the data of the message along with `status` of 201.
@@ -103,6 +105,7 @@ end
 ```
   CertifyMessages::Message.update({
     conversation_id: <int>,
+    id: <int>,
     read: true
   })
 ```
