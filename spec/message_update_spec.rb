@@ -2,7 +2,7 @@ require 'spec_helper'
 
 #rubocop:disable  Style/BracesAroundHashParameters, Metrics/BlockLength
 
-RSpec.describe "CertifyMessages::Message.update" do
+RSpec.describe "CertifyMessages::Message.update", type: :feature do
   describe 'Updating messages' do
     context 'for editing message read/unread status' do
       before do
@@ -16,7 +16,7 @@ RSpec.describe "CertifyMessages::Message.update" do
                                                                     })
       end
 
-      it "should return a message" do
+      it "will return a message" do
         expect(@updated_message_response[:body]['read']).to be(true)
       end
     end
@@ -26,11 +26,11 @@ RSpec.describe "CertifyMessages::Message.update" do
         @messages = CertifyMessages::Message.update
       end
 
-      it "should return an error message when a bad parameter is sent" do
+      it "will return an error message when a bad parameter is sent" do
         expect(@messages[:body]).to eq(CertifyMessages.bad_request[:body])
       end
 
-      it "should return a 422 http status" do
+      it "will return a 422 http status" do
         expect(@messages[:status]).to eq(CertifyMessages.bad_request[:status])
       end
     end
@@ -40,11 +40,11 @@ RSpec.describe "CertifyMessages::Message.update" do
         @messages = CertifyMessages::Message.update(foo: 'bar')
       end
 
-      it "should return an error message when a bad parameter is sent" do
+      it "will return an error message when a bad parameter is sent" do
         expect(@messages[:body]).to eq(CertifyMessages.unprocessable[:body])
       end
 
-      it "should return a 422 http status" do
+      it "will return a 422 http status" do
         expect(@messages[:status]).to eq(CertifyMessages.unprocessable[:status])
       end
     end
@@ -65,10 +65,10 @@ RSpec.describe "CertifyMessages::Message.update" do
         Excon.defaults[:mock] = true
       end
 
-      it "should return a 503" do
+      it "will return a 503" do
         expect(@bad_message[:status]).to eq(@error[:status])
       end
-      it "should return an error message" do
+      it "will return an error message" do
         expect(@bad_message[:body]).to eq(@error[:body])
       end
     end

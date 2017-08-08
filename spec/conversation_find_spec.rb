@@ -1,7 +1,7 @@
 require "spec_helper"
 
 #rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
-RSpec.describe "CertifyMessages::Conversation.find" do
+RSpec.describe "CertifyMessages::Conversation.find", type: :feature do
   describe "find operations" do
     context "for getting conversations" do
       before do
@@ -11,15 +11,15 @@ RSpec.describe "CertifyMessages::Conversation.find" do
         @body = @conversations[:body]
       end
 
-      it "should return a good status code" do
+      it "will return a good status code" do
         expect(@conversations[:status]).to eq(200)
       end
 
-      it "should return an array of conversations" do
+      it "will return an array of conversations" do
         expect(@body.length).to be > 0
       end
 
-      it "should contain valid conversation attributes" do
+      it "will contain valid conversation attributes" do
         expect(@body[0]["user_1"]).to be
         expect(@body[0]["application_id"]).to be
         expect(@body[0]["user_2"]).to be
@@ -34,10 +34,10 @@ RSpec.describe "CertifyMessages::Conversation.find" do
           @conversations = CertifyMessages::Conversation.find
           @body = @conversations[:body]
         end
-        it "should return an error message}" do
+        it "will return an error message}" do
           expect(@body).to eq(CertifyMessages.bad_request[:body])
         end
-        it "should return a 400" do
+        it "will return a 400" do
           expect(@conversations[:status]).to eq(CertifyMessages.bad_request[:status])
         end
 
@@ -48,11 +48,11 @@ RSpec.describe "CertifyMessages::Conversation.find" do
           @conversations = CertifyMessages::Conversation.find({foo: 'bar'})
           @body = @conversations[:body]
         end
-        it "should return an error message when a bad parameter is sent" do
+        it "will return an error message when a bad parameter is sent" do
           expect(@body).to eq(CertifyMessages.unprocessable[:body])
         end
 
-        it "should return a 422 http status" do
+        it "will return a 422 http status" do
           expect(@conversations[:status]).to eq(CertifyMessages.unprocessable[:status])
         end
       end
@@ -73,11 +73,11 @@ RSpec.describe "CertifyMessages::Conversation.find" do
           Excon.defaults[:mock] = true
         end
 
-        it "should return a 503" do
+        it "will return a 503" do
           expect(@conversations[:status]).to eq(@error[:status])
         end
 
-        it "should return an error message" do
+        it "will return an error message" do
           expect(@conversations[:body]).to eq(@error[:body])
         end
       end

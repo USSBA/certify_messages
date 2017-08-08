@@ -2,7 +2,7 @@ require 'spec_helper'
 
 #rubocop:disable Metrics/BlockLength
 
-RSpec.describe "CertifyMessages::Message.create" do
+RSpec.describe "CertifyMessages::Message.create", type: :feature do
   describe 'Creating messages' do
     context 'for creating valid new messages' do
       before do
@@ -11,7 +11,7 @@ RSpec.describe "CertifyMessages::Message.create" do
         @new_message_response = CertifyMessages::Message.create(new_message)
       end
 
-      it 'should return a status code of 201' do
+      it 'will return a status code of 201' do
         expect(@new_message_response[:status]).to be 201
       end
     end
@@ -21,11 +21,11 @@ RSpec.describe "CertifyMessages::Message.create" do
         @bad_message_response = CertifyMessages::Message.create
       end
 
-      it 'should return a status code of 400' do
+      it 'will return a status code of 400' do
         expect(@bad_message_response[:status]).to eq(CertifyMessages.bad_request[:status])
       end
 
-      it 'should return an error message' do
+      it 'will return an error message' do
         expect(@bad_message_response[:body]).to eq(CertifyMessages.bad_request[:body])
       end
     end
@@ -35,11 +35,11 @@ RSpec.describe "CertifyMessages::Message.create" do
         @bad_message_response = CertifyMessages::Message.create(foo: 'bar')
       end
 
-      it 'should return a status code of 422' do
+      it 'will return a status code of 422' do
         expect(@bad_message_response[:status]).to eq(CertifyMessages.unprocessable[:status])
       end
 
-      it 'should return an error message' do
+      it 'will return an error message' do
         expect(@bad_message_response[:body]).to eq(CertifyMessages.unprocessable[:body])
       end
     end
@@ -59,11 +59,11 @@ RSpec.describe "CertifyMessages::Message.create" do
         Excon.defaults[:mock] = true
       end
 
-      it "should return a 503" do
+      it "will return a 503" do
         expect(@message_response[:status]).to eq(@error[:status])
       end
 
-      it "should return an error message" do
+      it "will return an error message" do
         expect(@message_response[:body]).to eq(@error[:body])
       end
     end
