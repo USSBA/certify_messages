@@ -18,8 +18,8 @@ RSpec.describe "CertifyMessages::Conversation.create" do
       it "should return the new conversation object" do
         expect(@body["id"]).to eq(@mock[:id])
         expect(@body["application_id"]).to eq(@mock[:application_id])
-        expect(@body["analyst_id"]).to eq(@mock[:analyst_id])
-        expect(@body["contributor_id"]).to eq(@mock[:contributor_id])
+        expect(@body["user_1"]).to eq(@mock[:user_1])
+        expect(@body["user_2"]).to eq(@mock[:user_2])
         expect(@body["subject"]).to eq(@mock[:subject])
       end
     end

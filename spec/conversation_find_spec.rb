@@ -20,9 +20,9 @@ RSpec.describe "CertifyMessages::Conversation.find" do
       end
 
       it "should contain valid conversation attributes" do
-        expect(@body[0]["analyst_id"]).to be
+        expect(@body[0]["user_1"]).to be
         expect(@body[0]["application_id"]).to be
-        expect(@body[0]["contributor_id"]).to be
+        expect(@body[0]["user_2"]).to be
         expect(@body[0]["id"]).to be
         expect(@body[0]["subject"]).to be
       end
