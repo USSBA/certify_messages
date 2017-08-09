@@ -55,7 +55,7 @@ module CertifyMessages
     end
 
     def self.build_find_path(params)
-      "#{path_prefix}/#{conversations_path}/#{params['conversation_id']}/#{messages_path}"
+      "#{path_prefix}/#{conversations_path}/#{params[:conversation_id]}/#{messages_path}"
     end
 
     def self.build_create_path(params)

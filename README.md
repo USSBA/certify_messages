@@ -137,4 +137,8 @@ will return an unprocessable entity error:
 `    {body: "Service Unavailable: There was a problem connecting to the messages API. Type: Excon::Error::Socket", status: 503}`
 
 ## Development
-Use `rake console` to access the pry console.  While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console.
+Use `rake console` to access the pry console and add the messages API URL to the gem's config to be able to correctly test commands:
+```
+  CertifyMessages.configuration.api_url = 'http://localhost:3001'
+```
+While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console.
