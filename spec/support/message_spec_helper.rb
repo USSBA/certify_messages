@@ -12,8 +12,8 @@ module MessageSpecHelper
     { id: Faker::Number.number(10),
       application_id: Faker::Number.number(10),
       subject: Faker::StarWars.quote,
-      analyst_id: Faker::Number.number(10),
-      contributor_id: Faker::Number.number(10),
+      user_1: Faker::Number.number(10),
+      user_2: Faker::Number.number(10),
       created_date: Date.today,
       updated_date: Date.today }
   end

@@ -1,135 +1,124 @@
 require "spec_helper"
 
 #rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
-RSpec.describe "CertifyMessages::Conversation.create" do
-  describe "create operations" do
+RSpec.describe "CertifyMessages::Conversation.create", type: :feature do
+  describe "creating a conversation operations" do
     context "for creating new conversations" do
+      let(:mock) { MessageSpecHelper.mock_conversation }
+      let(:conversation) { CertifyMessages::Conversation.create(mock) }
+      let(:body) { conversation[:body] }
+
+      before { Excon.stub({}, body: mock.to_json, status: 201) }
+
+      it "will return the correct post response" do
+        expect(conversation[:status]).to eq(201)
+      end
+      it 'will have the correct body["id"]' do
+        expect(body["id"]).to eq(mock[:id])
+      end
+      it 'will have the correct body["application_id"]' do
+        expect(body["application_id"]).to eq(mock[:application_id])
+      end
+      it 'will have the correct body["user_1"]' do
+        expect(body["user_1"]).to eq(mock[:user_1])
+      end
+      it 'will have the correct body["user_2"]' do
+        expect(body["user_2"]).to eq(mock[:user_2])
+      end
+      it 'will have the correct body["subject"]' do
+        expect(body["subject"]).to eq(mock[:subject])
+      end
+    end
+
+    context "handles errors: empty parameters" do
+      let(:conversation) { CertifyMessages::Conversation.create }
+      let(:body) { conversation[:body] }
+
+      it "will return an error message when a no parameters are sent" do
+        expect(body).to eq(CertifyMessages.bad_request[:body])
+      end
+
+      it "will return a 400 http status" do
+        expect(conversation[:status]).to eq(CertifyMessages.bad_request[:status])
+      end
+    end
+
+    context "handles errors: bad parameters" do
+      let(:conversation) { CertifyMessages::Conversation.create({foo: 'bar'}) }
+      let(:body) { conversation[:body] }
+
+      it "will return an error message when a bad parameter is sent" do
+        expect(body).to eq(CertifyMessages.unprocessable[:body])
+      end
+
+      it "will return a 422 http status" do
+        expect(conversation[:status]).to eq(CertifyMessages.unprocessable[:status])
+      end
+    end
+
+    context "handles errors: api not found" do
+      let(:conversation) { CertifyMessages::Conversation.create({application_id: 1}) }
+
       before do
-        @mock = MessageSpecHelper.mock_conversation
-        Excon.stub({}, body: @mock.to_json, status: 201)
-        @conversation = CertifyMessages::Conversation.create(@mock)
-        @body = @conversation[:body]
+        CertifyMessages::Resource.clear_connection
+        Excon.defaults[:mock] = false
       end
 
-      it "should return the correct post response" do
-        expect(@conversation[:status]).to eq(201)
+      after do
+        CertifyMessages::Resource.clear_connection
+        Excon.defaults[:mock] = true
       end
 
-      it "should return the new conversation object" do
-        expect(@body["id"]).to eq(@mock[:id])
-        expect(@body["application_id"]).to eq(@mock[:application_id])
-        expect(@body["analyst_id"]).to eq(@mock[:analyst_id])
-        expect(@body["contributor_id"]).to eq(@mock[:contributor_id])
-        expect(@body["subject"]).to eq(@mock[:subject])
+      it "will return a 503" do
+        expect(conversation[:status]).to eq(503)
       end
     end
 
-    context "handles errors" do
+    context "creating a conversation with a message: with good parameters" do
+      let(:mock) { MessageSpecHelper.mock_conversation }
+      let(:response) { CertifyMessages::Conversation.create_with_message(mock) }
 
-      context "empty parameters" do
-        before do
-          @conversation = CertifyMessages::Conversation.create({})
-          @body = @conversation[:body]
-        end
-        it "should return an error message when a no parameters are sent" do
-          expect(@body).to eq(CertifyMessages.bad_request[:body])
-        end
-
-        it "should return a 400 http status" do
-          expect(@conversation[:status]).to eq(CertifyMessages.bad_request[:status])
-        end
+      before do
+        mock[:body] = Faker::HarryPotter.quote
+        Excon.stub({}, body: mock.to_json, status: 201)
       end
 
-      context "bad parameters" do
-        before do
-          @conversation = CertifyMessages::Conversation.create({foo: 'bar'})
-          @body = @conversation[:body]
-        end
-        it "should return an error message when a bad parameter is sent" do
-          expect(@body).to eq(CertifyMessages.unprocessable[:body])
-        end
-
-        it "should return a 422 http status" do
-          expect(@conversation[:status]).to eq(CertifyMessages.unprocessable[:status])
-        end
+      it "will return 201 for the conversation" do
+        expect(response[:conversation][:status]).to eq(201)
       end
 
-      # this will work if the API is disconnected, but I can't figure out how to
-      # fake the Excon connection to force it to fail in a test env.
-      context "api not found" do
-        before do
-          CertifyMessages::Resource.clear_connection
-          Excon.defaults[:mock] = false
-          @conversation = CertifyMessages::Conversation.create({application_id: 1})
-        end
+      it "will have the correct subject" do
+        expect(response[:conversation][:body][:subject]).to eq(mock["subject"])
+      end
 
-        after do
-          CertifyMessages::Resource.clear_connection
-          Excon.defaults[:mock] = true
-        end
+      it "will return 201 for the message" do
+        expect(response[:message][:status]).to eq(201)
+      end
 
-        it "should return a 503" do
-          expect(@conversation[:status]).to eq(503)
-        end
+      it "will have the correct body" do
+        expect(response[:message][:body]["body"]).to eq(mock[:body])
       end
     end
+    context "creating a conversation with a message: when given bad parameters" do
+      let(:mock) { CertifyMessages.unprocessable }
+      let(:response) { CertifyMessages::Conversation.create_with_message(mock) }
 
-    context "should create a conversation with a new message" do
-      context "when given good parameters" do
-        before do
-          @mock = MessageSpecHelper.mock_conversation
-          @mock[:body] = Faker::HarryPotter.quote
-          Excon.stub({}, body: @mock.to_json, status: 201)
-          @response = CertifyMessages::Conversation.create_with_message(@mock)
-        end
+      before { Excon.stub({}, body: mock[:body], status: mock[:status]) }
 
-        context "the newly created conversation" do
-          it "should return 201" do
-            expect(@response[:conversation][:status]).to eq(201)
-          end
-
-          it "should have the correct subject" do
-            expect(@response[:conversation][:body][:subject]).to eq(@mock["subject"])
-          end
-        end
-
-        context "the newly created message" do
-          it "should return 201" do
-            expect(@response[:message][:status]).to eq(201)
-          end
-
-          it "should have the correct body" do
-            expect(@response[:message][:body]["body"]).to eq(@mock[:body])
-          end
-        end
+      it "will return 422 for the conversation" do
+        expect(response[:conversation][:status]).to eq(CertifyMessages.unprocessable[:status])
       end
 
-      context "when given bad parameters" do
-        before do
-          @mock = CertifyMessages.unprocessable
-          Excon.stub({}, body: @mock[:body], status: @mock[:status])
-          @response = CertifyMessages::Conversation.create_with_message(@mock)
-        end
+      it "will have a error status message in the message" do
+        expect(response[:conversation][:body]).to eq(mock[:body])
+      end
 
-        context "the newly created conversation" do
-          it "should return 422" do
-            expect(@response[:conversation][:status]).to eq(CertifyMessages.unprocessable[:status])
-          end
+      it "will return 422 for the message" do
+        expect(response[:message][:status]).to eq(422)
+      end
 
-          it "should have a error status message in the message" do
-            expect(@response[:conversation][:body]).to eq(@mock[:body])
-          end
-        end
-
-        context "the newly created message" do
-          it "should return 422" do
-            expect(@response[:message][:status]).to eq(422)
-          end
-
-          it "should have an error message" do
-            expect(@response[:message][:body]).to eq("An error occurred creating the conversation")
-          end
-        end
+      it "will have an error message" do
+        expect(response[:message][:body]).to eq("An error occurred creating the conversation")
       end
     end
   end

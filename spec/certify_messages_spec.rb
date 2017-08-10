@@ -5,15 +5,15 @@ RSpec.describe CertifyMessages do
     expect(CertifyMessages::VERSION).not_to be nil
   end
 
-  it "should have an endpoint url" do
-    expect(CertifyMessages.configuration.api_url).to eq('http://foo.bar/')
+  it "will have an endpoint url" do
+    expect(described_class.configuration.api_url).to eq('http://foo.bar/')
   end
 
-  it "should specify the message API version" do
-    expect(CertifyMessages.configuration.msg_api_version).to eq(1)
+  it "will specify the message API version" do
+    expect(described_class.configuration.msg_api_version).to eq(1)
   end
 
-  it "should have a Conversation class" do
+  it "will have a Conversation class" do
     expect(CertifyMessages::Conversation.new).to be
   end
 
