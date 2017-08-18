@@ -65,7 +65,7 @@ module CertifyMessages
           sanitized_params[key] = value
         end
       end
-      sanitize_params
+      sanitized_params
     end
 
     def self.build_find_path(params)
