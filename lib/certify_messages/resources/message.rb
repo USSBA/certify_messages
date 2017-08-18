@@ -50,6 +50,12 @@ module CertifyMessages
 
     # Sanitizes the provided paramaters
     def self.message_safe_params(params)
+      params = sanitize_params params
+      permitted_keys = %w[body sender_id recipient_id conversation_id read sent id]
+      params.select { |key, _| permitted_keys.include? key.to_s }
+    end
+
+    def self.sanitize_params(params)
       # rebuild params as symbols, dropping ones as strings
       sanitized_params = {}
       params.each do |key, value|
@@ -59,10 +65,6 @@ module CertifyMessages
           sanitized_params[key] = value
         end
       end
-      params = sanitized_params
-
-      permitted_keys = %w[body sender_id recipient_id conversation_id read sent id]
-      params.select { |key, _| permitted_keys.include? key.to_s }
     end
 
     def self.build_find_path(params)
