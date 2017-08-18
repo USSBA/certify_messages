@@ -11,7 +11,7 @@ module MessageSpecHelper
   def self.mock_conversation
     { id: Faker::Number.number(10),
       application_id: Faker::Number.number(10),
-      subject: Faker::StarWars.quote,
+      "subject" => Faker::StarWars.quote,
       user_1: Faker::Number.number(10),
       user_2: Faker::Number.number(10),
       created_date: Date.today,

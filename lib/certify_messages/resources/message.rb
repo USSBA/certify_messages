@@ -50,6 +50,13 @@ module CertifyMessages
 
     # Sanitizes the provided paramaters
     def self.message_safe_params(params)
+      # rebuild params as symbols, dropping ones as strings
+      params.each_key do |key|
+        if key.is_a? String
+          params[key.to_sym] = params[key]
+          params.delete key
+        end
+      end
       permitted_keys = %w[body sender_id recipient_id conversation_id read sent id]
       params.select { |key, _| permitted_keys.include? key.to_s }
     end
