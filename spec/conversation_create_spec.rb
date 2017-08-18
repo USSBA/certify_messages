@@ -20,13 +20,13 @@ RSpec.describe "CertifyMessages::Conversation.create", type: :feature do
         expect(body["application_id"]).to eq(mock[:application_id])
       end
       it 'will have the correct body["user_1"]' do
-        expect(body["user_1"]).to eq(mock[:user_1])
+        expect(body["user_1"]).to eq(mock["user_1"])
       end
       it 'will have the correct body["user_2"]' do
         expect(body["user_2"]).to eq(mock[:user_2])
       end
       it 'will have the correct body["subject"]' do
-        expect(body["subject"]).to eq(mock[:subject])
+        expect(body["subject"]).to eq(mock["subject"])
       end
     end
 
@@ -88,7 +88,7 @@ RSpec.describe "CertifyMessages::Conversation.create", type: :feature do
       end
 
       it "will have the correct subject" do
-        expect(response[:conversation][:body][:subject]).to eq(mock["subject"])
+        expect(response[:conversation][:body]["subject"]).to eq(mock["subject"])
       end
 
       it "will return 201 for the message" do

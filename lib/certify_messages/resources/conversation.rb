@@ -50,12 +50,16 @@ module CertifyMessages
     # helper for white listing parameters
     def self.conversation_safe_params(params)
       # rebuild params as symbols, dropping ones as strings
-      params.each_key do |key|
+      sanitized_params = {}
+      params.each do |key, value|
         if key.is_a? String
-          params[key.to_sym] = params[key]
-          params.delete key
+          sanitized_params[key.to_sym] = value
+        else
+          sanitized_params[key] = value
         end
       end
+      params = sanitized_params
+
       permitted_keys = %w[id subject application_id user_1 user_2]
       params.select { |key, _| permitted_keys.include? key.to_s }
     end
