@@ -4,7 +4,7 @@ require "spec_helper"
 RSpec.describe "CertifyMessages::Conversation.find", type: :feature do
   describe "find operations" do
     context "for getting conversations" do
-      let(:mock) { MessageSpecHelper.mock_conversations }
+      let(:mock) { MessageSpecHelper.mock_conversation_sym }
       let(:conversations) { CertifyMessages::Conversation.find({application_id: 1}) }
       let(:body) { conversations[:body] }
 
@@ -19,19 +19,19 @@ RSpec.describe "CertifyMessages::Conversation.find", type: :feature do
       end
 
       it 'will contain valid conversation attributes ["user_1"]' do
-        expect(body[0]["user_1"]).to be
+        expect(body["user_1"]).to be
       end
       it 'will contain valid conversation attributes ["application_id"]' do
-        expect(body[0]["application_id"]).to be
+        expect(body["application_id"]).to be
       end
       it 'will contain valid conversation attributes ["user_2"]' do
-        expect(body[0]["user_2"]).to be
+        expect(body["user_2"]).to be
       end
       it 'will contain valid conversation attributes ["id"]' do
-        expect(body[0]["id"]).to be
+        expect(body["id"]).to be
       end
       it 'will contain valid conversation attributes ["subject"]' do
-        expect(body[0]["subject"]).to be
+        expect(body["subject"]).to be
       end
     end
 
