@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe "CertifyMessages::Message.update", type: :feature do
   describe 'Updating messages' do
     context 'for editing message read/unread status' do
-      let(:read_message) { MessageSpecHelper.mock_message(1, 2, 1) }
+      let(:read_message) { MessageSpecHelper.mock_message_sym(1, 2, 1) }
       let(:params) { {id: read_message[:id], read: read_message[:read], conversation_id: read_message[:conversation_id]} }
       let(:updated_message_response) { CertifyMessages::Message.update(params) }
 
