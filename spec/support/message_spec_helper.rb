@@ -18,7 +18,7 @@ module MessageSpecHelper
     {
       symbol_keys: mock_conversation_sym,
       string_keys: mock_conversation_string,
-      mixed_keys: mock_conversation_mix
+      mixed_keys: mock_conversation_mixed
     }
   end
 
@@ -42,7 +42,7 @@ module MessageSpecHelper
       "updated_date" => Date.today }
   end
 
-  def self.mock_conversation_mix
+  def self.mock_conversation_mixed
     { id: Faker::Number.number(10),
       application_id: Faker::Number.number(10),
       "subject" => Faker::StarWars.quote,
@@ -52,15 +52,51 @@ module MessageSpecHelper
       updated_date: Date.today }
   end
 
-  def self.mock_messages(owner)
-    [ mock_message(1, 2, owner), mock_message(2, 1, owner), mock_message(1, 2, owner) ]
+  # mocks for messages
+  def self.mock_messages_sym(owner)
+    [ mock_message_sym(1, 2, owner), mock_message_sym(2, 1, owner), mock_message_sym(1, 2, owner) ]
   end
 
-  def self.mock_message(sender, recipient, owner)
+  # messages can be parameterized with keys as symbols, keys as strings or a mix of symbols and strings
+  def self.mock_message_types
+    {
+      symbol_keys: mock_message_sym(1, 2, 1),
+      string_keys: mock_message_string(1, 2, 1),
+      mixed_keys: mock_message_mixed(1, 2, 1)
+    }
+  end
+
+  def self.mock_message_sym(sender, recipient, owner)
     { message_id: Faker::Number.number(3),
       conversation_id: 1,
+      body: Faker::StarWars.wookie_sentence,
+      sender_id: sender,
+      recipient_id: recipient,
+      read: false,
+      sent: false,
+      created_at: Date.today,
+      updated_at: Date.today,
+      sender: owner == sender }
+  end
+
+  def self.mock_message_string(sender, recipient, owner)
+    { "message_id" => Faker::Number.number(3),
+      "conversation_id" => 1,
       "body" => Faker::StarWars.wookie_sentence,
       "sender_id" => sender,
+      "recipient_id" => recipient,
+      "read" => false,
+      "sent" => false,
+      "created_at" => Date.today,
+      "updated_at" => Date.today,
+      "sender" => owner == sender }
+  end
+
+  def self.mock_message_mixed(sender, recipient, owner)
+    { message_id: Faker::Number.number(3),
+      "conversation_id" => 1,
+      "body" => Faker::StarWars.wookie_sentence,
+      sender_id: sender,
       recipient_id: recipient,
       read: false,
       sent: false,

@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe "CertifyMessages::Message.find", type: :feature do
   describe 'Getting messages' do
     context 'for getting messages' do
-      let(:mock) { MessageSpecHelper.mock_messages 1 }
+      let(:mock) { MessageSpecHelper.mock_messages_sym 1 }
       let(:messages) { CertifyMessages::Message.find(conversation_id: 1)[:body] }
 
       before { Excon.stub({}, body: mock.to_json) }
