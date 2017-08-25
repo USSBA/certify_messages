@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.email         = [""]
 
   spec.summary       = "Ruby Gem to wrap the Certify Messaging API"
-  spec.description   = "Ruby Gem to wrap the Certify Messaging API"
+  spec.description   = "Ruby Gem to wrap the Certify Messaging API (GIT_DESCRIBE)"
   spec.homepage      = "https://github.com/USSBA/certify_messages"
   spec.license       = ""
 
