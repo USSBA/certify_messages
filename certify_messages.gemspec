@@ -8,13 +8,13 @@ require 'certify_messages/version'
 Gem::Specification.new do |spec|
   spec.name          = "certify_messages"
   spec.version       = CertifyMessages::VERSION::STRING
-  spec.authors       = ["Fearless"]
+  spec.authors       = ["Fearless Solutions, LLC"]
   spec.email         = [""]
 
   spec.summary       = "Ruby Gem to wrap the Certify Messaging API"
   spec.description   = "Ruby Gem to wrap the Certify Messaging API"
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
-  spec.license       = "MIT"
+  spec.homepage      = "https://github.com/USSBA/certify_messages"
+  spec.license       = ""
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
