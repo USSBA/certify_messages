@@ -7,7 +7,7 @@ require 'certify_messages/version'
 # rubocop:disable BlockLength
 Gem::Specification.new do |spec|
   spec.name          = "certify_messages"
-  spec.version       = CertifyMessages::VERSION
+  spec.version       = CertifyMessages::VERSION::STRING
   spec.authors       = ["Fearless"]
   spec.email         = [""]
 
