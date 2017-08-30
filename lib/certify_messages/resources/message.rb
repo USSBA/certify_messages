@@ -51,7 +51,7 @@ module CertifyMessages
     # Sanitizes the provided paramaters
     def self.message_safe_params(params)
       permitted_keys = %w[body sender_id recipient_id conversation_id read sent id]
-      symbolize_params( params.select { |key, _| permitted_keys.include? key.to_s } )
+      symbolize_params(params.select { |key, _| permitted_keys.include? key.to_s })
     end
 
     def self.symbolize_params(params)
