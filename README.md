@@ -44,15 +44,15 @@ end
 
 #### Finding (GET) Conversations
 * calling `CertifyMessages::Conversation.find({application_id: 1})` will query for all conversations for application_id = 1, returning an array of hashes
-  * This also applies for subject, analyst_id, contributor_id, and id (aka conversation_id)
+  * This also applies for subject, user_1, user_2, and id (aka conversation_id)
 * Calling the `.find` method with empty or invalid parameters will result in an error (see below)
 
 #### Creating (POST) Conversations
 * to create a new conversation:
 ```
   CertifyMessages::Conversation.create({
-    analyst_id: <int>,
-    contributor_id: <int>,
+    user_1: <int>,
+    user_2: <int>,
     application_id: <int>,
     subject: <string>
   })
@@ -61,8 +61,8 @@ end
 * to create a conversation with a message:
 ```
   CertifyMessages::Conversation.create_with_message({
-    analyst_id: <int>,
-    contributor_id: <int>,
+    user_1: <int>,
+    user_2: <int>,
     application_id: <int>,
     subject: <string>,
     sender_id: <int>,
