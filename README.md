@@ -10,7 +10,7 @@
 
 This is a thin wrapper for the [Certify Messaging API](https://github.com/USSBA/message-api) to handle basic GET and POST operations for both conversations/threads and messages.
 
-## Installation - *UNDER DEVELOPMENT*
+## Installation
 
 ### Building the Certify Messages Gem
 
