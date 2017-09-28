@@ -7,19 +7,19 @@ require 'certify_messages/version'
 # rubocop:disable BlockLength
 Gem::Specification.new do |spec|
   spec.name          = "certify_messages"
-  spec.version       = CertifyMessages::VERSION
-  spec.authors       = ["Fearless"]
+  spec.version       = CertifyMessages::VERSION::STRING
+  spec.authors       = ["Fearless Solutions, LLC"]
   spec.email         = [""]
 
   spec.summary       = "Ruby Gem to wrap the Certify Messaging API"
-  spec.description   = "Ruby Gem to wrap the Certify Messaging API"
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
-  spec.license       = "MIT"
+  spec.description   = "Ruby Gem to wrap the Certify Messaging API (GIT_DESCRIBE)"
+  spec.homepage      = "https://github.com/USSBA/certify_messages"
+  spec.license       = ""
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata['allowed_push_host'] = 'http://artifactory.maint.sba-one.net:8081/artifactory/api/gems/gems-local' #"TODO: Set to 'http://mygemserver.com'"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
@@ -34,13 +34,15 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "byebug"
+  spec.add_development_dependency "faker"
+  spec.add_development_dependency "pry"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "rubocop"
+  spec.add_development_dependency "rubocop", "~> 0.49.1"
+  spec.add_development_dependency "rubocop-rspec"
   spec.add_development_dependency "simplecov"
 
   spec.add_dependency "excon"
   spec.add_dependency "excon-rails"
   spec.add_dependency "json"
-
 end
