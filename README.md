@@ -1,5 +1,13 @@
 # CertifyMessages
 
+#### Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Conversations](#conversations)
+    - [Messages](#messages)
+- [Development](#development)
+- [Changelog](#changelog)
+
 This is a thin wrapper for the [Certify Messaging API](https://github.com/USSBA/message-api) to handle basic GET and POST operations for both conversations/threads and messages.
 
 ## Installation - *UNDER DEVELOPMENT*
@@ -142,3 +150,6 @@ Use `rake console` to access the pry console and add the messages API URL to the
   CertifyMessages.configuration.api_url = 'http://localhost:3001'
 ```
 While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console.
+
+## Changelog
+Refer to the changelog for details on gem updates. [CHANGELOG](CHANGELOG.md)
