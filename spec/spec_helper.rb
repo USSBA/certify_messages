@@ -22,7 +22,7 @@ RSpec.configure do |config|
     Excon.defaults[:mock] = true
     Excon.stub({}, body: { message: 'Fallback stub response' }.to_json, status: 598)
   end
-  config.after(:each) do
+  config.after do
     Excon.stubs.clear
   end
 end
