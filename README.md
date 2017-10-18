@@ -75,7 +75,8 @@ end
     subject: <string>,
     sender_id: <int>,
     recipient_id: <int>,
-    body: <string>
+    body: <string>,
+    priority_read_receipt: <boolean> (optional, default false)
   })
 ```
   * This will return a nested JSON hash for both the conversation and message:
