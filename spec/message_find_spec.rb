@@ -34,6 +34,24 @@ RSpec.describe "CertifyMessages::Message.find", type: :feature do
       it 'will have the correct attributes "sent"' do
         expect(messages[0]["sent"]).to be false
       end
+      it 'will have the correct attributes "priority_read_receipt"' do
+        expect(messages[0]["priority_read_receipt"]).to be true
+      end
+    end
+
+    context "HUB-908 allows the priority_read_receipt_parameter" do
+      let(:mock) { MessageSpecHelper.mock_conversation_sym }
+      let(:response) { CertifyMessages::Message.find(priority_read_receipt: true) }
+
+      before { Excon.stub({}, body: mock.to_json) }
+
+      it "will return a message" do
+        expect(response[:body][:priority_read_receipt]).to eq(mock[:priority_read_receipt])
+      end
+
+      it "will return a 200 status" do
+        expect(response[:status]).to eq(200)
+      end
     end
 
     context "handles no parameters for finding messages" do
