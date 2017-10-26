@@ -2,7 +2,7 @@ require 'spec_helper'
 
 #rubocop:disable  Style/BracesAroundHashParameters, Metrics/BlockLength
 
-RSpec.describe "CertifyMessages::Message.update", type: :feature do
+RSpec.describe CertifyMessages, type: :feature do
   describe 'Updating messages' do
     context 'for editing message read/unread status' do
       let(:read_message) { MessageSpecHelper.mock_message_sym(1, 2, 1) }
@@ -47,7 +47,8 @@ RSpec.describe "CertifyMessages::Message.update", type: :feature do
     # fake the Excon connection to force it to fail in a test env.
     context "api not found" do
       let(:bad_message) { CertifyMessages::Message.update({body: "foo"}) }
-      let(:error) { CertifyMessages.service_unavailable 'Excon::Error::Socket' }
+      let(:error_type) { "SocketError" }
+      let(:error) { described_class.service_unavailable error_type }
 
       before do
         CertifyMessages::Resource.clear_connection
@@ -64,7 +65,7 @@ RSpec.describe "CertifyMessages::Message.update", type: :feature do
         expect(bad_message[:status]).to eq(error[:status])
       end
       it "will return an error message" do
-        expect(bad_message[:body]).to eq(error[:body])
+        expect(bad_message[:body]).to match(/#{error_type}/)
       end
     end
   end
