@@ -66,6 +66,7 @@ module MessageSpecHelper
     }
   end
 
+  # rubocop:disable Metrics/MethodLength
   def self.mock_message_sym(sender, recipient, owner)
     { message_id: Faker::Number.number(3),
       conversation_id: 1,
@@ -76,7 +77,8 @@ module MessageSpecHelper
       sent: false,
       created_at: Date.today,
       updated_at: Date.today,
-      sender: owner == sender }
+      sender: owner == sender,
+      priority_read_receipt: true }
   end
 
   def self.mock_message_string(sender, recipient, owner)
