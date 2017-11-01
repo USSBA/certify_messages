@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [1.1.1] - 2017-11-10
+## [1.2.0] - 2017-11-10
 ### shared-services-sprint-29
   - Added
     - HUB-923 support `conversation_type`
