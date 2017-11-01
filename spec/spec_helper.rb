@@ -8,6 +8,8 @@ Dir['./spec/support/**/*.rb'].each { |f| require f }
 # configure the CertifyMessages module for testing
 CertifyMessages.configure do |config|
   config.api_url = "http://foo.bar/"
+  config.excon_timeout = 6
+  config.log_level = "unknown"
 end
 
 RSpec.configure do |config|

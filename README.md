@@ -6,6 +6,7 @@
     - [Conversations](#conversations)
     - [Messages](#messages)
 - [Development](#development)
+- [Logging](#logging)
 - [Changelog](#changelog)
 
 This is a thin wrapper for the [Certify Messaging API](https://github.com/USSBA/message-api) to handle basic GET and POST operations for both conversations/threads and messages.
@@ -45,8 +46,10 @@ Set the messages API URL in your apps `config/initializers` folder, you probably
 CertifyMessages.configure do |config|
   config.api_url = "http://localhost:3001"
   config.msg_api_version = 1
+  config.excon_timeout = 5
 end
 ```
+With [v1.2.0](CHANGELOG.md#120---2017-11-10), the default Excon API connection timeout was lowered to `20 seconds`. The gem user can also provide a timeout value in seconds as shown above in the `configure` block.  This value is used for the Excon parameters `connect_timeout`, `read_timeout`, and `write_timeout`.
 
 ### Conversations
 
@@ -140,8 +143,10 @@ Example-
 ## Error Handling
 * Calling a Gem method with no or empty parameters:
 ```
+CertifyMessage::Conversation.where  {}
 CertifyMessage::Conversation.find   {}
 CertifyMessage::Conversation.create {}
+CertifyMessage::Message.where       {}
 CertifyMessage::Message.find        {}
 CertifyMessage::Message.create      {}
 CertifyMessage::Message.update      {}
@@ -161,12 +166,22 @@ will return an unprocessable entity error:
 * Any other errors that the Gem experiences when connecting to the API will return a service error and the Excon error class:
 `    {body: "Service Unavailable: There was a problem connecting to the messages API. Type: Excon::Error::Socket", status: 503}`
 
+## Logging
+Along with returning status error messages for API connection issues, the gem will also log connection errors.  The default behavior for this is to use the built in Ruby `Logger` and honor standard log level protocols.  The default log level is set to `debug` and will output to `STDOUT`.  This can also be configured by the gem user to use the gem consumer application's logger, including the app's environment specific log level.
+```
+# example implementation for a Rails app
+  CertifyMessages.configure do |config|
+  config.logger = Rails.logger
+  config.log_level = Rails.configuration.log_level
+end
+```
+
 ## Development
 Use `rake console` to access the pry console and add the messages API URL to the gem's config to be able to correctly test commands:
 ```
   CertifyMessages.configuration.api_url = 'http://localhost:3001'
 ```
-While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console.
+While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console. Byebug is included for debugging and can be called by inserting `byebug` inline.
 
 ## Changelog
 Refer to the changelog for details on gem updates. [CHANGELOG](CHANGELOG.md)

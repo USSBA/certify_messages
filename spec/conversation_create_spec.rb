@@ -1,7 +1,7 @@
 require "spec_helper"
 
 #rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
-RSpec.describe "CertifyMessages::Conversation.create", type: :feature do
+RSpec.describe CertifyMessages, type: :feature do
   MessageSpecHelper.mock_conversation_types.each do |type, conv_mock|
     describe "creating a conversation operations from #{type}" do
       context "for creating new conversations" do
@@ -74,6 +74,8 @@ RSpec.describe "CertifyMessages::Conversation.create", type: :feature do
 
       context "handles errors: api not found" do
         let(:conversation) { CertifyMessages::Conversation.create({application_id: 1}) }
+        let(:error_type) { "SocketError" }
+        let(:error) { described_class.service_unavailable error_type }
 
         before do
           CertifyMessages::Resource.clear_connection
@@ -87,6 +89,10 @@ RSpec.describe "CertifyMessages::Conversation.create", type: :feature do
 
         it "will return a 503" do
           expect(conversation[:status]).to eq(503)
+        end
+
+        it "will return an error message" do
+          expect(conversation[:body]).to match(/#{error_type}/)
         end
       end
 

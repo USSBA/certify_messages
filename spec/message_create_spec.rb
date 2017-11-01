@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 #rubocop:disable Metrics/BlockLength
-RSpec.describe "CertifyMessages::Message.create", type: :feature do
+RSpec.describe CertifyMessages, type: :feature do
   MessageSpecHelper.mock_message_types.each do |type, msg_mock|
     describe "Creating messages for #{type}" do
       context 'for creating valid new messages' do
@@ -42,7 +42,8 @@ RSpec.describe "CertifyMessages::Message.create", type: :feature do
       # fake the Excon connection to force it to fail in a test env.
       context "api not found" do
         let(:message_response) { CertifyMessages::Message.create(MessageSpecHelper.mock_message_sym(1, 2, 1)) }
-        let(:error) { CertifyMessages.service_unavailable 'Excon::Error::Socket' }
+        let(:error_type) { "SocketError" }
+        let(:error) { described_class.service_unavailable error_type }
 
         before do
           CertifyMessages::Resource.clear_connection
@@ -59,7 +60,7 @@ RSpec.describe "CertifyMessages::Message.create", type: :feature do
         end
 
         it "will return an error message" do
-          expect(message_response[:body]).to eq(error[:body])
+          expect(message_response[:body]).to match(/#{error_type}/)
         end
       end
     end
