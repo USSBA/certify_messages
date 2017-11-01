@@ -58,7 +58,7 @@ With [v1.2.0](CHANGELOG.md#120---2017-11-10), the default Excon API connection t
   * This also applies for subject, user_1, user_2, and id (aka conversation_id)
 * Calling the `.find` method with empty or invalid parameters will result in an error (see below)
 
-#### Creating (POST) Conversations
+#### Creating (POST) Conversation
 * to create a new conversation:
 ```
   CertifyMessages::Conversation.create({
@@ -69,7 +69,8 @@ With [v1.2.0](CHANGELOG.md#120---2017-11-10), the default Excon API connection t
   })
 ```
   * This will return a JSON hash with a `body` containing the data of the conversation along with `status` of 201.
-* to create a conversation with a message:
+
+#### Creating a conversation with a message
 ```
   CertifyMessages::Conversation.create_with_message({
     user_1: <int>,
@@ -92,6 +93,20 @@ With [v1.2.0](CHANGELOG.md#120---2017-11-10), the default Excon API connection t
       body: ...
       status: ...
   ```
+
+#### Creating official conversation
+To create an official conversation, you must pass in `conversation_type` of `official`
+
+Example-
+```
+  CertifyMessages::Conversation.create({
+    user_1: <int>,
+    user_2: <int>,
+    application_id: <int>,
+    subject: <string>,
+    conversation_type: 'official'
+  })
+```
 
 ### Messages
 #### Finding (GET) Messages

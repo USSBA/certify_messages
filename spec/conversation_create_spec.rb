@@ -11,7 +11,7 @@ RSpec.describe CertifyMessages, type: :feature do
 
         before { Excon.stub({}, body: mock.to_json, status: 201) }
 
-        it "will return the correct post response" do
+        it 'will return the correct post response' do
           expect(conversation[:status]).to eq(201)
         end
         it 'will have the correct body["id"]' do
@@ -28,6 +28,21 @@ RSpec.describe CertifyMessages, type: :feature do
         end
         it 'will have the correct body["subject"]' do
           expect(body["subject"]).to eq(mock[:subject])
+        end
+      end
+
+      context "for creating new official conversation" do
+        let(:mock) { MessageSpecHelper.symbolize conv_mock }
+        let(:conversation) { CertifyMessages::Conversation.create({conversation_type: 'official'}) }
+        let(:body) { conversation[:body] }
+
+        before { Excon.stub({}, body: mock.to_json, status: 201) }
+
+        it "will return correct post response" do
+          expect(conversation[:status]).to eq(201)
+        end
+        it 'will have correct conversation_type' do
+          expect(body["conversation_type"]).to eq(mock[:conversation_type])
         end
       end
 
