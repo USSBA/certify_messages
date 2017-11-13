@@ -3,6 +3,18 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.2.0] - 2017-11-10
+### shared-services-sprint-29
+
+  - Added
+    - HUB-923 support `conversation_type`
+
+    - HUB-920:
+      - Added custom configuration of `excon_timeout` and makes it available to be configured by gem user.
+      - Sets Excon connection values for `connect_timeout`, `read_timeout` and `write_timeout` to equal value of `excon_timeout`
+      - Added logger functionality to the gem, refer to README for more details about configuration.
+
+
 ## [1.1.0] - 2017-10-27
 ### shared-services-sprint-28
   - Added

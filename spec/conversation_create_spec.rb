@@ -1,7 +1,7 @@
 require "spec_helper"
 
 #rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
-RSpec.describe "CertifyMessages::Conversation.create", type: :feature do
+RSpec.describe CertifyMessages, type: :feature do
   MessageSpecHelper.mock_conversation_types.each do |type, conv_mock|
     describe "creating a conversation operations from #{type}" do
       context "for creating new conversations" do
@@ -11,7 +11,7 @@ RSpec.describe "CertifyMessages::Conversation.create", type: :feature do
 
         before { Excon.stub({}, body: mock.to_json, status: 201) }
 
-        it "will return the correct post response" do
+        it 'will return the correct post response' do
           expect(conversation[:status]).to eq(201)
         end
         it 'will have the correct body["id"]' do
@@ -28,6 +28,21 @@ RSpec.describe "CertifyMessages::Conversation.create", type: :feature do
         end
         it 'will have the correct body["subject"]' do
           expect(body["subject"]).to eq(mock[:subject])
+        end
+      end
+
+      context "for creating new official conversation" do
+        let(:mock) { MessageSpecHelper.symbolize conv_mock }
+        let(:conversation) { CertifyMessages::Conversation.create({conversation_type: 'official'}) }
+        let(:body) { conversation[:body] }
+
+        before { Excon.stub({}, body: mock.to_json, status: 201) }
+
+        it "will return correct post response" do
+          expect(conversation[:status]).to eq(201)
+        end
+        it 'will have correct conversation_type' do
+          expect(body["conversation_type"]).to eq(mock[:conversation_type])
         end
       end
 
@@ -59,6 +74,8 @@ RSpec.describe "CertifyMessages::Conversation.create", type: :feature do
 
       context "handles errors: api not found" do
         let(:conversation) { CertifyMessages::Conversation.create({application_id: 1}) }
+        let(:error_type) { "SocketError" }
+        let(:error) { described_class.service_unavailable error_type }
 
         before do
           CertifyMessages::Resource.clear_connection
@@ -72,6 +89,10 @@ RSpec.describe "CertifyMessages::Conversation.create", type: :feature do
 
         it "will return a 503" do
           expect(conversation[:status]).to eq(503)
+        end
+
+        it "will return an error message" do
+          expect(conversation[:body]).to match(/#{error_type}/)
         end
       end
 

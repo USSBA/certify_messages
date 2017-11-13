@@ -1,7 +1,7 @@
 require "spec_helper"
 
 #rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
-RSpec.describe "CertifyMessages::Conversation.find", type: :feature do
+RSpec.describe CertifyMessages, type: :feature do
   describe "find operations" do
     context "for getting conversations" do
       let(:mock) { MessageSpecHelper.mock_conversation_sym }
@@ -62,7 +62,8 @@ RSpec.describe "CertifyMessages::Conversation.find", type: :feature do
 
     context "handles errors: api not found" do
       let(:conversations) { CertifyMessages::Conversation.find({application_id: 1}) }
-      let(:error) { CertifyMessages.service_unavailable 'Excon::Error::Socket' }
+      let(:error_type) { "SocketError" }
+      let(:error) { described_class.service_unavailable error_type }
 
       before do
         CertifyMessages::Resource.clear_connection
@@ -80,7 +81,7 @@ RSpec.describe "CertifyMessages::Conversation.find", type: :feature do
       end
 
       it "will return an error message" do
-        expect(conversations[:body]).to eq(error[:body])
+        expect(conversations[:body]).to match(/#{error_type}/)
       end
     end
   end

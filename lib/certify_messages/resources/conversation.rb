@@ -11,7 +11,7 @@ module CertifyMessages
                                     path: build_find_conversations_path(safe_params))
       return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error => error
-      CertifyMessages.service_unavailable error.class
+      handle_excon_error(error)
     end
 
     # create a new conversation and a new message along with it
@@ -25,7 +25,7 @@ module CertifyMessages
                                     headers:  { "Content-Type" => "application/json" })
       return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error => error
-      CertifyMessages.service_unavailable error.class
+      handle_excon_error(error)
     end
 
     def self.create_with_message(params)
@@ -50,7 +50,7 @@ module CertifyMessages
     # helper for white listing parameters
     def self.conversation_safe_params(params)
       params = sanitize_params params
-      permitted_keys = %w[id subject application_id user_1 user_2]
+      permitted_keys = %w[id subject application_id user_1 user_2 conversation_type]
       params.select { |key, _| permitted_keys.include? key.to_s }
     end
 

@@ -11,7 +11,7 @@ module CertifyMessages
                                     path: build_find_path(safe_params))
       return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error => error
-      CertifyMessages.service_unavailable error.class
+      handle_excon_error(error)
     end
 
     # Message creator
@@ -25,7 +25,7 @@ module CertifyMessages
                                     headers:  { "Content-Type" => "application/json" })
       return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error => error
-      CertifyMessages.service_unavailable error.class
+      handle_excon_error(error)
     end
 
     #Message editor
@@ -39,7 +39,7 @@ module CertifyMessages
                                     headers:  { "Content-Type" => "application/json" })
       return_response(check_empty_body(response.data[:body]), response.data[:status])
     rescue Excon::Error => error
-      CertifyMessages.service_unavailable error.class
+      handle_excon_error(error)
     end
 
     private_class_method
