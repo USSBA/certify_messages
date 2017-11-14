@@ -37,3 +37,6 @@ Style/NumericLiterals:
 
 RSpec/HookArgument:
   Enabled: false
+
+RSpec/FilePath:
+  Enabled: false
