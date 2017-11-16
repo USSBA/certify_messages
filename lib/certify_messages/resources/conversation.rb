@@ -81,7 +81,7 @@ module CertifyMessages
       byebug
       html = ""
 
-      messages.each |message| do
+      messages.each do |message|
         html += <div class="message message-<%= message['sender'] ? 'sender' : 'recipient' %>">
         html += "<div class=\"message-header\">"
         message_sender = User.find(message['sender_id'])
