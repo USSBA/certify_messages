@@ -10,6 +10,7 @@ module CertifyMessages
       response = connection.request(method: :get,
                                     path: build_find_conversations_path(safe_params))
       return_response(json(response.data[:body]), response.data[:status])
+      return_messages response.data[:body]
     rescue Excon::Error => error
       handle_excon_error(error)
     end
@@ -73,6 +74,35 @@ module CertifyMessages
 
     def self.build_create_conversations_path
       "#{path_prefix}/#{conversations_path}"
+    end
+
+    def self.return_messages(messages)
+
+      byebug
+      html = ""
+
+      messages.each |message| do
+        html += <div class="message message-<%= message['sender'] ? 'sender' : 'recipient' %>">
+        html += "<div class=\"message-header\">"
+        message_sender = User.find(message['sender_id'])
+        sender_name = "#{message_sender.first_name.titlecase} #{message_sender.last_name.titlecase}"
+        html += l(Time.parse(message['created_at']), format: :full)  %> <%= t('messages.thread.from') %>
+        html += "<b>#{message.sender_name}</b>"
+        if message['read']
+          html += <span class="message-status"><i class="fa fa-envelope-open-o"></i> <%= t('messages.thread.read') %></span>
+        elsif message['priority_read_receipt'] && message['sender']
+          html += <span class="message-status"><i class="fa fa-envelope-o"></i> <%= t('messages.thread.unread-with-receipt') %></span>
+        <lse
+          html += <span class="message-status"><i class="fa fa-envelope-o"></i> <%= t('messages.thread.unread') %></span>
+        end
+        html += "</div>"
+        html += "<div class=\"message-body\">"
+        html += message['body'].html_safe
+        html += "</div>"
+        html += "</div>"
+      end
+
+      html
     end
   end
 end
