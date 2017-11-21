@@ -13,7 +13,7 @@ jobs:
   rubocop:
     docker:
       # specify the version you desire here
-      - image: sbagov/cc-sba-ss-message:1.0
+      - image: sbagov/cc-sba-ss-message-gem:1.0
     working_directory: ~/repo
     steps:
       - checkout
@@ -38,7 +38,7 @@ jobs:
   rspec:
     docker:
       # specify the version you desire here
-       - image: sbagov/cc-sba-ss-message:1.0
+       - image: sbagov/cc-sba-ss-message-gem:1.0
          environment:
            MSG_API_DB_USER: postgres
            MSG_API_DB_PASSWORD: postgres
