@@ -74,18 +74,7 @@ RSpec.describe CertifyMessages, type: :feature do
 
       context "handles errors: api not found" do
         let(:conversation) { CertifyMessages::Conversation.create({application_id: 1}) }
-        let(:error_type) { "SocketError" }
-        let(:error) { described_class.service_unavailable error_type }
-
-        before do
-          CertifyMessages::Resource.clear_connection
-          Excon.defaults[:mock] = false
-        end
-
-        after do
-          CertifyMessages::Resource.clear_connection
-          Excon.defaults[:mock] = true
-        end
+        let(:error_type) { "Service Unavailable" }
 
         it "will return a 503" do
           expect(conversation[:status]).to eq(503)
