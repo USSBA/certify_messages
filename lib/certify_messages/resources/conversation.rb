@@ -40,6 +40,19 @@ module CertifyMessages
       combined_response
     end
 
+    def self.unread_message_counts(params = nil)
+      return CertifyMessages.bad_request if empty_params(params)
+      safe_params = unread_message_params params
+      return CertifyMessages.unprocessable if safe_params.empty?
+      response = connection.request(method: :post,
+                                    path: build_unread_message_counts_path,
+                                    body: safe_params.to_json,
+                                    headers:  { "Content-Type" => "application/json" })
+      return_response(json(response.data[:body]), response.data[:status])
+    rescue Excon::Error => error
+      handle_excon_error(error)
+    end
+
     private_class_method
 
     def self.parse_conversation_response(response, params)
@@ -51,6 +64,12 @@ module CertifyMessages
     def self.conversation_safe_params(params)
       params = sanitize_params params
       permitted_keys = %w[id subject application_id user_1 user_2 conversation_type]
+      params.select { |key, _| permitted_keys.include? key.to_s }
+    end
+
+    def self.unread_message_params(params)
+      params = sanitize_params params
+      permitted_keys = %w[application_ids recipient_id]
       params.select { |key, _| permitted_keys.include? key.to_s }
     end
 
@@ -73,6 +92,10 @@ module CertifyMessages
 
     def self.build_create_conversations_path
       "#{path_prefix}/#{conversations_path}"
+    end
+
+    def self.build_unread_message_counts_path
+      "#{path_prefix}/#{unread_message_counts_path}"
     end
   end
 end
