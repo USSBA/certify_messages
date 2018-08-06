@@ -44,7 +44,7 @@ module CertifyMessages
       return CertifyMessages.bad_request if empty_params(params)
       safe_params = unread_message_params params
       return CertifyMessages.unprocessable if safe_params.empty?
-      response = connection.request(method: :post,
+      response = connection.request(method: :get,
                                     path: build_unread_message_counts_path,
                                     body: safe_params.to_json,
                                     headers:  { "Content-Type" => "application/json" })
