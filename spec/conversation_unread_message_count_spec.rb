@@ -4,7 +4,7 @@ require "spec_helper"
 RSpec.describe CertifyMessages, type: :feature do
   describe "unread_message_counts operations" do
     context "for getting message_counts" do
-      let(:app_ids) { [1, 2] }
+      let(:app_ids) { [1, 2].join(',') }
       let(:recipient_id) { 1 }
       let(:mock) { MessageSpecHelper.mock_unread_message_counts(app_ids, recipient_id) }
       let(:message_counts) { CertifyMessages::Conversation.unread_message_counts({application_ids: app_ids, recipient_id: recipient_id}) }
@@ -50,7 +50,7 @@ RSpec.describe CertifyMessages, type: :feature do
     end
 
     context 'handles errors: api not found' do
-      let(:app_ids) { [1, 2] }
+      let(:app_ids) { [1, 2].join(',') }
       let(:recipient_id) { 1 }
       let(:message_counts) { CertifyMessages::Conversation.unread_message_counts({application_ids: app_ids, recipient_id: recipient_id}) }
       let(:error_type) { "SocketError" }

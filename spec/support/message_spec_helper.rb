@@ -108,7 +108,7 @@ module MessageSpecHelper
   end
 
   def self.mock_unread_message_counts(application_ids, recipient_id)
-    counts = application_ids.map do |app_id|
+    counts = application_ids.split(',').map do |app_id|
       application_id = app_id.to_i
       { application_id: application_id,
         recipient_id: recipient_id,

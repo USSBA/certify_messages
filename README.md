@@ -97,7 +97,7 @@ With [v1.2.0](CHANGELOG.md#120---2017-11-10), the default Excon API connection t
 #### Creating official conversation
 To create an official conversation, you must pass in `conversation_type` of `official`
 
-Example-
+Example:
 ```
   CertifyMessages::Conversation.create({
     user_1: <int>,
@@ -108,6 +108,28 @@ Example-
   })
 ```
 
+#### Unread message counts
+Given a comma-separated list of application ID's, and the ID of the message recipient, returns the number of unread messages on each application.
+
+Example:
+```
+  CertifyMessages::Conversation.unread_message_counts({
+    application_ids: "<int>,<int>,...",
+    recipient_id: <int>
+  })
+```
+Example response:
+```
+CertifyMessages::Conversation.unread_message_counts(application_ids: "1,2,3", recipient_id: 2)
+
+{
+  body: {
+    "applications" => [{"application_id"=>1, "recipient_id"=>2, "unread_message_count"=>3},
+                       {"application_id"=>2, "recipient_id"=>2, "unread_message_count"=>2}, {"application_id"=>3, "recipient_id"=>2, "unread_message_count"=>0}]
+  },
+  status: 200
+}
+```
 ### Messages
 #### Finding (GET) Messages
 * calling `CertifyMessages::Message.find({conversation_id: 1})` will query for all conversations for conversation_id = 1, returning an array of hashes

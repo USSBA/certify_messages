@@ -45,9 +45,7 @@ module CertifyMessages
       safe_params = unread_message_params params
       return CertifyMessages.unprocessable if safe_params.empty?
       response = connection.request(method: :get,
-                                    path: build_unread_message_counts_path,
-                                    body: safe_params.to_json,
-                                    headers:  { "Content-Type" => "application/json" })
+                                    path: build_unread_message_counts_path(safe_params))
       return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error => error
       handle_excon_error(error)
@@ -94,8 +92,8 @@ module CertifyMessages
       "#{path_prefix}/#{conversations_path}"
     end
 
-    def self.build_unread_message_counts_path
-      "#{path_prefix}/#{unread_message_counts_path}"
+    def self.build_unread_message_counts_path(params)
+      "#{path_prefix}/#{unread_message_counts_path}?#{URI.encode_www_form(params)}"
     end
   end
 end
