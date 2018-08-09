@@ -61,6 +61,10 @@ module CertifyMessages
       CertifyMessages.configuration.messages_path
     end
 
+    def self.unread_message_counts_path
+      CertifyMessages.configuration.unread_message_counts_path
+    end
+
     # empty params
     def self.empty_params(params)
       params.nil? || !params.respond_to?(:empty?) || params.empty?

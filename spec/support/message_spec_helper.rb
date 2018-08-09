@@ -106,4 +106,15 @@ module MessageSpecHelper
       updated_at: Date.today,
       sender: owner == sender }
   end
+
+  def self.mock_unread_message_counts(application_ids, recipient_id)
+    counts = application_ids.split(',').map do |app_id|
+      application_id = app_id.to_i
+      { application_id: application_id,
+        recipient_id: recipient_id,
+        unread_message_count: 5 }
+    end
+
+    { applications: counts }
+  end
 end

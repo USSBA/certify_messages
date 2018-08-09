@@ -1,11 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [1.3.0] - 2018-08-17
+### shared-services-sprint-49
+  - Added
+    - HUB-1399: Added endpoint to acquire message counts for a given recipient across a list of application ids.
 
 ## [1.2.0] - 2017-11-10
 ### shared-services-sprint-29
-
   - Added
     - HUB-923 support `conversation_type`
 
