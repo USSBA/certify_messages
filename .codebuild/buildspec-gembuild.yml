@@ -1,0 +1,46 @@
+version: 0.2
+phases:
+  install:
+    commands:
+    - apt update
+    - apt install -y jq
+    - gem install parse_gemspec-cli
+    - gem install geminabox
+  pre_build:
+    commands:
+    # Currently getting inconsistent results from CODEBUILD_SOURCE_VERSION; getting commit hash another way until AWS settles down
+    #- export GIT_COMMIT="${CODEBUILD_SOURCE_VERSION}"
+    - export GEMSPEC_FILE="$(ls ./*.gemspec)" #If multiple gemspec files, hard-code the correct one here
+    - export GEMSPEC_VERSION="$(parse-gemspec-cli ${GEMSPEC_FILE} | jq -r .version)"
+    - export GIT_COMMIT="$(git rev-parse --verify HEAD)"
+    - export GIT_BRANCHTAG="$(git tag -l --points-at HEAD | grep -e '^v\?[0-9].*' | sort | head -1 | sed 's/^v//')"
+    - export GEMINABOX_DOMAIN=${GEMINABOX_DOMAIN:-geminabox.sba-one.net}
+    - echo "Pre-Build started on `date` for GIT_COMMIT=${GIT_COMMIT} GIT_BRANCHTAG=${GIT_BRANCHTAG} GEMSPEC_FILE=${GEMSPEC_FILE} GEMSPEC_VERSION=${GEMSPEC_VERSION}"
+    - echo "Testing fetching keys..."
+    - echo "Setting up keys..."
+    - bundle config "${GEMINABOX_DOMAIN}" "${BUNDLE_GEMINABOX__SBA__ONE__NET}"
+    - mkdir -p ~/.gem
+    - 'echo ":host: https://${BUNDLE_GEMINABOX__SBA__ONE__NET}@${GEMINABOX_DOMAIN}" >> ~/.gem/geminabox'
+  build:
+    commands:
+      - echo "Build started on `date` for GIT_COMMIT=${GIT_COMMIT} and GIT_BRANCHTAG=${GIT_BRANCHTAG}"
+      - echo "Testing geminabox confit contents..."
+      - cat ~/.gem/geminabox
+      - export result="true" skip_build="false" skip_tests="false"
+      - echo "Checking if codebuild ruby matches expected ruby"
+      - 'if [ `ruby -e "puts RUBY_VERSION"` != `cat .ruby-version` ]; then echo "FATAL: Could not verify ruby binary matches .ruby-version; ensure .ruby-version exists and matches codebuild ruby version.  Aborting."; exit 5; fi'
+      - echo "Checking if gemspec version matches git tag version..."
+      - if [ "${GEMSPEC_VERSION}" != "${GIT_BRANCHTAG}" ]; then export result="false"; fi
+      - 'if [ "$result" = "false" ]; then echo "WARN: Cannot match gemspec version [${GEMSPEC_VERSION}] to version tag on current git revision [${GIT_BRANCHTAG}].  Refusing to build, but not a failure."; skip_build="true"; fi'
+      - 'if [ ! -d "./spec" ]; then echo "WARN: No spec/ directory, cannot run rspecs.  Continuing without tests."; skip_tests="true"; fi'
+      - if [ "$skip_build" = "false" ]; then echo Installing dependencies...; fi
+      - if [ "$skip_build" = "false" ]; then bundle install || ( echo 'FATAL-- bundle install failed.  Aborting.'; exit 10 ); fi
+      - if [ "$skip_build" = "false" ]; then echo running spec tests...; fi
+      - if [ "$skip_build" = "false" ] && [ "$skip_tests" = "false" ]; then rspec spec || ( echo 'FATAL-- specs failed.  Aborting.'; exit 20 ); fi
+      - if [ "$skip_build" = "false" ]; then echo Building gem...; fi
+      - if [ "$skip_build" = "false" ]; then gem build ${GEMSPEC_FILE} || ( echo 'FATAL-- failed to build gem.  Aborting.'; exit 30 ); fi
+      - if [ "$skip_build" = "false" ]; then echo Pushing to geminabox...; fi
+      - if [ "$skip_build" = "false" ]; then gem inabox ./*-${GEMSPEC_VERSION}.gem || ( echo 'FATAL-- failed to push gem to geminabox.  Aborting.'; exit 40 ); fi
+  post_build:
+    commands:
+      - echo Build completed on `date`
