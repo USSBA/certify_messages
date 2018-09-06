@@ -5,13 +5,48 @@
 - [Usage](#usage)
     - [Conversations](#conversations)
     - [Messages](#messages)
-- [Development](#development)
 - [Logging](#logging)
+- [Development](#development)
+- [Publishing](#user-content-publishing)
 - [Changelog](#changelog)
 
 This is a thin wrapper for the [Certify Messaging API](https://github.com/USSBA/message-api) to handle basic GET and POST operations for both conversations/threads and messages.
 
 ## Installation
+
+There are three options you can use to install the gem. Pulling from the private sba-one gem server, building it manually, or installing directly from GitHub.
+
+### Pulling from private geminabox (preferred)
+
+Ensure you have the credentials configured with bundler, then add the following to your Gemfile:
+```
+source 'https://<domain-of-our-private-gem-server>/' do
+  gem 'certify_documents'
+end
+```
+
+### Install from GitHub
+
+Add the following to your Gemfile to bring in the gem from GitHub:
+
+```
+gem 'certify_documents', git: 'git@github.com:USSBA/certify_documents.git', branch: 'develop' # Certify activity log service
+```
+
+This will pull the head of the develop branch in as a gem.  If there are updates to the gem repository, you will need to run `bundle update certify_documents` to get them.
+
+### Building it manually
+
+* Pull down the latest branch for the gem
+* `bundle install` to build it
+* You can run tests `rspec` to make sure it built okay.
+* Then `rake build` to build the gem, this builds the .gem file in /pkg
+* Jump over to the folder of the the app where you want to use them and follow the instructions below within that app/repo, for example, if working with the [Shared-Services Prototype](https://github.com/USSBA/shared-services-prototype):
+  * Copy the .gem into the folder `vendor/gems/certify_documents`
+  * In the app where you want to use the gem, do `gem install <path to gem>` e.g. `gem install vendor/gems/certify_documents/certify_documents-0.1.0.gem`
+  * add `gem 'certify_documents'` to your Gemfile
+  * `bundle install`
+  * If this worked correctly, you should see `certify_documents` in your `Gemfile.lock`
 
 ### Building the Certify Messages Gem
 
@@ -204,6 +239,15 @@ Use `rake console` to access the pry console and add the messages API URL to the
   CertifyMessages.configuration.api_url = 'http://localhost:3001'
 ```
 While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console. Byebug is included for debugging and can be called by inserting `byebug` inline.
+
+## Publishing
+To release a new version:
+
+  1. Bump the version in lib/\*/version.rb
+  1. Merge into `master` (optional)
+  1. Push a tag to GitHub in the form: `X.Y.Z` or `X.Y.Z.pre.myPreReleaseTag`
+
+At this point, our CI process will kick-off, run the tests, and push the built gem into our Private Gem server.
 
 ## Changelog
 Refer to the changelog for details on gem updates. [CHANGELOG](CHANGELOG.md)
