@@ -1,4 +1,4 @@
-require 'logger' unless defined?(Logger)
+require 'logger' unless defined?(logger)
 
 module CertifyMessages
   # simple extension of the Ruby Logger that can accept the log severity level from user config

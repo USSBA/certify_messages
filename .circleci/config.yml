@@ -1,0 +1,119 @@
+version: 2
+workflows:
+  version: 2
+  test:
+    jobs:
+    - rubocop
+    - rspec
+  build-push:
+    jobs:
+    - rubocop:
+        filters:
+          branches: {ignore: /.*/}
+          tags:
+            only:
+            - /v?\d+\.\d+\.\d+.*/
+    - rspec:
+        filters:
+          branches: {ignore: /.*/}
+          tags:
+            only:
+            - /v?\d+\.\d+\.\d+.*/
+    - gembuilder:
+        requires: [rubocop, rspec]
+        filters:
+          branches: {ignore: /.*/}
+          tags:
+            only:
+            - /v?\d+\.\d+\.\d+.*/
+jobs:
+  rubocop:
+    docker:
+      # specify the version you desire here
+      - image: ussba/cc-ruby:2.4
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v2-dependencies-
+      - run:
+          name: install dependencies
+          command: |
+            bundle config "${GEMINABOX_DOMAIN}" "${GEMINABOX_READ_KEY}"
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+          - ./vendor/bundle
+          key: v2-dependencies-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: run rubocop
+          command: |
+            bundle exec rubocop .
+  rspec:
+    docker:
+    # Base container
+    - image: ussba/cc-ruby:2.4
+      environment:
+        MSG_API_DB_USER: postgres
+        MSG_API_DB_PASSWORD: postgres
+        RAILS_ENV: test
+    # Dependent containers
+    - image: circleci/postgres:9.6
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v2-dependencies-
+      - run:
+          name: install dependencies
+          command: |
+            bundle config "${GEMINABOX_DOMAIN}" "${GEMINABOX_READ_KEY}"
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+          - ./vendor/bundle
+          key: v2-dependencies-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: run tests
+          command: |
+            bundle exec rspec --format progress spec
+  gembuilder:
+    docker:
+    - image: ussba/cc-ruby:2.4
+    steps:
+    - checkout
+    - run:
+        name: configure geminabox
+        command: |
+          gem install geminabox
+          gem install parse_gemspec-cli
+          mkdir -p ~/.gem
+          echo ":host: https://${GEMINABOX_WRITE_KEY}@${GEMINABOX_DOMAIN}" >> ~/.gem/geminabox
+    - run:
+        name: configure environment variables
+        command: |
+          echo 'export GEMSPEC_VERSION="$(parse-gemspec-cli ./*.gemspec | jq -r .version)"' >> $BASH_ENV
+          source $BASH_ENV
+    - run:
+        name: verify version tag
+        command: |
+          if [ "${GEMSPEC_VERSION}" != "${CIRCLE_TAG}" ]; then
+            echo "FATAL: gemspec file version [${GEMSPEC_VERSION}] did not match git tag presented by CircleCI [${CIRCLE_TAG}]"
+            exit 10
+          fi
+    - run:
+        name: build gem
+        command: |
+          gem build ./*.gemspec
+    - deploy:
+        name: push gem
+        command: |
+          echo "WOULD BE RUNNING the following command; waiting until circle secure contexts:"
+          echo gem inabox ./*-${GEMSPEC_VERSION}.gem

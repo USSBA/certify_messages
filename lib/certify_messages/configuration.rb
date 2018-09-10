@@ -1,7 +1,9 @@
 module CertifyMessages
   # configuration module
   class Configuration
-    attr_accessor :excon_timeout, :api_url, :msg_api_version, :path_prefix, :conversations_path, :messages_path, :logger, :log_level
+    attr_accessor :excon_timeout, :api_url, :msg_api_version,
+                  :path_prefix, :conversations_path, :messages_path, :unread_message_counts_path,
+                  :logger, :log_level
 
     # main api endpoint
     def initialize
@@ -11,6 +13,7 @@ module CertifyMessages
       @path_prefix = "/msg"
       @conversations_path = "conversations"
       @messages_path = "messages"
+      @unread_message_counts_path = "unread_message_counts"
       @log_level = "debug"
       @logger = nil
     end
