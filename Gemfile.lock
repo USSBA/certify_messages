@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    certify_messages (1.3.0)
+    certify_messages (1.4.0)
       excon
       excon-rails
       json
