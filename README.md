@@ -83,9 +83,12 @@ CertifyMessages.configure do |config|
   config.api_url = "http://localhost:3001"
   config.msg_api_version = 1
   config.excon_timeout = 5
+  config.api_key = "your_api_key"
 end
 ```
 With [v1.2.0](CHANGELOG.md#120---2017-11-10), the default Excon API connection timeout was lowered to `20 seconds`. The gem user can also provide a timeout value in seconds as shown above in the `configure` block.  This value is used for the Excon parameters `connect_timeout`, `read_timeout`, and `write_timeout`.
+
+The `api_key` is currently unused, but we anticipate adding in an API Gateway layer in the future.
 
 ### Conversations
 
