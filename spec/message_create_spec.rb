@@ -4,7 +4,7 @@ require 'spec_helper'
 RSpec.describe CertifyMessages, type: :feature do
   MessageSpecHelper.mock_message_types.each do |type, msg_mock|
     describe "Creating messages for #{type}" do
-      context 'for creating valid new messages' do
+      context 'when creating valid new messages' do
         let(:new_message) { MessageSpecHelper.symbolize msg_mock }
         let(:new_message_response) { CertifyMessages::Message.create(new_message) }
 
@@ -14,7 +14,7 @@ RSpec.describe CertifyMessages, type: :feature do
         end
       end
 
-      context 'for attempting to create a message with no params' do
+      context 'when attempting to create a message with no params' do
         let(:bad_message_response) { CertifyMessages::Message.create }
 
         it 'will return a status code of 400' do
@@ -26,7 +26,7 @@ RSpec.describe CertifyMessages, type: :feature do
         end
       end
 
-      context 'for attempting to create an invalid new message' do
+      context 'when attempting to create an invalid new message' do
         let(:bad_message_response) { CertifyMessages::Message.create(foo: 'bar') }
 
         it 'will return a status code of 422' do
@@ -40,7 +40,7 @@ RSpec.describe CertifyMessages, type: :feature do
 
       # this will work if the API is disconnected, but I can't figure out how to
       # fake the Excon connection to force it to fail in a test env.
-      context "api not found" do
+      context "when the api is not found" do
         let(:message_response) { CertifyMessages::Message.create(MessageSpecHelper.mock_message_sym(1, 2, 1)) }
         let(:error_type) { "SocketError" }
         let(:error) { described_class.service_unavailable error_type }
@@ -66,3 +66,4 @@ RSpec.describe CertifyMessages, type: :feature do
     end
   end
 end
+#rubocop:enable Metrics/BlockLength

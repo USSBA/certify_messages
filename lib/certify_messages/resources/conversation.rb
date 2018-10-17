@@ -50,6 +50,7 @@ module CertifyMessages
     rescue Excon::Error => error
       handle_excon_error(error)
     end
+    # rubocop:enable Metrics/AbcSize
 
     private_class_method
 

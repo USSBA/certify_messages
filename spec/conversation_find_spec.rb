@@ -3,7 +3,7 @@ require "spec_helper"
 #rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
 RSpec.describe CertifyMessages, type: :feature do
   describe "find operations" do
-    context "for getting conversations" do
+    context "when getting conversations" do
       let(:mock) { MessageSpecHelper.mock_conversation_sym }
       let(:conversations) { CertifyMessages::Conversation.find({application_id: 1}) }
       let(:body) { conversations[:body] }
@@ -35,7 +35,7 @@ RSpec.describe CertifyMessages, type: :feature do
       end
     end
 
-    context "handles errors: no params" do
+    context "with no params" do
       let(:conversations) { CertifyMessages::Conversation.find }
       let(:body) { conversations[:body] }
 
@@ -47,7 +47,7 @@ RSpec.describe CertifyMessages, type: :feature do
       end
     end
 
-    context "handles errors: bad parameters" do
+    context "with bad parameters" do
       let(:conversations) { CertifyMessages::Conversation.find({foo: 'bar'}) }
       let(:body) { conversations[:body] }
 
@@ -60,7 +60,7 @@ RSpec.describe CertifyMessages, type: :feature do
       end
     end
 
-    context "handles errors: api not found" do
+    context "when the api is not found" do
       let(:conversations) { CertifyMessages::Conversation.find({application_id: 1}) }
       let(:error_type) { "SocketError" }
       let(:error) { described_class.service_unavailable error_type }
@@ -86,3 +86,4 @@ RSpec.describe CertifyMessages, type: :feature do
     end
   end
 end
+#rubocop:enable Style/BracesAroundHashParameters, Metrics/BlockLength

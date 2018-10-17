@@ -99,4 +99,5 @@ module CertifyMessages
       {body: body, status: status}
     end
   end
+  # rubocop:enable Style/ClassVars
 end

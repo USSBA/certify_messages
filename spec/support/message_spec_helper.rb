@@ -54,7 +54,7 @@ module MessageSpecHelper
 
   # mocks for messages
   def self.mock_messages_sym(owner)
-    [ mock_message_sym(1, 2, owner), mock_message_sym(2, 1, owner), mock_message_sym(1, 2, owner) ]
+    [mock_message_sym(1, 2, owner), mock_message_sym(2, 1, owner), mock_message_sym(1, 2, owner)]
   end
 
   # messages can be parameterized with keys as symbols, keys as strings or a mix of symbols and strings
@@ -80,6 +80,7 @@ module MessageSpecHelper
       sender: owner == sender,
       priority_read_receipt: true }
   end
+  # rubocop:enable Metrics/MethodLength
 
   def self.mock_message_string(sender, recipient, owner)
     { "message_id" => Faker::Number.number(3),

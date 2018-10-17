@@ -2,7 +2,7 @@ require "spec_helper"
 
 #rubocop:disable Metrics/BlockLength
 RSpec.describe CertifyMessages do
-  context "testing basic resource params" do
+  describe "testing basic resource params" do
     let!(:timeout) { 100 }
     let!(:url) { described_class.configuration.api_url }
     let(:connection) { described_class::ApiConnection.new url, timeout }
@@ -21,7 +21,7 @@ RSpec.describe CertifyMessages do
     end
   end
 
-  context "handles writing logs and errors" do
+  describe "handles writing logs and errors" do
     let(:error) { Excon::Error.new }
     let(:backtrace) { ["bad thing 1", "bad thing 2"] }
     let(:error_response) { CertifyMessages::Resource.handle_excon_error error }
@@ -45,3 +45,4 @@ RSpec.describe CertifyMessages do
     end
   end
 end
+#rubocop:enable Metrics/BlockLength
