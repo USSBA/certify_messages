@@ -1,6 +1,6 @@
 require "spec_helper"
 
-#rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
+#rubocop:disable Style/BracesAroundHashParameters
 RSpec.describe CertifyMessages, type: :feature do
   MessageSpecHelper.mock_conversation_types.each do |type, conv_mock|
     describe "creating a conversation operations from #{type}" do
@@ -135,4 +135,4 @@ RSpec.describe CertifyMessages, type: :feature do
     end
   end
 end
-#rubocop:enable Style/BracesAroundHashParameters, Metrics/BlockLength
+#rubocop:enable Style/BracesAroundHashParameters

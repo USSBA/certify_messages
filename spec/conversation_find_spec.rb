@@ -1,6 +1,6 @@
 require "spec_helper"
 
-#rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
+#rubocop:disable Style/BracesAroundHashParameters
 RSpec.describe CertifyMessages, type: :feature do
   describe "find operations" do
     context "when getting conversations" do
@@ -86,4 +86,4 @@ RSpec.describe CertifyMessages, type: :feature do
     end
   end
 end
-#rubocop:enable Style/BracesAroundHashParameters, Metrics/BlockLength
+#rubocop:enable Style/BracesAroundHashParameters

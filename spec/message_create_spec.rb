@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-#rubocop:disable Metrics/BlockLength
 RSpec.describe CertifyMessages, type: :feature do
   MessageSpecHelper.mock_message_types.each do |type, msg_mock|
     describe "Creating messages for #{type}" do
@@ -66,4 +65,3 @@ RSpec.describe CertifyMessages, type: :feature do
     end
   end
 end
-#rubocop:enable Metrics/BlockLength

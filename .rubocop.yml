@@ -6,18 +6,6 @@ AllCops:
       - 'bin/*'
       - 'vendor/**/*'
 
-Style/Encoding:
-  Enabled: false
-
-Style/StringLiterals:
-  Enabled: false
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/BlockComments:
-  Enabled: false
-
 Layout/LeadingCommentSpace:
   Enabled: false
 
@@ -27,14 +15,30 @@ Layout/SpaceInsideHashLiteralBraces:
 Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    
 Metrics/LineLength:
   Max: 199
-
-Style/NumericLiterals:
-  Enabled: false
 
 RSpec/HookArgument:
   Enabled: false
 
 RSpec/FilePath:
+  Enabled: false
+
+Style/BlockComments:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/StringLiterals:
   Enabled: false

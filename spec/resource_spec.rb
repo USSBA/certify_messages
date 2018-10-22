@@ -1,6 +1,5 @@
 require "spec_helper"
 
-#rubocop:disable Metrics/BlockLength
 RSpec.describe CertifyMessages do
   describe "testing basic resource params" do
     let!(:timeout) { 100 }
@@ -45,4 +44,3 @@ RSpec.describe CertifyMessages do
     end
   end
 end
-#rubocop:enable Metrics/BlockLength

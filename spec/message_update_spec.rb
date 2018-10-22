@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-#rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
+#rubocop:disable Style/BracesAroundHashParameters
 RSpec.describe CertifyMessages, type: :feature do
   describe 'Updating messages' do
     context 'with read/unread status' do
@@ -69,4 +69,4 @@ RSpec.describe CertifyMessages, type: :feature do
     end
   end
 end
-#rubocop:enable Style/BracesAroundHashParameters, Metrics/BlockLength
+#rubocop:enable Style/BracesAroundHashParameters
