@@ -157,7 +157,7 @@ Example:
 ```
   CertifyMessages::Conversation.archive({
     conversation_id: <int>,
-    archive: <boolean>
+    archived: <boolean>
   })
 ```
 
