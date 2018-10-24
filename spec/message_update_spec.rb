@@ -1,10 +1,9 @@
 require 'spec_helper'
 
-#rubocop:disable  Style/BracesAroundHashParameters, Metrics/BlockLength
-
+#rubocop:disable Style/BracesAroundHashParameters
 RSpec.describe CertifyMessages, type: :feature do
   describe 'Updating messages' do
-    context 'for editing message read/unread status' do
+    context 'with read/unread status' do
       let(:read_message) { MessageSpecHelper.mock_message_sym(1, 2, 1) }
       let(:params) { {id: read_message[:id], read: read_message[:read], conversation_id: read_message[:conversation_id]} }
       let(:updated_message_response) { CertifyMessages::Message.update(params) }
@@ -19,7 +18,7 @@ RSpec.describe CertifyMessages, type: :feature do
       end
     end
 
-    context "handles no parameters for updating messages" do
+    context "with no parameters for updating messages" do
       let(:messages) { CertifyMessages::Message.update }
 
       it "will return an error message when a bad parameter is sent" do
@@ -31,7 +30,7 @@ RSpec.describe CertifyMessages, type: :feature do
       end
     end
 
-    context "handles bad parameters for updating messages" do
+    context "with bad parameters for updating messages" do
       let(:messages) { CertifyMessages::Message.update(foo: 'bar') }
 
       it "will return an error message when a bad parameter is sent" do
@@ -45,7 +44,7 @@ RSpec.describe CertifyMessages, type: :feature do
 
     # this will work if the API is disconnected, but I can't figure out how to
     # fake the Excon connection to force it to fail in a test env.
-    context "api not found" do
+    context "when the api is not found" do
       let(:bad_message) { CertifyMessages::Message.update({body: "foo"}) }
       let(:error_type) { "SocketError" }
       let(:error) { described_class.service_unavailable error_type }
@@ -70,3 +69,4 @@ RSpec.describe CertifyMessages, type: :feature do
     end
   end
 end
+#rubocop:enable Style/BracesAroundHashParameters

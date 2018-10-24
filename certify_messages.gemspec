@@ -1,6 +1,6 @@
 # coding: utf-8
 
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'certify_messages/version'
 
@@ -39,11 +39,13 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "rubocop", "~> 0.49.1"
-  spec.add_development_dependency "rubocop-rspec"
+  spec.add_development_dependency "rubocop", "~> 0.53.0"
+  spec.add_development_dependency "rubocop-rspec", "1.23.0"
   spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "vcr"
 
   spec.add_dependency "excon"
   spec.add_dependency "excon-rails"
   spec.add_dependency "json"
 end
+# rubocop:enable BlockLength

@@ -8,6 +8,7 @@ require "certify_messages/resources/conversation"
 require "certify_messages/resources/message"
 
 # the base CertifyMessages module that wraps all conversation and message calls
+# rubocop:disable Lint/DuplicateMethods
 module CertifyMessages
   class << self
     attr_accessor :configuration
@@ -25,3 +26,4 @@ module CertifyMessages
     yield(configuration)
   end
 end
+# rubocop:enable Lint/DuplicateMethods

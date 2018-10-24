@@ -1,10 +1,10 @@
 require "spec_helper"
 
-#rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
+#rubocop:disable Style/BracesAroundHashParameters
 RSpec.describe CertifyMessages, type: :feature do
   MessageSpecHelper.mock_conversation_types.each do |type, conv_mock|
     describe "creating a conversation operations from #{type}" do
-      context "for creating new conversations" do
+      context "when creating new conversations" do
         let(:mock) { MessageSpecHelper.symbolize conv_mock }
         let(:conversation) { CertifyMessages::Conversation.create(mock) }
         let(:body) { conversation[:body] }
@@ -31,7 +31,7 @@ RSpec.describe CertifyMessages, type: :feature do
         end
       end
 
-      context "for creating new official conversation" do
+      context "when creating new official conversation" do
         let(:mock) { MessageSpecHelper.symbolize conv_mock }
         let(:conversation) { CertifyMessages::Conversation.create({conversation_type: 'official'}) }
         let(:body) { conversation[:body] }
@@ -46,7 +46,7 @@ RSpec.describe CertifyMessages, type: :feature do
         end
       end
 
-      context "handles errors: empty parameters" do
+      context "with empty parameters" do
         let(:conversation) { CertifyMessages::Conversation.create }
         let(:body) { conversation[:body] }
 
@@ -59,7 +59,7 @@ RSpec.describe CertifyMessages, type: :feature do
         end
       end
 
-      context "handles errors: bad parameters" do
+      context "with bad parameters" do
         let(:conversation) { CertifyMessages::Conversation.create({foo: 'bar'}) }
         let(:body) { conversation[:body] }
 
@@ -72,7 +72,7 @@ RSpec.describe CertifyMessages, type: :feature do
         end
       end
 
-      context "handles errors: api not found" do
+      context "when api not found" do
         let(:conversation) { CertifyMessages::Conversation.create({application_id: 1}) }
         let(:error_type) { "Service Unavailable" }
 
@@ -85,7 +85,7 @@ RSpec.describe CertifyMessages, type: :feature do
         end
       end
 
-      context "creating a conversation with a message: with good parameters" do
+      context "when creating a conversation with a message: with good parameters" do
         let(:mock) { MessageSpecHelper.symbolize conv_mock }
         let(:response) { CertifyMessages::Conversation.create_with_message(mock) }
 
@@ -110,7 +110,7 @@ RSpec.describe CertifyMessages, type: :feature do
           expect(response[:message][:body]["body"]).to eq(mock[:body])
         end
       end
-      context "creating a conversation with a message: when given bad parameters" do
+      context "when creating a conversation with a message: when given bad parameters" do
         let(:mock) { CertifyMessages.unprocessable }
         let(:response) { CertifyMessages::Conversation.create_with_message(mock) }
 
@@ -135,3 +135,4 @@ RSpec.describe CertifyMessages, type: :feature do
     end
   end
 end
+#rubocop:enable Style/BracesAroundHashParameters

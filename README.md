@@ -95,6 +95,9 @@ The `api_key` is currently unused, but we anticipate adding in an API Gateway la
 #### Finding (GET) Conversations
 * calling `CertifyMessages::Conversation.find({application_id: 1})` will query for all conversations for application_id = 1, returning an array of hashes
   * This also applies for subject, user_1, user_2, and id (aka conversation_id)
+  * By default, archived conversations are not included.
+    * To see only archived conversations, send `archived: true`
+    * To see all conversations, send `include_archived: true`
 * Calling the `.find` method with empty or invalid parameters will result in an error (see below)
 
 #### Creating (POST) Conversation
@@ -144,6 +147,17 @@ Example:
     application_id: <int>,
     subject: <string>,
     conversation_type: 'official'
+  })
+```
+
+#### [Un-]Archiving a conversation
+To archive or un-archive a conversation, you must specify the `conversation_id`, and `archive`.  If `archive` is `true` the conversation will be archived. If `archive` is `false`, the conversation will be un-archived.
+
+Example:
+```
+  CertifyMessages::Conversation.archive({
+    conversation_id: <int>,
+    archived: <boolean>
   })
 ```
 
