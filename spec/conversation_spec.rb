@@ -47,42 +47,6 @@ RSpec.describe CertifyMessages::Conversation, type: :feature do
     end
   end
 
-  describe 'getting a listing of conversations', :vcr do
-    let(:application_id) { 20000 }
-    let(:subject_2) { "This is the second subject" }
-    let(:subject_3) { "This is the third subject" }
-    let(:conversations) do
-      CertifyMessages::Conversation.find application_id: application_id
-    end
-
-    before do
-      CertifyMessages.configure do |config|
-        config.api_url = "http://localhost:3001"
-      end
-      Excon.defaults[:mock] = false
-      Excon.stubs.clear
-      CertifyMessages::Conversation.create params
-      CertifyMessages::Conversation.create params.merge(subject_2: subject_2)
-      CertifyMessages::Conversation.create params.merge(subject_3: subject_3, archived: true)
-    end
-
-    it 'will return a list of conversations' do
-      expect(conversations[:body].length).to eq(2)
-    end
-    it 'will return with the correct status' do
-      expect(conversations[:status]).to be(200)
-    end
-
-    # restore configuration for exconn stubs
-    after do
-      CertifyMessages.configure do |config|
-        config.api_url = "http://foo.bar/"
-      end
-      Excon.defaults[:mock] = true
-      Excon.stub({}, body: { message: 'Fallback stub response' }.to_json, status: 598)
-    end
-  end
-
   describe 'archiving a conversations', :vcr do
     let(:conversation) { CertifyMessages::Conversation.create params }
     let(:archived_convo) do
