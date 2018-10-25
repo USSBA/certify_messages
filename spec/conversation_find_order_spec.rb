@@ -3,7 +3,7 @@ require 'support/vcr_helper'
 
 RSpec.describe CertifyMessages::Conversation, type: :feature do
   describe 'ordering the results of a conversation search', :vcr do
-  let(:application_id) { '4' }
+    let(:application_id) { '4' }
 
     before do
       CertifyMessages.configure do |config|
