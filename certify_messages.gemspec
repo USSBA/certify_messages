@@ -1,6 +1,6 @@
 # coding: utf-8
 
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'certify_messages/version'
 
@@ -19,7 +19,8 @@ Gem::Specification.new do |spec|
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = 'http://artifactory.maint.sba-one.net:8081/artifactory/api/gems/gems-local' #"TODO: Set to 'http://mygemserver.com'"
+    # NOTE: this may not work since uploading a gem should be done via `gem inabox [gemfile]`
+    spec.metadata['allowed_push_host'] = 'http://geminabox.sba-one.net'
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
@@ -38,11 +39,13 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "rubocop", "~> 0.49.1"
-  spec.add_development_dependency "rubocop-rspec"
+  spec.add_development_dependency "rubocop", "~> 0.53.0"
+  spec.add_development_dependency "rubocop-rspec", "1.23.0"
   spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "vcr"
 
   spec.add_dependency "excon"
   spec.add_dependency "excon-rails"
   spec.add_dependency "json"
 end
+# rubocop:enable BlockLength

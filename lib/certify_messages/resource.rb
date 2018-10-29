@@ -5,11 +5,14 @@ module CertifyMessages
   # Controls the API connection
   class ApiConnection
     attr_accessor :conn
-    def initialize(url, timeout)
-      @conn = Excon.new(url,
-                        connect_timeout: timeout,
-                        read_timeout: timeout,
-                        write_timeout: timeout)
+    def initialize(url, timeout, api_key = nil)
+      params = {
+        connect_timeout: timeout,
+        read_timeout: timeout,
+        write_timeout: timeout
+      }
+      params[:headers] = { 'x-api-key' => api_key } unless api_key.nil?
+      @conn = Excon.new(url, params)
     end
 
     def request(options)
@@ -34,7 +37,7 @@ module CertifyMessages
 
     # excon connection
     def self.connection
-      @@connection ||= ApiConnection.new api_url, excon_timeout
+      @@connection ||= ApiConnection.new api_url, excon_timeout, api_key
     end
 
     def self.clear_connection
@@ -43,6 +46,10 @@ module CertifyMessages
 
     def self.excon_timeout
       CertifyMessages.configuration.excon_timeout
+    end
+
+    def self.api_key
+      CertifyMessages.configuration.api_key
     end
 
     def self.api_url
@@ -92,4 +99,5 @@ module CertifyMessages
       {body: body, status: status}
     end
   end
+  # rubocop:enable Style/ClassVars
 end

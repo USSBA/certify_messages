@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"user_1":1000,"user_2":2000,"application_id":10000,"subject":"This
+        is the first subject","conversation_type":"application"}'
+    headers:
+      x-api-key:
+      - fake_api_key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v1
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"420182e4771ad15a8add68833456d68d"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - cf223189-b321-4df7-b15d-1b6cdcad4eb8
+      X-Runtime:
+      - '0.018176'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":173,"user_1":1000,"user_2":2000,"application_id":10000,"subject":"This
+        is the first subject","created_at":"2018-10-22T12:37:10.243Z","updated_at":"2018-10-22T12:37:10.243Z","conversation_type":"application","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Mon, 22 Oct 2018 12:37:10 GMT
+- request:
+    method: put
+    uri: http://localhost:3001/msg/conversations/173
+    body:
+      encoding: UTF-8
+      string: '{"archived":true}'
+    headers:
+      x-api-key:
+      - fake_api_key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v1
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"fca4ec456878111977e249bd3db9a924"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 1b59830b-e501-4832-bfc6-41dab15da236
+      X-Runtime:
+      - '0.021925'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":173,"user_1":1000,"user_2":2000,"application_id":10000,"subject":"This
+        is the first subject","created_at":"2018-10-22T12:37:10.243Z","updated_at":"2018-10-22T12:37:10.274Z","conversation_type":"application","archived":true,"archived_at":"2018-10-22T12:37:10.273Z"}'
+    http_version: 
+  recorded_at: Mon, 22 Oct 2018 12:37:10 GMT
+recorded_with: VCR 4.0.0

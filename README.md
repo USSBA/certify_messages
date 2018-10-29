@@ -48,19 +48,20 @@ This will pull the head of the develop branch in as a gem.  If there are updates
   * `bundle install`
   * If this worked correctly, you should see `certify_documents` in your `Gemfile.lock`
 
-### Building the Certify Messages Gem
+### GemInABox
 
-This gem is a Ruby wrapper for the messaging API, allowing for cleaner code and calls for the [Messages Prototype app side](https://github.com/USSBA/message-prototype) of messaging.  Since this is still in dev, requiring `certify_messages` in the prototype requires a manual gem build (which is also documented on the messages prototype repo site):
-* Pull down the latest branch for the gem
-* `bundle install` to build it
-* You can run tests `rspec` to make sure it built okay.
-* Then `rake build` to build the gem, this builds the .gem file in /pkg
-* Jump over to the folder of the the app where you want to use them and follow the instructions below within that app/repo, for example, if working with the [Messages Prototype](https://github.com/USSBA/message-prototype):
-  * Copy the .gem into the folder `vendor/gems/certify_messages`
-  * In the app where you want to use the gem, do `gem install <path to gem>` e.g. `gem install vendor/gems/certify_messages/certify_messages-0.1.0.gem`
-  * add `gem 'certify_messages'` to your Gemfile
-  * `bundle install`
-  * If this worked correctly, you should see `certify_messages` in your `Gemfile.lock`
+Having acquired the readtoken to the SBA geminabox server, add it to your bundle config via `bundle config geminabox.sba-one.net readtoken:readtoken`.
+
+To relase a new version to geminabox, simply tag the repository with a tag in the form vX.Y.Z.  This will trigger an AWS CodeBuild process to build and deploy the gem to geminabox.
+
+To use the gem from geminabox, add the following to your `Gemfile`:
+```
+group :ussba, :default do
+  source 'https://geminabox.sba-one.net/' do
+    gem 'certify_messages'
+  end
+end
+```
 
 ### Install gem from GitHub
 
@@ -70,7 +71,7 @@ Alternatively, you can add the following to your Gemfile to bring in the gem fro
 gem 'certify_messages', git: 'git@github.com:USSBA/certify_messages.git', branch: 'develop' # Certify messaging service
 ```
 
-This will pull the head of the develop branch in as a gem.  If there are updates to the gem repository, you will need to run `bundle update certify-messages` to get them.
+This will pull the head of the develop branch in as a gem.  If there are updates to the gem repository, you will need to run `bundle update certify_messages` to get them.
 
 ## Usage
 
@@ -82,15 +83,21 @@ CertifyMessages.configure do |config|
   config.api_url = "http://localhost:3001"
   config.msg_api_version = 1
   config.excon_timeout = 5
+  config.api_key = "your_api_key"
 end
 ```
 With [v1.2.0](CHANGELOG.md#120---2017-11-10), the default Excon API connection timeout was lowered to `20 seconds`. The gem user can also provide a timeout value in seconds as shown above in the `configure` block.  This value is used for the Excon parameters `connect_timeout`, `read_timeout`, and `write_timeout`.
+
+The `api_key` is currently unused, but we anticipate adding in an API Gateway layer in the future.
 
 ### Conversations
 
 #### Finding (GET) Conversations
 * calling `CertifyMessages::Conversation.find({application_id: 1})` will query for all conversations for application_id = 1, returning an array of hashes
   * This also applies for subject, user_1, user_2, and id (aka conversation_id)
+  * By default, archived conversations are not included.
+    * To see only archived conversations, send `archived: true`
+    * To see all conversations, send `include_archived: true`
 * Calling the `.find` method with empty or invalid parameters will result in an error (see below)
 
 #### Creating (POST) Conversation
@@ -140,6 +147,17 @@ Example:
     application_id: <int>,
     subject: <string>,
     conversation_type: 'official'
+  })
+```
+
+#### [Un-]Archiving a conversation
+To archive or un-archive a conversation, you must specify the `conversation_id`, and `archive`.  If `archive` is `true` the conversation will be archived. If `archive` is `false`, the conversation will be un-archived.
+
+Example:
+```
+  CertifyMessages::Conversation.archive({
+    conversation_id: <int>,
+    archived: <boolean>
   })
 ```
 
