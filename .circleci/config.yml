@@ -104,7 +104,7 @@ jobs:
     - run:
         name: verify version tag
         command: |
-          if [ "${GEMSPEC_VERSION}" != "${CIRCLE_TAG}" ]; then
+          if [ "v${GEMSPEC_VERSION}" != "${CIRCLE_TAG}" ]; then
             echo "FATAL: gemspec file version [${GEMSPEC_VERSION}] did not match git tag presented by CircleCI [${CIRCLE_TAG}]"
             exit 10
           fi
