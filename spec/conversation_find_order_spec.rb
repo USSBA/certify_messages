@@ -27,14 +27,8 @@ RSpec.describe CertifyMessages::Conversation, type: :feature do
         CertifyMessages::Conversation.find application_id: application_id
       end
 
-      xit 'will return a list of conversations' do
-        expect(conversations[:body].length).to eq(2)
-      end
       xit 'will return with the correct status' do
-        expect(conversations[:status]).to be(200)
-      end
-      xit 'will return the newest converstation first' do
-        expect(conversations[:body].first['id']).to be 9
+        pending('waiting on the new gem testing pattern')
       end
     end
 
