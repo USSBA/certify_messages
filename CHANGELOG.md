@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.4.0] - 2018-10-09
+## [1.5.0] - 2018-10-09
 ### shared-services-sprint-55
   - Added
     - HUB-1643: Added api_key to configuration in anticipation of AWS API Gateway
