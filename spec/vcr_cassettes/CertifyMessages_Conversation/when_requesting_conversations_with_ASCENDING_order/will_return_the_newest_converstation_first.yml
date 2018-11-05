@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3001/msg/conversations?application_id=4&order=ascending
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      x-api-key:
+      - fake_api_key
+      Accept:
+      - application/sba.msg-api.v1
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"a1ebadafa875cd96caf49712859d578a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 48b752a6-81f3-4c21-9e83-b1302b272918
+      X-Runtime:
+      - '0.052656'
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":9,"user_1":7,"user_2":8,"application_id":4,"subject":"thin","created_at":"2017-11-28T18:06:16.907Z","updated_at":"2017-11-28T18:06:16.907Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"id":46,"body":"\u003cp\u003emints\u003c/p\u003e\u003cp\u003e
+        \u003c/p\u003e","conversation_id":9,"sender_id":7,"recipient_id":8,"read":false,"sent":false,"created_at":"2017-11-28T18:06:17.091Z","updated_at":"2017-11-28T18:06:17.091Z","priority_read_receipt":false}},{"id":4,"user_1":1,"user_2":8,"application_id":4,"subject":"vel
+        lectus","created_at":"2017-11-06T15:55:10.788Z","updated_at":"2017-11-06T15:55:10.788Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"id":29,"body":"Nullam
+        sit amet turpis elementum ligula vehicula consequat.","conversation_id":4,"sender_id":1,"recipient_id":8,"read":false,"sent":false,"created_at":"2017-11-06T15:55:10.962Z","updated_at":"2017-11-06T15:55:10.962Z","priority_read_receipt":false}}]'
+    http_version: 
+  recorded_at: Thu, 25 Oct 2018 13:31:21 GMT
+recorded_with: VCR 4.0.0
