@@ -1,7 +1,7 @@
 module CertifyMessages
   module VERSION
     MAJOR = 1
-    MINOR = 4
+    MINOR = 5
     PATCH = 0
     PRE_RELEASE = "".freeze # e.g., "-beta"
 

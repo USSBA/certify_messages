@@ -98,7 +98,7 @@ The `api_key` is currently unused, but we anticipate adding in an API Gateway la
   * By default, archived conversations are not included.
     * To see only archived conversations, send `archived: true`
     * To see all conversations, send `include_archived: true`
-  * Conversations are organized in reverse cronological order by default. To change the order, pass the `order` param with 'descending' in with a request ie. `CertifyMessages::Conversation.find({application_id: 1, order:'descending'})`
+  * Conversations are organized in reverse chronological order by default. To change the order, pass the `order` param with 'ascending' in with a request ie. `CertifyMessages::Conversation.find({application_id: 1, order:'ascending'})`
 * Calling the `.find` method with empty or invalid parameters will result in an error (see below)
 
 #### Creating (POST) Conversation
