@@ -8,7 +8,7 @@ module CertifyMessages
       safe_params = message_safe_params params
 
       # use safe_params to pass in order manually
-      order = "?order=#{safe_params[:order]}" if safe_params[:order].exists?
+      order = "?order=#{safe_params[:order]}" unless safe_params[:order].nil?
 
       return CertifyMessages.unprocessable if safe_params.empty?
       response = connection.request(method: :get,
