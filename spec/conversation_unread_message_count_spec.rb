@@ -2,7 +2,7 @@ require "spec_helper"
 
 #rubocop:disable Style/BracesAroundHashParameters
 RSpec.describe CertifyMessages, type: :feature do
-  describe "unread_message_counts operations" do
+  describe "unread_message_counts operations", :vcr do
     context "when getting message_counts" do
       let(:app_ids) { [1, 2].join(',') }
       let(:recipient_id) { 1 }
@@ -10,12 +10,12 @@ RSpec.describe CertifyMessages, type: :feature do
       let(:message_counts) { CertifyMessages::Conversation.unread_message_counts({application_ids: app_ids, recipient_id: recipient_id}) }
       let(:body) { message_counts[:body] }
 
-      before do
-        Excon.stub({}, body: mock.to_json, status: 200)
-      end
+      # before do
+      #   Excon.stub({}, body: mock.to_json, status: 200)
+      # end
 
       # TODO: This is failing withing the context of the entire suite, but passes if only this spec is run.
-      xit "will return a good status code" do
+      it "will return a good status code" do
         expect(message_counts[:status]).to eq(200)
       end
 

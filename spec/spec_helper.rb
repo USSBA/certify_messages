@@ -2,6 +2,7 @@ require "bundler/setup"
 require "certify_messages"
 require "byebug"
 require "faker"
+require "vcr"
 
 Dir['./spec/support/**/*.rb'].each { |f| require f }
 
@@ -20,11 +21,19 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
+  # config.before(:all) do
+  #   Excon.defaults[:mock] = true
+  #   Excon.stub({}, body: { message: 'Fallback stub response' }.to_json, status: 598)
+  # end
+  # config.after(:each) do
+  #   Excon.stubs.clear
+  # end
+
   config.before(:all) do
-    Excon.defaults[:mock] = true
-    Excon.stub({}, body: { message: 'Fallback stub response' }.to_json, status: 598)
-  end
-  config.after(:each) do
-    Excon.stubs.clear
+    CertifyMessages.configure do |config|
+      config.api_url = "http://localhost:3001"
+    end
+    Excon.defaults[:mock] = false
+    # Excon.stubs.clear
   end
 end

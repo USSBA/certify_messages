@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    certify_messages (1.4.0)
+    certify_messages (1.5.0)
       excon
       excon-rails
       json
@@ -51,7 +51,7 @@ GEM
     method_source (0.9.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
-    nokogiri (1.8.4)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     parallel (1.12.1)
     parser (2.5.1.2)
