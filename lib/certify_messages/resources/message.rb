@@ -6,9 +6,13 @@ module CertifyMessages
     def self.find(params = nil)
       return CertifyMessages.bad_request if empty_params(params)
       safe_params = message_safe_params params
+
+      # use safe_params to pass in order manually
+      order = "?order=#{safe_params[:order]}" unless safe_params[:order].nil?
+
       return CertifyMessages.unprocessable if safe_params.empty?
       response = connection.request(method: :get,
-                                    path: build_find_path(safe_params))
+                                    path: build_find_path(safe_params, order))
       return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error => error
       handle_excon_error(error)
@@ -68,8 +72,8 @@ module CertifyMessages
       symbolized_params
     end
 
-    def self.build_find_path(params)
-      "#{path_prefix}/#{conversations_path}/#{params[:conversation_id]}/#{messages_path}"
+    def self.build_find_path(params, order)
+      "#{path_prefix}/#{conversations_path}/#{params[:conversation_id]}/#{messages_path}#{order}"
     end
 
     def self.build_create_path(params)
