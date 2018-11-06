@@ -30,10 +30,10 @@ RSpec.configure do |config|
   # end
 
   config.before(:all) do
-    CertifyMessages.configure do |config|
-      config.api_url = "http://localhost:3001"
+    CertifyMessages.configure do |message_config|
+      message_config.api_url = "http://localhost:3001"
     end
     Excon.defaults[:mock] = false
-    # Excon.stubs.clear
+    Excon.stubs.clear
   end
 end

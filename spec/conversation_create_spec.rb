@@ -7,7 +7,6 @@ RSpec.describe CertifyMessages, type: :feature do
       context "when creating new conversations" do
         let(:mock) { MessageSpecHelper.symbolize conv_mock }
         let(:conversation) { CertifyMessages::Conversation.create(mock) }
-        # let(:body) { conversation[:body] }
 
         it 'will return the correct post response' do
           expect(conversation[:status]).to eq(201)
@@ -35,9 +34,6 @@ RSpec.describe CertifyMessages, type: :feature do
           mock[:conversation_type] = 'official'
           CertifyMessages::Conversation.create(mock)
         end
-        # let(:body) { conversation[:body] }
-
-        # before { Excon.stub({}, body: mock.to_json, status: 201) }
 
         it "will return correct post response" do
           expect(conversation[:status]).to eq(201)

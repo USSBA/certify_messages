@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-#rubocop:disable Style/BracesAroundHashParameters
 RSpec.describe CertifyMessages, type: :feature do
   describe 'Getting messages', :vcr do
     context 'when getting messages' do
@@ -83,29 +82,32 @@ RSpec.describe CertifyMessages, type: :feature do
 
     # this will work if the API is disconnected, but I can't figure out how to
     # fake the Excon connection to force it to fail in a test env.
-    # context "when the api is not found" do
-    #   let(:bad_message) { CertifyMessages::Message.find({conversation_id: 1}) }
-    #   let(:error_type) { "SocketError" }
-    #   let(:error) { described_class.service_unavailable error_type }
-    #
-    #   before do
-    #     CertifyMessages::Resource.clear_connection
-    #     Excon.defaults[:mock] = false
-    #     # reextend the endpoint to a dummy url
-    #   end
-    #
-    #   after do
-    #     CertifyMessages::Resource.clear_connection
-    #     Excon.defaults[:mock] = true
-    #   end
-    #
-    #   it "will return a 503" do
-    #     expect(bad_message[:status]).to eq(error[:status])
-    #   end
-    #   it "will return an error message" do
-    #     expect(bad_message[:body]).to match(/#{error_type}/)
-    #   end
-    # end
+    context "when the api is not found", vcr: false do
+      let(:bad_message) { CertifyMessages::Message.find(conversation_id: 1) }
+      let(:error_type) { "SocketError" }
+      let(:error) { described_class.service_unavailable error_type }
+
+      before do
+        CertifyMessages::Resource.clear_connection
+        CertifyMessages.configure do |message_config|
+          message_config.api_url = "http://foo.bar"
+        end
+        # reextend the endpoint to a dummy url
+      end
+
+      after do
+        CertifyMessages::Resource.clear_connection
+        CertifyMessages.configure do |message_config|
+          message_config.api_url = "http://localhost:3001"
+        end
+      end
+
+      it "will return a 503" do
+        expect(bad_message[:status]).to eq(error[:status])
+      end
+      it "will return an error message" do
+        expect(bad_message[:body]).to match(/#{error_type}/)
+      end
+    end
   end
 end
-#rubocop:enable Style/BracesAroundHashParameters
