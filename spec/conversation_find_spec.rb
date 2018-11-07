@@ -4,7 +4,6 @@ require "spec_helper"
 RSpec.describe CertifyMessages, type: :feature do
   describe "find operations", :vcr do
     context "when getting conversations" do
-      let(:mock) { MessageSpecHelper.mock_conversation_sym }
       let(:conversations) { CertifyMessages::Conversation.find({application_id: 1}) }
       let(:body) { conversations[:body] }
 
