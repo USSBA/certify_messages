@@ -2,36 +2,13 @@ require "spec_helper"
 
 #rubocop:disable Style/BracesAroundHashParameters
 RSpec.describe CertifyMessages, type: :feature do
-  describe "find operations" do
+  describe "find operations", :vcr do
     context "when getting conversations" do
-      let(:mock) { MessageSpecHelper.mock_conversation_sym }
       let(:conversations) { CertifyMessages::Conversation.find({application_id: 1}) }
       let(:body) { conversations[:body] }
 
-      before { Excon.stub({}, body: mock.to_json, status: 200) }
-
       it "will return a good status code" do
         expect(conversations[:status]).to eq(200)
-      end
-
-      it "will return an array of conversations" do
-        expect(body.length).to be > 0
-      end
-
-      it 'will contain valid conversation attributes ["user_1"]' do
-        expect(body["user_1"]).to be
-      end
-      it 'will contain valid conversation attributes ["application_id"]' do
-        expect(body["application_id"]).to be
-      end
-      it 'will contain valid conversation attributes ["user_2"]' do
-        expect(body["user_2"]).to be
-      end
-      it 'will contain valid conversation attributes ["id"]' do
-        expect(body["id"]).to be
-      end
-      it 'will contain valid conversation attributes ["subject"]' do
-        expect(body["subject"]).to be
       end
     end
 
@@ -60,20 +37,23 @@ RSpec.describe CertifyMessages, type: :feature do
       end
     end
 
-    context "when the api is not found" do
+    context "when the api is not found", vcr: false do
       let(:conversations) { CertifyMessages::Conversation.find({application_id: 1}) }
       let(:error_type) { "SocketError" }
       let(:error) { described_class.service_unavailable error_type }
 
       before do
         CertifyMessages::Resource.clear_connection
-        Excon.defaults[:mock] = false
-        # reextend the endpoint to a dummy url
+        CertifyMessages.configure do |message_config|
+          message_config.api_url = "http://foo.bar"
+        end
       end
 
       after do
         CertifyMessages::Resource.clear_connection
-        Excon.defaults[:mock] = true
+        CertifyMessages.configure do |message_config|
+          message_config.api_url = "http://localhost:3001"
+        end
       end
 
       it "will return a 503" do

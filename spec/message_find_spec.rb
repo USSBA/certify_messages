@@ -1,52 +1,24 @@
 require 'spec_helper'
 
-#rubocop:disable Style/BracesAroundHashParameters
 RSpec.describe CertifyMessages, type: :feature do
-  describe 'Getting messages' do
+  describe 'Getting messages', :vcr do
     context 'when getting messages' do
       let(:mock) { MessageSpecHelper.mock_messages_sym 1 }
-      let(:messages) { CertifyMessages::Message.find(conversation_id: 1)[:body] }
+      let(:messages) { CertifyMessages::Message.find(conversation_id: 1) }
 
-      before { Excon.stub({}, body: mock.to_json) }
-
-      it 'will have messages' do
-        expect(messages.length).to be
-      end
-      it 'will have the correct attributes "sender_id"' do
-        expect(messages[0]["sender_id"]).to be
-      end
-      it 'will have the correct attributes "recipient_id"' do
-        expect(messages[0]["recipient_id"]).to be
-      end
-      it 'will have the correct attributes "body"' do
-        expect(messages[0]["body"]).to be
-      end
-      it 'will have the correct attributes "created_at"' do
-        expect(messages[0]["created_at"]).to be
-      end
-      it 'will have the correct attributes "conversation_id"' do
-        expect(messages[0]["conversation_id"]).to be
-      end
-      it 'will have the correct attributes "read"' do
-        expect(messages[0]["read"]).to be false
-      end
-      it 'will have the correct attributes "sent"' do
-        expect(messages[0]["sent"]).to be false
-      end
-      it 'will have the correct attributes "priority_read_receipt"' do
-        expect(messages[0]["priority_read_receipt"]).to be true
+      it 'will have a ok status' do
+        expect(messages[:status]).to be 200
       end
     end
 
     context "with the priority_read_receipt_parameter" do
-      let(:mock) { MessageSpecHelper.mock_conversation_sym }
-      let(:response) { CertifyMessages::Message.find(priority_read_receipt: true) }
-
-      before { Excon.stub({}, body: mock.to_json) }
-
-      it "will return a message" do
-        expect(response[:body][:priority_read_receipt]).to eq(mock[:priority_read_receipt])
+      let(:mock) do
+        {
+          conversation_id: 1,
+          priority_read_receipt: true
+        }
       end
+      let(:response) { CertifyMessages::Message.find(mock) }
 
       it "will return a 200 status" do
         expect(response[:status]).to eq(200)
@@ -79,20 +51,23 @@ RSpec.describe CertifyMessages, type: :feature do
 
     # this will work if the API is disconnected, but I can't figure out how to
     # fake the Excon connection to force it to fail in a test env.
-    context "when the api is not found" do
-      let(:bad_message) { CertifyMessages::Message.find({conversation_id: 1}) }
+    context "when the api is not found", vcr: false do
+      let(:bad_message) { CertifyMessages::Message.find(conversation_id: 1) }
       let(:error_type) { "SocketError" }
       let(:error) { described_class.service_unavailable error_type }
 
       before do
         CertifyMessages::Resource.clear_connection
-        Excon.defaults[:mock] = false
-        # reextend the endpoint to a dummy url
+        CertifyMessages.configure do |message_config|
+          message_config.api_url = "http://foo.bar"
+        end
       end
 
       after do
         CertifyMessages::Resource.clear_connection
-        Excon.defaults[:mock] = true
+        CertifyMessages.configure do |message_config|
+          message_config.api_url = "http://localhost:3001"
+        end
       end
 
       it "will return a 503" do
@@ -104,4 +79,3 @@ RSpec.describe CertifyMessages, type: :feature do
     end
   end
 end
-#rubocop:enable Style/BracesAroundHashParameters

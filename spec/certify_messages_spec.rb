@@ -6,7 +6,7 @@ RSpec.describe CertifyMessages do
   end
 
   it "will have an endpoint url" do
-    expect(described_class.configuration.api_url).to eq('http://foo.bar/')
+    expect(described_class.configuration.api_url).to eq('http://localhost:3001')
   end
 
   it "will specify the message API version" do
@@ -20,5 +20,4 @@ RSpec.describe CertifyMessages do
   it "will have a Conversation class" do
     expect(CertifyMessages::Conversation.new).to be
   end
-
 end

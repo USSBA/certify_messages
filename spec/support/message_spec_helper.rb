@@ -23,31 +23,28 @@ module MessageSpecHelper
   end
 
   def self.mock_conversation_sym
-    { id: Faker::Number.number(10),
-      application_id: Faker::Number.number(10),
+    { application_id: Faker::Number.number(4),
       subject: Faker::StarWars.quote,
-      user_1: Faker::Number.number(10),
-      user_2: Faker::Number.number(10),
+      user_1: Faker::Number.number(4),
+      user_2: Faker::Number.number(4),
       created_date: Date.today,
       updated_date: Date.today }
   end
 
   def self.mock_conversation_string
-    { "id" => Faker::Number.number(10),
-      "application_id" => Faker::Number.number(10),
+    { "application_id" => Faker::Number.number(4),
       "subject" => Faker::StarWars.quote,
-      "user_1" => Faker::Number.number(10),
-      "user_2" => Faker::Number.number(10),
+      "user_1" => Faker::Number.number(4),
+      "user_2" => Faker::Number.number(4),
       "created_date" => Date.today,
       "updated_date" => Date.today }
   end
 
   def self.mock_conversation_mixed
-    { id: Faker::Number.number(10),
-      application_id: Faker::Number.number(10),
+    { application_id: Faker::Number.number(4),
       "subject" => Faker::StarWars.quote,
-      "user_1" => Faker::Number.number(10),
-      user_2: Faker::Number.number(10),
+      "user_1" => Faker::Number.number(4),
+      user_2: Faker::Number.number(4),
       created_date: Date.today,
       updated_date: Date.today }
   end
@@ -60,16 +57,16 @@ module MessageSpecHelper
   # messages can be parameterized with keys as symbols, keys as strings or a mix of symbols and strings
   def self.mock_message_types
     {
-      symbol_keys: mock_message_sym(1, 2, 1),
-      string_keys: mock_message_string(1, 2, 1),
-      mixed_keys: mock_message_mixed(1, 2, 1)
+      symbol_keys: mock_message_sym(1000, 2000, 1000),
+      string_keys: mock_message_string(1000, 2000, 1000),
+      mixed_keys: mock_message_mixed(1000, 2000, 1000)
     }
   end
 
   # rubocop:disable Metrics/MethodLength
   def self.mock_message_sym(sender, recipient, owner)
     { message_id: Faker::Number.number(3),
-      conversation_id: 1,
+      conversation_id: 10,
       body: Faker::StarWars.wookie_sentence,
       sender_id: sender,
       recipient_id: recipient,
@@ -84,7 +81,7 @@ module MessageSpecHelper
 
   def self.mock_message_string(sender, recipient, owner)
     { "message_id" => Faker::Number.number(3),
-      "conversation_id" => 1,
+      "conversation_id" => 10,
       "body" => Faker::StarWars.wookie_sentence,
       "sender_id" => sender,
       "recipient_id" => recipient,
@@ -97,7 +94,7 @@ module MessageSpecHelper
 
   def self.mock_message_mixed(sender, recipient, owner)
     { message_id: Faker::Number.number(3),
-      "conversation_id" => 1,
+      "conversation_id" => 10,
       "body" => Faker::StarWars.wookie_sentence,
       sender_id: sender,
       recipient_id: recipient,

@@ -19,18 +19,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"eecae11f0c13b0755fe3fa57eae9ed25"
+      - W/"a1ebadafa875cd96caf49712859d578a"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - c503b64a-7cd2-4561-82ce-d794fd95d111
+      - 3e5ab7cc-785a-40cd-bb95-a86bc320731f
       X-Runtime:
-      - '0.020807'
+      - '0.030767'
     body:
       encoding: ASCII-8BIT
-      string: '[{"id":4,"user_1":1,"user_2":8,"application_id":4,"subject":"vel lectus","created_at":"2017-11-06T15:55:10.788Z","updated_at":"2017-11-06T15:55:10.788Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"id":29,"body":"Nullam
-        sit amet turpis elementum ligula vehicula consequat.","conversation_id":4,"sender_id":1,"recipient_id":8,"read":false,"sent":false,"created_at":"2017-11-06T15:55:10.962Z","updated_at":"2017-11-06T15:55:10.962Z","priority_read_receipt":false}},{"id":9,"user_1":7,"user_2":8,"application_id":4,"subject":"thin","created_at":"2017-11-28T18:06:16.907Z","updated_at":"2017-11-28T18:06:16.907Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"id":46,"body":"\u003cp\u003emints\u003c/p\u003e\u003cp\u003e
-        \u003c/p\u003e","conversation_id":9,"sender_id":7,"recipient_id":8,"read":false,"sent":false,"created_at":"2017-11-28T18:06:17.091Z","updated_at":"2017-11-28T18:06:17.091Z","priority_read_receipt":false}}]'
+      string: '[{"id":9,"user_1":7,"user_2":8,"application_id":4,"subject":"thin","created_at":"2017-11-28T18:06:16.907Z","updated_at":"2017-11-28T18:06:16.907Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"id":46,"body":"\u003cp\u003emints\u003c/p\u003e\u003cp\u003e
+        \u003c/p\u003e","conversation_id":9,"sender_id":7,"recipient_id":8,"read":false,"sent":false,"created_at":"2017-11-28T18:06:17.091Z","updated_at":"2017-11-28T18:06:17.091Z","priority_read_receipt":false}},{"id":4,"user_1":1,"user_2":8,"application_id":4,"subject":"vel
+        lectus","created_at":"2017-11-06T15:55:10.788Z","updated_at":"2017-11-06T15:55:10.788Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"id":29,"body":"Nullam
+        sit amet turpis elementum ligula vehicula consequat.","conversation_id":4,"sender_id":1,"recipient_id":8,"read":false,"sent":false,"created_at":"2017-11-06T15:55:10.962Z","updated_at":"2017-11-06T15:55:10.962Z","priority_read_receipt":false}}]'
     http_version: 
-  recorded_at: Thu, 25 Oct 2018 14:11:22 GMT
+  recorded_at: Tue, 06 Nov 2018 19:15:51 GMT
 recorded_with: VCR 4.0.0

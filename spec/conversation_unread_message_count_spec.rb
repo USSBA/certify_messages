@@ -2,7 +2,7 @@ require "spec_helper"
 
 #rubocop:disable Style/BracesAroundHashParameters
 RSpec.describe CertifyMessages, type: :feature do
-  describe "unread_message_counts operations" do
+  describe "unread_message_counts operations", :vcr do
     context "when getting message_counts" do
       let(:app_ids) { [1, 2].join(',') }
       let(:recipient_id) { 1 }
@@ -10,23 +10,8 @@ RSpec.describe CertifyMessages, type: :feature do
       let(:message_counts) { CertifyMessages::Conversation.unread_message_counts({application_ids: app_ids, recipient_id: recipient_id}) }
       let(:body) { message_counts[:body] }
 
-      before do
-        Excon.stub({}, body: mock.to_json, status: 200)
-      end
-
-      # TODO: This is failing withing the context of the entire suite, but passes if only this spec is run.
-      xit "will return a good status code" do
+      it "will return a good status code" do
         expect(message_counts[:status]).to eq(200)
-      end
-
-      # TODO: This is failing withing the context of the entire suite, but passes if only this spec is run.
-      xit 'will contain applications array' do
-        expect(body['applications'].length).to eq 2
-      end
-
-      # TODO: This is failing withing the context of the entire suite, but passes if only this spec is run.
-      xit 'will contain valid message_counts' do
-        expect(body['applications'][0]['unread_message_count']).to eq 5
       end
     end
 
@@ -55,7 +40,7 @@ RSpec.describe CertifyMessages, type: :feature do
       end
     end
 
-    context 'when the api is not found' do
+    context 'when the api is not found', vcr: false do
       let(:app_ids) { [1, 2].join(',') }
       let(:recipient_id) { 1 }
       let(:message_counts) { CertifyMessages::Conversation.unread_message_counts({application_ids: app_ids, recipient_id: recipient_id}) }
@@ -64,13 +49,16 @@ RSpec.describe CertifyMessages, type: :feature do
 
       before do
         CertifyMessages::Resource.clear_connection
-        Excon.defaults[:mock] = false
-        # reextend the endpoint to a dummy url
+        CertifyMessages.configure do |message_config|
+          message_config.api_url = "http://foo.bar"
+        end
       end
 
       after do
         CertifyMessages::Resource.clear_connection
-        Excon.defaults[:mock] = true
+        CertifyMessages.configure do |message_config|
+          message_config.api_url = "http://localhost:3001"
+        end
       end
 
       it 'will return a 503' do

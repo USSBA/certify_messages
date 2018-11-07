@@ -1,19 +1,13 @@
 require 'spec_helper'
 
-#rubocop:disable Style/BracesAroundHashParameters
 RSpec.describe CertifyMessages, type: :feature do
-  describe 'Updating messages' do
+  describe 'Updating messages', :vcr do
     context 'with read/unread status' do
       let(:read_message) { MessageSpecHelper.mock_message_sym(1, 2, 1) }
-      let(:params) { {id: read_message[:id], read: read_message[:read], conversation_id: read_message[:conversation_id]} }
+      let(:params) { {id: 11, read: true, conversation_id: 2} }
       let(:updated_message_response) { CertifyMessages::Message.update(params) }
 
-      before do
-        read_message[:read] = true
-        Excon.stub({}, body: read_message.to_json, status: 201)
-      end
-
-      it "will return a message" do
+      it "will return an 200 status" do
         expect(updated_message_response[:body]['read']).to be(true)
       end
     end
@@ -44,20 +38,23 @@ RSpec.describe CertifyMessages, type: :feature do
 
     # this will work if the API is disconnected, but I can't figure out how to
     # fake the Excon connection to force it to fail in a test env.
-    context "when the api is not found" do
-      let(:bad_message) { CertifyMessages::Message.update({body: "foo"}) }
+    context "when the api is not found", vcr: false do
+      let(:bad_message) { CertifyMessages::Message.update(body: "foo") }
       let(:error_type) { "SocketError" }
       let(:error) { described_class.service_unavailable error_type }
 
       before do
         CertifyMessages::Resource.clear_connection
-        Excon.defaults[:mock] = false
-        # reextend the endpoint to a dummy url
+        CertifyMessages.configure do |message_config|
+          message_config.api_url = "http://foo.bar"
+        end
       end
 
       after do
         CertifyMessages::Resource.clear_connection
-        Excon.defaults[:mock] = true
+        CertifyMessages.configure do |message_config|
+          message_config.api_url = "http://localhost:3001"
+        end
       end
 
       it "will return a 503" do
@@ -69,4 +66,3 @@ RSpec.describe CertifyMessages, type: :feature do
     end
   end
 end
-#rubocop:enable Style/BracesAroundHashParameters

@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_id":"5036","subject":"No reward is worth this.","user_1":"3477","user_2":"5190"}'
+    headers:
+      x-api-key:
+      - fake_api_key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v1
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"1d48baee9e34c16b935eb6daf1446250"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 66bd6f11-b808-45d2-9726-64376dd644df
+      X-Runtime:
+      - '0.026303'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":67,"user_1":3477,"user_2":5190,"application_id":5036,"subject":"No
+        reward is worth this.","created_at":"2018-11-06T16:24:04.574Z","updated_at":"2018-11-06T16:24:04.574Z","conversation_type":"application","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations/67/messages
+    body:
+      encoding: UTF-8
+      string: '{"body":"Words are in my not-so-humble opinion, the most inexhaustible
+        form of magic we have, capable both of inflicting injury and remedying it.","conversation_id":67}'
+    headers:
+      x-api-key:
+      - fake_api_key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v1
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 37ed772e-96ad-4da8-9127-aca4d958a525
+      X-Runtime:
+      - '0.064368'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sender_id":["can''t be blank","sender_id must be a user from conversation"],"recipient_id":["can''t
+        be blank","recipient_id must be a user from conversation"],"user":["sender_id
+        and recipient_id cannot be equal"]}'
+    http_version: 
+  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+recorded_with: VCR 4.0.0
