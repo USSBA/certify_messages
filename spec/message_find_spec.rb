@@ -6,38 +6,9 @@ RSpec.describe CertifyMessages, type: :feature do
       let(:mock) { MessageSpecHelper.mock_messages_sym 1 }
       let(:messages) { CertifyMessages::Message.find(conversation_id: 1) }
 
-      # before { Excon.stub({}, body: mock.to_json) }
-
       it 'will have a ok status' do
         expect(messages[:status]).to be 200
       end
-      # it 'will have messages' do
-      #   expect(messages.length).to be
-      # end
-      # it 'will have the correct attributes "sender_id"' do
-      #   expect(messages[0]["sender_id"]).to be
-      # end
-      # it 'will have the correct attributes "recipient_id"' do
-      #   expect(messages[0]["recipient_id"]).to be
-      # end
-      # it 'will have the correct attributes "body"' do
-      #   expect(messages[0]["body"]).to be
-      # end
-      # it 'will have the correct attributes "created_at"' do
-      #   expect(messages[0]["created_at"]).to be
-      # end
-      # it 'will have the correct attributes "conversation_id"' do
-      #   expect(messages[0]["conversation_id"]).to be
-      # end
-      # it 'will have the correct attributes "read"' do
-      #   expect(messages[0]["read"]).to be false
-      # end
-      # it 'will have the correct attributes "sent"' do
-      #   expect(messages[0]["sent"]).to be false
-      # end
-      # it 'will have the correct attributes "priority_read_receipt"' do
-      #   expect(messages[0]["priority_read_receipt"]).to be true
-      # end
     end
 
     context "with the priority_read_receipt_parameter" do
@@ -48,8 +19,6 @@ RSpec.describe CertifyMessages, type: :feature do
         }
       end
       let(:response) { CertifyMessages::Message.find(mock) }
-
-      # before { Excon.stub({}, body: mock.to_json) }
 
       it "will return a 200 status" do
         expect(response[:status]).to eq(200)
@@ -92,7 +61,6 @@ RSpec.describe CertifyMessages, type: :feature do
         CertifyMessages.configure do |message_config|
           message_config.api_url = "http://foo.bar"
         end
-        # reextend the endpoint to a dummy url
       end
 
       after do

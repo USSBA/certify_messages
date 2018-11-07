@@ -48,7 +48,6 @@ RSpec.describe CertifyMessages, type: :feature do
         CertifyMessages.configure do |message_config|
           message_config.api_url = "http://foo.bar"
         end
-        # reextend the endpoint to a dummy url
       end
 
       after do

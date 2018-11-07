@@ -8,7 +8,7 @@ Dir['./spec/support/**/*.rb'].each { |f| require f }
 
 # configure the CertifyMessages module for testing
 CertifyMessages.configure do |config|
-  config.api_url = "http://foo.bar/"
+  config.api_url = "http://localhost:3001"
   config.excon_timeout = 6
   config.log_level = "unknown"
 end
@@ -19,21 +19,5 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
-  end
-
-  # config.before(:all) do
-  #   Excon.defaults[:mock] = true
-  #   Excon.stub({}, body: { message: 'Fallback stub response' }.to_json, status: 598)
-  # end
-  # config.after(:each) do
-  #   Excon.stubs.clear
-  # end
-
-  config.before(:all) do
-    CertifyMessages.configure do |message_config|
-      message_config.api_url = "http://localhost:3001"
-    end
-    Excon.defaults[:mock] = false
-    Excon.stubs.clear
   end
 end
