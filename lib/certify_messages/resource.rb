@@ -56,6 +56,10 @@ module CertifyMessages
       CertifyMessages.configuration.api_url
     end
 
+    def self.msg_api_version
+      CertifyMessages.configuration.msg_api_version
+    end
+
     def self.path_prefix
       CertifyMessages.configuration.path_prefix
     end
