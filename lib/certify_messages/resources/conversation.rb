@@ -81,20 +81,29 @@ module CertifyMessages
     # helper for white listing parameters
     def self.conversation_safe_params(params)
       params = sanitize_params params
-      permitted_keys = %w[id subject application_id user_1 user_2 conversation_type archived include_archived order]
+      permitted_keys_v1 = %w[id application_id]
+      permitted_keys_v3 = %w[conversation_uuid application_uuid]
+      permitted_keys = %w[subject user_1 user_2 conversation_type archived include_archived order]
+      # NOTE: ternary statement will need to be replaced once we have more than two versions to support
+      msg_api_version == 3 ? permitted_keys.push(*permitted_keys_v3) : permitted_keys.push(*permitted_keys_v1)
       params.select { |key, _| permitted_keys.include? key.to_s }
     end
 
     # helper for white listing parameters
     def self.archive_conversation_safe_params(params)
       params = sanitize_params params
-      permitted_keys = %w[conversation_id archived]
+      permitted_keys_v1 = %w[conversation_id]
+      permitted_keys_v3 = %w[conversation_uuid]
+      permitted_keys = %w[archived]
+      # NOTE: ternary statement will need to be replaced once we have more than two versions to support
+      msg_api_version == 3 ? permitted_keys.push(*permitted_keys_v3) : permitted_keys.push(*permitted_keys_v1)
       params.select { |key, _| permitted_keys.include? key.to_s }
     end
 
     def self.unread_message_params(params)
       params = sanitize_params params
-      permitted_keys = %w[application_ids recipient_id]
+      # NOTE: ternary statement will need to be replaced once we have more than two versions to support
+      permitted_keys = msg_api_version == 3 ? %w[application_uuid recipient_uuid] : %w[application_ids recipient_id]
       params.select { |key, _| permitted_keys.include? key.to_s }
     end
 
