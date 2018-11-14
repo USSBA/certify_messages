@@ -55,9 +55,8 @@ module CertifyMessages
     # rubocop:disable Metrics/MethodLength
     def self.archive(params = nil)
       return CertifyMessages.bad_request if empty_params(params)
-      return CertifyMessages.bad_request unless params.keys.include? :conversation_id
-      convo_id = params.delete :conversation_id
-      update_path = build_update_conversations_path convo_id
+      return CertifyMessages.bad_request unless conversation_param_included(params)
+      update_path = build_update_conversations_path(params)
       safe_params = archive_conversation_safe_params params
       return CertifyMessages.unprocessable if safe_params.empty?
       response = connection.request(method: :put,
@@ -128,8 +127,8 @@ module CertifyMessages
       "#{path_prefix}/#{conversations_path}"
     end
 
-    def self.build_update_conversations_path(conversation_id)
-      "#{path_prefix}/#{conversations_path}/#{conversation_id}"
+    def self.build_update_conversations_path(params)
+      "#{path_prefix}/#{conversations_path}/#{conversation_param_value(params)}"
     end
 
     def self.build_unread_message_counts_path(params)
