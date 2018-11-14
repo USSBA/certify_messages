@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3001/msg/conversations?application_id=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      x-api-key:
+      - fake_api_key
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"906c6b3a03268dcfaf87561db4e2cde7"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 3b685033-0738-48b3-a10d-9d1bcfe19389
+      X-Runtime:
+      - '0.116258'
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"uuid":"0d8e1f49-055f-4e95-9090-ca24c7b353af","user1_uuid":null,"user2_uuid":null,"application_uuid":null,"subject":"turpis","created_at":"2018-06-29T20:02:22.171Z","updated_at":"2018-06-29T20:02:22.171Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"uuid":"f51b32e8-9b2a-4110-ba4a-6985c6e7fc14","body":"Aliquam
+        sit amet diam in magna bibendum imperdiet.","conversation_uuid":null,"sender_uuid":null,"recipient_uuid":null,"read":true,"sent":false,"created_at":"2018-06-29T20:02:22.280Z","updated_at":"2018-07-06T15:54:40.674Z","priority_read_receipt":false}},{"uuid":"130d9645-e25a-4248-99e0-78b93aac0800","user1_uuid":null,"user2_uuid":null,"application_uuid":null,"subject":"vel
+        lectus","created_at":"2018-06-29T20:02:22.168Z","updated_at":"2018-06-29T20:02:22.168Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"uuid":"822d4579-8fcb-49c4-b48e-182caba3bd56","body":"Nullam
+        sit amet turpis elementum ligula vehicula consequat.","conversation_uuid":null,"sender_uuid":null,"recipient_uuid":null,"read":false,"sent":false,"created_at":"2018-06-29T20:02:22.277Z","updated_at":"2018-06-29T20:02:22.277Z","priority_read_receipt":false}},{"uuid":"97aa072d-7148-4ed1-baaf-146ce2a51712","user1_uuid":null,"user2_uuid":null,"application_uuid":null,"subject":"quis
+        turpis eget elit","created_at":"2018-06-29T20:02:22.166Z","updated_at":"2018-10-18T16:22:35.371Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"uuid":"08905d6d-b481-43ce-89cc-489d2efacb80","body":"In
+        sagittis dui vel nisl.","conversation_uuid":null,"sender_uuid":null,"recipient_uuid":null,"read":false,"sent":false,"created_at":"2018-06-29T20:02:22.262Z","updated_at":"2018-06-29T20:02:22.262Z","priority_read_receipt":false}},{"uuid":"de891425-de6a-41b9-90e3-0b3e1edd5807","user1_uuid":null,"user2_uuid":null,"application_uuid":null,"subject":"turpis","created_at":"2018-06-29T20:02:22.164Z","updated_at":"2018-06-29T20:02:22.164Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"uuid":"86363e73-2118-4f50-9dd1-5ecee86a1d25","body":"Nulla
+        tempus. Vivamus in felis eu sapien cursus vestibulum.","conversation_uuid":null,"sender_uuid":null,"recipient_uuid":null,"read":false,"sent":false,"created_at":"2018-06-29T20:02:22.242Z","updated_at":"2018-06-29T20:02:22.242Z","priority_read_receipt":false}},{"uuid":"e8cacabd-b2b6-4789-b776-e313ed6a917f","user1_uuid":null,"user2_uuid":null,"application_uuid":null,"subject":"dui","created_at":"2018-06-29T20:02:22.159Z","updated_at":"2018-06-29T20:02:22.159Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"uuid":"dd8aaaf4-81dd-4709-86fc-02ee9d1d0618","body":"Suspendisse
+        potenti.","conversation_uuid":null,"sender_uuid":null,"recipient_uuid":null,"read":false,"sent":false,"created_at":"2018-06-29T20:02:22.221Z","updated_at":"2018-06-29T20:02:22.221Z","priority_read_receipt":false}}]'
+    http_version: 
+  recorded_at: Wed, 14 Nov 2018 15:34:28 GMT
+recorded_with: VCR 4.0.0
