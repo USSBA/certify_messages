@@ -117,8 +117,7 @@ module CertifyMessages
         else
           params.keys.include? :conversation_id
         end
-      p "[16] Got here"
-      return true
+      status
     end
   end
   # rubocop:enable Style/ClassVars
