@@ -76,11 +76,6 @@ module CertifyMessages
       symbolized_params
     end
 
-    def self.conversation_param_value(params)
-      # NOTE: ternary statement will need to be replaced once we have more than two versions to support
-      msg_api_version == 3 ? params[:conversation_uuid] : params[:conversation_id]
-    end
-
     def self.build_find_path(params, order)
       "#{path_prefix}/#{conversations_path}/#{conversation_param_value(params)}/#{messages_path}#{order}"
     end
