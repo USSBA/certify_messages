@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"user1_uuid":"16028520-03c5-4bcc-9e90-d826613a4166","user2_uuid":"fab8c5a8-e746-47d6-aef2-2f52c185317e","application_uuid":"132ae1b3-734f-4313-a418-18667876fe56","subject":"This
+        is the first subject","conversation_type":"application"}'
+    headers:
+      x-api-key:
+      - fake_api_key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"a2bfc3c3284dac393694b0408a5626c3"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 0b834fcd-2760-478e-9dc3-249f44e7c0d9
+      X-Runtime:
+      - '0.012428'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"b67a4e82-2dfb-4ab9-a2b8-6a1158b9f36a","user1_uuid":"16028520-03c5-4bcc-9e90-d826613a4166","user2_uuid":"fab8c5a8-e746-47d6-aef2-2f52c185317e","application_uuid":"132ae1b3-734f-4313-a418-18667876fe56","subject":"This
+        is the first subject","created_at":"2018-11-15T16:12:00.285Z","updated_at":"2018-11-15T16:12:00.285Z","conversation_type":"application","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 16:12:00 GMT
+recorded_with: VCR 4.0.0

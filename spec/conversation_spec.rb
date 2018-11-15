@@ -48,7 +48,7 @@ RSpec.describe CertifyMessages::Conversation, type: :feature do
     end
   end
 
-  describe 'starting a new conversation in v3', vcr: false do
+  describe 'starting a new conversation in v3', :vcr do
     before do
       CertifyMessages.configuration.msg_api_version = 3
     end
@@ -72,13 +72,11 @@ RSpec.describe CertifyMessages::Conversation, type: :feature do
     end
 
     let(:conversation) { CertifyMessages::Conversation.create params_v3 }
-    byebug
     let(:archived_convo) do
       CertifyMessages::Conversation.archive conversation_uuid: conversation[:body]['uuid'], archived: true
     end
 
     it 'will return with the correct status' do
-      byebug
       expect(archived_convo[:status]).to be(200)
     end
 
