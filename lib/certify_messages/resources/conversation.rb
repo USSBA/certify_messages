@@ -80,9 +80,9 @@ module CertifyMessages
     # helper for white listing parameters
     def self.conversation_safe_params(params)
       params = sanitize_params params
-      permitted_keys_v1 = %w[id application_id]
-      permitted_keys_v3 = %w[conversation_uuid application_uuid]
-      permitted_keys = %w[subject user_1 user_2 conversation_type archived include_archived order]
+      permitted_keys_v1 = %w[id application_id user_1 user_2]
+      permitted_keys_v3 = %w[conversation_uuid application_uuid user1_uuid user2_uuid]
+      permitted_keys = %w[subject conversation_type archived include_archived order]
       # NOTE: ternary statement will need to be replaced once we have more than two versions to support
       msg_api_version == 3 ? permitted_keys.push(*permitted_keys_v3) : permitted_keys.push(*permitted_keys_v1)
       params.select { |key, _| permitted_keys.include? key.to_s }
