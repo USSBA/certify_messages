@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'support/vcr_helper'
 
 RSpec.describe CertifyMessages::Conversation, type: :feature do
+  # TODO: add params for handling v3
   let(:user_1) { 1000 }
   let(:user_2) { 2000 }
   let(:application_id) { 10000 }
@@ -44,6 +45,45 @@ RSpec.describe CertifyMessages::Conversation, type: :feature do
 
     it 'will return with the correct status' do
       expect(archived_convo[:status]).to be(200)
+    end
+  end
+
+  describe 'starting a new conversation in v3', vcr: false do
+    before do
+      CertifyMessages.configuration.msg_api_version = 3
+    end
+
+    let(:conversation) do
+      CertifyMessages::Conversation.create params_v3
+    end
+
+    it 'will return with the correct status' do
+      expect(conversation[:status]).to eq(201)
+    end
+
+    after do
+      CertifyMessages.configuration.msg_api_version = 1
+    end
+  end
+
+  describe 'archiving a conversation in v3', vcr: false do
+    before do
+      CertifyMessages.configuration.msg_api_version = 3
+    end
+
+    let(:conversation) { CertifyMessages::Conversation.create params_v3 }
+    byebug
+    let(:archived_convo) do
+      CertifyMessages::Conversation.archive conversation_uuid: conversation[:body]['uuid'], archived: true
+    end
+
+    it 'will return with the correct status' do
+      byebug
+      expect(archived_convo[:status]).to be(200)
+    end
+
+    after do
+      CertifyMessages.configuration.msg_api_version = 1
     end
   end
 end
