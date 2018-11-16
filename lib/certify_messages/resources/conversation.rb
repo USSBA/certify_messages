@@ -73,7 +73,11 @@ module CertifyMessages
     private_class_method
 
     def self.parse_conversation_response(response, params)
-      params[:conversation_id] = response["id"]
+      if msg_api_version == 3
+        params[:conversation_uuid] = response["uuid"]
+      else
+        params[:conversation_id] = response["id"]
+      end
       params
     end
 
