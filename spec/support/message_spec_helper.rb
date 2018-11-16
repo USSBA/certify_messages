@@ -1,4 +1,5 @@
 # Creates mock hashes to be used in simulating messages and conversations
+# rubocop:disable Metrics/ModuleLength
 module MessageSpecHelper
   def self.json
     JSON.parse(response.body)
@@ -139,3 +140,4 @@ module MessageSpecHelper
     { applications: counts }
   end
 end
+# rubocop:enable Metrics/ModuleLength

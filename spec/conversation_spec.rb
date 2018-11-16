@@ -19,11 +19,11 @@ RSpec.describe CertifyMessages::Conversation, type: :feature do
   end
   let(:params_v3) do
     {
-        user1_uuid: "16028520-03c5-4bcc-9e90-d826613a4166",
-        user2_uuid: "fab8c5a8-e746-47d6-aef2-2f52c185317e",
-        application_uuid: "132ae1b3-734f-4313-a418-18667876fe56",
-        subject: convo_subject,
-        conversation_type: conversation_type
+      user1_uuid: "16028520-03c5-4bcc-9e90-d826613a4166",
+      user2_uuid: "fab8c5a8-e746-47d6-aef2-2f52c185317e",
+      application_uuid: "132ae1b3-734f-4313-a418-18667876fe56",
+      subject: convo_subject,
+      conversation_type: conversation_type
     }
   end
 
