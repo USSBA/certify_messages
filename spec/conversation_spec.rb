@@ -44,7 +44,7 @@ RSpec.describe CertifyMessages::Conversation, type: :feature do
     end
 
     it 'will return with the correct status' do
-      expect(archived_convo[:status]).to be(200)
+      expect(archived_convo[:status]).to eq(200)
     end
   end
 
@@ -77,7 +77,7 @@ RSpec.describe CertifyMessages::Conversation, type: :feature do
     end
 
     it 'will return with the correct status' do
-      expect(archived_convo[:status]).to be(200)
+      expect(archived_convo[:status]).to eq(200)
     end
 
     after do
