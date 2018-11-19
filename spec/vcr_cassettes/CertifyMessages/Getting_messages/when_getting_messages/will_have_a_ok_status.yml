@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3001/msg/conversations/1/messages
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      x-api-key:
+      - fake_api_key
+      Accept:
+      - application/sba.msg-api.v1
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"c046c741b1f32d077212f2aae3208c64"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 5ce64550-0371-4715-8ae2-4961ca44aa30
+      X-Runtime:
+      - '0.059747'
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":10,"body":"Suspendisse potenti.","conversation_id":1,"sender_id":1,"recipient_id":5,"read":true,"sent":false,"created_at":"2017-11-06T15:55:10.871Z","updated_at":"2017-11-28T18:07:18.140Z","priority_read_receipt":false},{"id":9,"body":"Pellentesque
+        at nulla. Suspendisse potenti.","conversation_id":1,"sender_id":1,"recipient_id":5,"read":true,"sent":false,"created_at":"2017-11-06T15:55:10.867Z","updated_at":"2017-11-28T18:07:18.270Z","priority_read_receipt":false},{"id":8,"body":"Mauris
+        enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.","conversation_id":1,"sender_id":1,"recipient_id":5,"read":true,"sent":false,"created_at":"2017-11-06T15:55:10.862Z","updated_at":"2017-11-28T18:07:18.401Z","priority_read_receipt":false},{"id":7,"body":"Pellentesque
+        ultrices mattis odio. Donec vitae nisi.","conversation_id":1,"sender_id":5,"recipient_id":1,"read":true,"sent":false,"created_at":"2017-11-06T15:55:10.858Z","updated_at":"2017-11-28T18:07:18.528Z","priority_read_receipt":false},{"id":6,"body":"In
+        quis justo.","conversation_id":1,"sender_id":5,"recipient_id":1,"read":true,"sent":false,"created_at":"2017-11-06T15:55:10.853Z","updated_at":"2017-11-28T18:07:18.660Z","priority_read_receipt":false},{"id":5,"body":"Nullam
+        porttitor lacus at turpis. Donec posuere metus vitae ipsum.","conversation_id":1,"sender_id":1,"recipient_id":5,"read":true,"sent":false,"created_at":"2017-11-06T15:55:10.848Z","updated_at":"2017-11-28T18:07:18.792Z","priority_read_receipt":false},{"id":4,"body":"Cras
+        non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit.","conversation_id":1,"sender_id":1,"recipient_id":5,"read":true,"sent":false,"created_at":"2017-11-06T15:55:10.843Z","updated_at":"2017-11-28T18:07:18.920Z","priority_read_receipt":false},{"id":3,"body":"In
+        est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat.","conversation_id":1,"sender_id":1,"recipient_id":5,"read":true,"sent":false,"created_at":"2017-11-06T15:55:10.837Z","updated_at":"2017-11-28T18:07:19.047Z","priority_read_receipt":true},{"id":2,"body":"In
+        congue. Etiam justo.","conversation_id":1,"sender_id":5,"recipient_id":1,"read":true,"sent":false,"created_at":"2017-11-06T15:55:10.833Z","updated_at":"2017-11-28T18:07:19.175Z","priority_read_receipt":false},{"id":1,"body":"Aliquam
+        sit amet diam in magna bibendum imperdiet.","conversation_id":1,"sender_id":1,"recipient_id":5,"read":true,"sent":false,"created_at":"2017-11-06T15:55:10.827Z","updated_at":"2017-11-28T18:07:19.302Z","priority_read_receipt":false}]'
+    http_version: 
+  recorded_at: Tue, 06 Nov 2018 18:30:31 GMT
+recorded_with: VCR 4.0.0

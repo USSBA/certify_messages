@@ -16,101 +16,71 @@ RSpec.describe CertifyMessages::Conversation, type: :feature do
       conversation_type: conversation_type
     }
   end
+  let(:params_v3) do
+    {
+      user1_uuid: "16028520-03c5-4bcc-9e90-d826613a4166",
+      user2_uuid: "fab8c5a8-e746-47d6-aef2-2f52c185317e",
+      application_uuid: "132ae1b3-734f-4313-a418-18667876fe56",
+      subject: convo_subject,
+      conversation_type: conversation_type
+    }
+  end
 
-  describe 'starting a new conversation', :vcr do
+  describe 'starting a new conversation in v1', :vcr do
     let(:conversation) do
       CertifyMessages::Conversation.create params
     end
 
-    before do
-      CertifyMessages.configure do |config|
-        config.api_url = "http://localhost:3001"
-      end
-      Excon.defaults[:mock] = false
-      Excon.stubs.clear
-    end
-
-    it 'will return the created conversation' do
-      expect(conversation[:body]['subject']).to eq(convo_subject)
-    end
     it 'will return with the correct status' do
       expect(conversation[:status]).to eq(201)
     end
-
-    # restore configuration for exconn stubs
-    after do
-      CertifyMessages.configure do |config|
-        config.api_url = "http://foo.bar/"
-      end
-      Excon.defaults[:mock] = true
-      Excon.stub({}, body: { message: 'Fallback stub response' }.to_json, status: 598)
-    end
   end
 
-  describe 'getting a listing of conversations', :vcr do
-    let(:application_id) { 20000 }
-    let(:subject_2) { "This is the second subject" }
-    let(:subject_3) { "This is the third subject" }
-    let(:conversations) do
-      CertifyMessages::Conversation.find application_id: application_id
-    end
-
-    before do
-      CertifyMessages.configure do |config|
-        config.api_url = "http://localhost:3001"
-      end
-      Excon.defaults[:mock] = false
-      Excon.stubs.clear
-      CertifyMessages::Conversation.create params
-      CertifyMessages::Conversation.create params.merge(subject_2: subject_2)
-      CertifyMessages::Conversation.create params.merge(subject_3: subject_3, archived: true)
-    end
-
-    it 'will return a list of conversations' do
-      expect(conversations[:body].length).to eq(2)
-    end
-    it 'will return with the correct status' do
-      expect(conversations[:status]).to be(200)
-    end
-
-    # restore configuration for exconn stubs
-    after do
-      CertifyMessages.configure do |config|
-        config.api_url = "http://foo.bar/"
-      end
-      Excon.defaults[:mock] = true
-      Excon.stub({}, body: { message: 'Fallback stub response' }.to_json, status: 598)
-    end
-  end
-
-  describe 'archiving a conversations', :vcr do
+  describe 'archiving a conversation in v1', :vcr do
     let(:conversation) { CertifyMessages::Conversation.create params }
     let(:archived_convo) do
       CertifyMessages::Conversation.archive conversation_id: conversation[:body]['id'], archived: true
     end
 
-    before do
-      CertifyMessages.configure do |config|
-        config.api_url = "http://localhost:3001"
-      end
-      Excon.defaults[:mock] = false
-      Excon.stubs.clear
-    end
-
-    it 'will return a list of conversations' do
-      expect(archived_convo[:body]['archived']).to eq(true)
-    end
     it 'will return with the correct status' do
-      expect(archived_convo[:status]).to be(200)
+      expect(archived_convo[:status]).to eq(200)
+    end
+  end
+
+  describe 'starting a new conversation in v3', :vcr do
+    before do
+      CertifyMessages.configuration.msg_api_version = 3
     end
 
-    # restore configuration for exconn stubs
+    let(:conversation) do
+      CertifyMessages::Conversation.create params_v3
+    end
+
+    it 'will return with the correct status' do
+      expect(conversation[:status]).to eq(201)
+    end
+
     after do
-      CertifyMessages.configure do |config|
-        config.api_url = "http://foo.bar/"
-      end
-      Excon.defaults[:mock] = true
-      Excon.stub({}, body: { message: 'Fallback stub response' }.to_json, status: 598)
+      CertifyMessages.configuration.msg_api_version = 1
+    end
+  end
+
+  describe 'archiving a conversation in v3', :vcr do
+    before do
+      CertifyMessages.configuration.msg_api_version = 3
+    end
+
+    let(:conversation) { CertifyMessages::Conversation.create params_v3 }
+    let(:archived_convo) do
+      CertifyMessages::Conversation.archive conversation_uuid: conversation[:body]['uuid'], archived: true
+    end
+
+    it 'will return with the correct status' do
+      expect(archived_convo[:status]).to eq(200)
+    end
+
+    after do
+      CertifyMessages.configuration.msg_api_version = 1
     end
   end
 end

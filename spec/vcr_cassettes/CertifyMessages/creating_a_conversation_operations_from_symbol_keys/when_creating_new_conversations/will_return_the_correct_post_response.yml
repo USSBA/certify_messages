@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_id":"5036","subject":"No reward is worth this.","user_1":"3477","user_2":"5190"}'
+    headers:
+      x-api-key:
+      - fake_api_key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v1
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"f0019cc9369f4d0c28b0f8c631b55b81"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - df37e59d-e6b4-49f7-88f3-49af05935a6c
+      X-Runtime:
+      - '0.022307'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":65,"user_1":3477,"user_2":5190,"application_id":5036,"subject":"No
+        reward is worth this.","created_at":"2018-11-06T16:24:03.994Z","updated_at":"2018-11-06T16:24:03.994Z","conversation_type":"application","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+recorded_with: VCR 4.0.0

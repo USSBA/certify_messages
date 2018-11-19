@@ -1,4 +1,5 @@
 # Creates mock hashes to be used in simulating messages and conversations
+# rubocop:disable Metrics/ModuleLength
 module MessageSpecHelper
   def self.json
     JSON.parse(response.body)
@@ -23,31 +24,28 @@ module MessageSpecHelper
   end
 
   def self.mock_conversation_sym
-    { id: Faker::Number.number(10),
-      application_id: Faker::Number.number(10),
+    { application_id: Faker::Number.number(4),
       subject: Faker::StarWars.quote,
-      user_1: Faker::Number.number(10),
-      user_2: Faker::Number.number(10),
+      user_1: Faker::Number.number(4),
+      user_2: Faker::Number.number(4),
       created_date: Date.today,
       updated_date: Date.today }
   end
 
   def self.mock_conversation_string
-    { "id" => Faker::Number.number(10),
-      "application_id" => Faker::Number.number(10),
+    { "application_id" => Faker::Number.number(4),
       "subject" => Faker::StarWars.quote,
-      "user_1" => Faker::Number.number(10),
-      "user_2" => Faker::Number.number(10),
+      "user_1" => Faker::Number.number(4),
+      "user_2" => Faker::Number.number(4),
       "created_date" => Date.today,
       "updated_date" => Date.today }
   end
 
   def self.mock_conversation_mixed
-    { id: Faker::Number.number(10),
-      application_id: Faker::Number.number(10),
+    { application_id: Faker::Number.number(4),
       "subject" => Faker::StarWars.quote,
-      "user_1" => Faker::Number.number(10),
-      user_2: Faker::Number.number(10),
+      "user_1" => Faker::Number.number(4),
+      user_2: Faker::Number.number(4),
       created_date: Date.today,
       updated_date: Date.today }
   end
@@ -60,19 +58,33 @@ module MessageSpecHelper
   # messages can be parameterized with keys as symbols, keys as strings or a mix of symbols and strings
   def self.mock_message_types
     {
-      symbol_keys: mock_message_sym(1, 2, 1),
-      string_keys: mock_message_string(1, 2, 1),
-      mixed_keys: mock_message_mixed(1, 2, 1)
+      symbol_keys: mock_message_sym(1000, 2000, 1000),
+      string_keys: mock_message_string(1000, 2000, 1000),
+      mixed_keys: mock_message_mixed(1000, 2000, 1000)
     }
   end
 
   # rubocop:disable Metrics/MethodLength
   def self.mock_message_sym(sender, recipient, owner)
     { message_id: Faker::Number.number(3),
-      conversation_id: 1,
+      conversation_id: 10,
       body: Faker::StarWars.wookie_sentence,
       sender_id: sender,
       recipient_id: recipient,
+      read: false,
+      sent: false,
+      created_at: Date.today,
+      updated_at: Date.today,
+      sender: owner == sender,
+      priority_read_receipt: true }
+  end
+
+  def self.mock_message_sym_v3(sender, recipient, owner)
+    { message_uuid: "b3edf1aa-c34f-49df-9bb1-4d189fd63cb2",
+      conversation_uuid: "ba057fb5-8447-429e-a5e5-94764963cb16",
+      body: Faker::StarWars.wookie_sentence,
+      sender_uuid: sender,
+      recipient_uuid: recipient,
       read: false,
       sent: false,
       created_at: Date.today,
@@ -84,7 +96,7 @@ module MessageSpecHelper
 
   def self.mock_message_string(sender, recipient, owner)
     { "message_id" => Faker::Number.number(3),
-      "conversation_id" => 1,
+      "conversation_id" => 10,
       "body" => Faker::StarWars.wookie_sentence,
       "sender_id" => sender,
       "recipient_id" => recipient,
@@ -97,7 +109,7 @@ module MessageSpecHelper
 
   def self.mock_message_mixed(sender, recipient, owner)
     { message_id: Faker::Number.number(3),
-      "conversation_id" => 1,
+      "conversation_id" => 10,
       "body" => Faker::StarWars.wookie_sentence,
       sender_id: sender,
       recipient_id: recipient,
@@ -110,12 +122,22 @@ module MessageSpecHelper
 
   def self.mock_unread_message_counts(application_ids, recipient_id)
     counts = application_ids.split(',').map do |app_id|
-      application_id = app_id.to_i
-      { application_id: application_id,
+      { application_id: app_id.to_i,
         recipient_id: recipient_id,
         unread_message_count: 5 }
     end
 
     { applications: counts }
   end
+
+  def self.mock_unread_message_counts_v3(application_uuids, recipient_uuid)
+    counts = application_uuids.split(',').map do |app_uuid|
+      { application_uuid: app_uuid,
+        recipient_uuid: recipient_uuid,
+        unread_message_count: 5 }
+    end
+
+    { applications: counts }
+  end
 end
+# rubocop:enable Metrics/ModuleLength

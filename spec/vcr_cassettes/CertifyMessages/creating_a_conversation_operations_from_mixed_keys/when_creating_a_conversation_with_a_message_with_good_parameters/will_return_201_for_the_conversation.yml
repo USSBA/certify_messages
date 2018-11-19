@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_id":"1696","subject":"Well, you said you wanted to be
+        around when I made a mistake.","user_1":"5159","user_2":"7507"}'
+    headers:
+      x-api-key:
+      - fake_api_key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v1
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"608544bdd1e729cea8e82629e4837e5d"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 97ea785c-9574-48c6-ac0f-85c77ea16800
+      X-Runtime:
+      - '0.016850'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":73,"user_1":5159,"user_2":7507,"application_id":1696,"subject":"Well,
+        you said you wanted to be around when I made a mistake.","created_at":"2018-11-06T16:24:04.895Z","updated_at":"2018-11-06T16:24:04.895Z","conversation_type":"application","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations/73/messages
+    body:
+      encoding: UTF-8
+      string: '{"body":"Just because you have the emotional range of a teaspoon doesn’t
+        mean we all have.","conversation_id":73}'
+    headers:
+      x-api-key:
+      - fake_api_key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v1
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 8a645657-5e41-4010-ba6f-13cdc9f2e071
+      X-Runtime:
+      - '0.023930'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sender_id":["can''t be blank","sender_id must be a user from conversation"],"recipient_id":["can''t
+        be blank","recipient_id must be a user from conversation"],"user":["sender_id
+        and recipient_id cannot be equal"]}'
+    http_version: 
+  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+recorded_with: VCR 4.0.0

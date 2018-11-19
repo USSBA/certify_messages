@@ -1,6 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2018-11-21
+### shared-services-sprint-56
+  - Added
+    - HUB-1700: Updated for use with Notification API v3
+
+## [1.5.0] - 2018-11-09
+### shared-services-sprint-55
+  - Added
+    - HUB-1643: Added api_key to configuration in anticipation of AWS API Gateway
+  - Changed
+    - HUB-1676
+      - Changed test to new pattern using VCR
+
 ## [1.4.0] - 2018-09-14
 ### shared-services-sprint-51
   - Added
