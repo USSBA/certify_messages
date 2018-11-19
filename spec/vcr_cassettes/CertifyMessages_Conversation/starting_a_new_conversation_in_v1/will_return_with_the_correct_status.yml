@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"user_1":1000,"user_2":2000,"application_id":10000,"subject":"This
+        is the first subject","conversation_type":"application"}'
+    headers:
+      x-api-key:
+      - fake_api_key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v1
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"69f4610815f95a62cf920a713d3c78c2"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - f56b2974-8b1b-44ac-9d3f-5eb6b56c2b38
+      X-Runtime:
+      - '0.051014'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":33,"user_1":1000,"user_2":2000,"application_id":10000,"subject":"This
+        is the first subject","created_at":"2018-11-15T16:10:21.988Z","updated_at":"2018-11-15T16:10:21.988Z","conversation_type":"application","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Thu, 15 Nov 2018 16:10:22 GMT
+recorded_with: VCR 4.0.0

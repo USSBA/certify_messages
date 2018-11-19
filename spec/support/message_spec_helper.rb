@@ -1,4 +1,5 @@
 # Creates mock hashes to be used in simulating messages and conversations
+# rubocop:disable Metrics/ModuleLength
 module MessageSpecHelper
   def self.json
     JSON.parse(response.body)
@@ -77,6 +78,20 @@ module MessageSpecHelper
       sender: owner == sender,
       priority_read_receipt: true }
   end
+
+  def self.mock_message_sym_v3(sender, recipient, owner)
+    { message_uuid: "b3edf1aa-c34f-49df-9bb1-4d189fd63cb2",
+      conversation_uuid: "ba057fb5-8447-429e-a5e5-94764963cb16",
+      body: Faker::StarWars.wookie_sentence,
+      sender_uuid: sender,
+      recipient_uuid: recipient,
+      read: false,
+      sent: false,
+      created_at: Date.today,
+      updated_at: Date.today,
+      sender: owner == sender,
+      priority_read_receipt: true }
+  end
   # rubocop:enable Metrics/MethodLength
 
   def self.mock_message_string(sender, recipient, owner)
@@ -107,12 +122,22 @@ module MessageSpecHelper
 
   def self.mock_unread_message_counts(application_ids, recipient_id)
     counts = application_ids.split(',').map do |app_id|
-      application_id = app_id.to_i
-      { application_id: application_id,
+      { application_id: app_id.to_i,
         recipient_id: recipient_id,
         unread_message_count: 5 }
     end
 
     { applications: counts }
   end
+
+  def self.mock_unread_message_counts_v3(application_uuids, recipient_uuid)
+    counts = application_uuids.split(',').map do |app_uuid|
+      { application_uuid: app_uuid,
+        recipient_uuid: recipient_uuid,
+        unread_message_count: 5 }
+    end
+
+    { applications: counts }
+  end
 end
+# rubocop:enable Metrics/ModuleLength

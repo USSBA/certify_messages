@@ -55,7 +55,11 @@ module CertifyMessages
 
     # Sanitizes the provided paramaters
     def self.message_safe_params(params)
-      permitted_keys = %w[body sender_id recipient_id conversation_id read sent id priority_read_receipt order]
+      permitted_keys_v1 = %w[sender_id recipient_id conversation_id id]
+      permitted_keys_v3 = %w[sender_uuid recipient_uuid conversation_uuid uuid]
+      permitted_keys = %w[body read sent priority_read_receipt order]
+      # NOTE: ternary statement will need to be replaced once we have more than two versions to support
+      msg_api_version == 3 ? permitted_keys.push(*permitted_keys_v3) : permitted_keys.push(*permitted_keys_v1)
       symbolize_params(params.select { |key, _| permitted_keys.include? key.to_s })
     end
 
@@ -73,15 +77,15 @@ module CertifyMessages
     end
 
     def self.build_find_path(params, order)
-      "#{path_prefix}/#{conversations_path}/#{params[:conversation_id]}/#{messages_path}#{order}"
+      "#{path_prefix}/#{conversations_path}/#{conversation_param_value(params)}/#{messages_path}#{order}"
     end
 
     def self.build_create_path(params)
-      "#{path_prefix}/#{conversations_path}/#{params[:conversation_id]}/#{messages_path}"
+      "#{path_prefix}/#{conversations_path}/#{conversation_param_value(params)}/#{messages_path}"
     end
 
     def self.build_update_path(params)
-      "#{path_prefix}/#{conversations_path}/#{params[:conversation_id]}/#{messages_path}/#{params[:id]}"
+      "#{path_prefix}/#{conversations_path}/#{conversation_param_value(params)}/#{messages_path}/#{message_param_value(params)}"
     end
   end
 end
