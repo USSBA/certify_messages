@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2018-11-21
+### shared-services-sprint-56
+  - Added
+    - HUB-1700: Updated for use with Notification API v3
+
 ## [1.5.0] - 2018-11-09
 ### shared-services-sprint-55
   - Added
