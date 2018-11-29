@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:3001/msg/conversations?application_id=4
+    uri: http://localhost:3001/msg/conversations/?application_id=4
     body:
       encoding: US-ASCII
       string: ''
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Accept:
       - application/sba.msg-api.v1
   response:
@@ -23,12 +23,12 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 6e9608b3-0f1e-4e95-a093-c02085b790cc
+      - 911ba04f-71ea-4d19-aa15-889872c977cd
       X-Runtime:
-      - '0.021913'
+      - '0.019395'
     body:
       encoding: ASCII-8BIT
       string: "[]"
     http_version: 
-  recorded_at: Thu, 15 Nov 2018 16:24:40 GMT
+  recorded_at: Thu, 29 Nov 2018 03:25:30 GMT
 recorded_with: VCR 4.0.0

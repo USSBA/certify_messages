@@ -103,26 +103,9 @@ module CertifyMessages
       {body: body, status: status}
     end
 
-    # Returns ID or UUID value based on version
-    def self.conversation_param_value(params)
-      # NOTE: ternary statement will need to be replaced once we have more than two versions to support
-      msg_api_version == 3 ? params[:conversation_uuid] : params[:conversation_id]
-    end
-
     def self.message_param_value(params)
       # NOTE: ternary statement will need to be replaced once we have more than two versions to support
       msg_api_version == 3 ? params[:uuid] : params[:id]
-    end
-
-    # Returns T/F if ID or UUID value was in set of params
-    def self.conversation_param_included(params)
-      status =
-        if CertifyMessages.configuration.msg_api_version == 3
-          params.keys.include? :conversation_uuid
-        else
-          params.keys.include? :conversation_id
-        end
-      status
     end
   end
   # rubocop:enable Style/ClassVars

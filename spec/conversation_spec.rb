@@ -37,9 +37,13 @@ RSpec.describe CertifyMessages::Conversation, type: :feature do
   end
 
   describe 'archiving a conversation in v1', :vcr do
+    before do
+      CertifyMessages.configuration.msg_api_version = 1
+    end
+
     let(:conversation) { CertifyMessages::Conversation.create params }
     let(:archived_convo) do
-      CertifyMessages::Conversation.archive conversation_id: conversation[:body]['id'], archived: true
+      CertifyMessages::Conversation.archive id: conversation[:body]['id'], archived: true
     end
 
     it 'will return with the correct status' do
@@ -72,7 +76,7 @@ RSpec.describe CertifyMessages::Conversation, type: :feature do
 
     let(:conversation) { CertifyMessages::Conversation.create params_v3 }
     let(:archived_convo) do
-      CertifyMessages::Conversation.archive conversation_uuid: conversation[:body]['uuid'], archived: true
+      CertifyMessages::Conversation.archive uuid: conversation[:body]['uuid'], archived: true
     end
 
     it 'will return with the correct status' do

@@ -5,10 +5,11 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"5036","subject":"No reward is worth this.","user_1":"3477","user_2":"5190"}'
+      string: '{"application_id":"2896","subject":"If they follow standard Imperial
+        procedure, they''ll dump their garbage before they go to light-speed.","user_1":"7692","user_2":"3816"}'
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Content-Type:
       - application/json
       Accept:
@@ -21,17 +22,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"f0019cc9369f4d0c28b0f8c631b55b81"
+      - W/"29dc535a6b4889afcd6dfe51936857a3"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - df37e59d-e6b4-49f7-88f3-49af05935a6c
+      - ae703d19-e56a-48e0-9773-990fac39b021
       X-Runtime:
-      - '0.022307'
+      - '0.016069'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":65,"user_1":3477,"user_2":5190,"application_id":5036,"subject":"No
-        reward is worth this.","created_at":"2018-11-06T16:24:03.994Z","updated_at":"2018-11-06T16:24:03.994Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":93,"user_1":7692,"user_2":3816,"application_id":2896,"subject":"If
+        they follow standard Imperial procedure, they''ll dump their garbage before
+        they go to light-speed.","created_at":"2018-11-29T03:25:29.820Z","updated_at":"2018-11-29T03:25:29.820Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+  recorded_at: Thu, 29 Nov 2018 03:25:29 GMT
 recorded_with: VCR 4.0.0

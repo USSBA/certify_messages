@@ -5,10 +5,11 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"5173","subject":"You''ll find I''m full of surprises!","user_1":"8166","user_2":"9902","conversation_type":"official"}'
+      string: '{"application_id":"5493","subject":"Aren''t you a little short for
+        a Stormtrooper?","user_1":"3229","user_2":"1619","conversation_type":"official"}'
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Content-Type:
       - application/json
       Accept:
@@ -21,17 +22,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"fb8b932d2e019b368a64ec16834f310e"
+      - W/"8881f6e2ec9633706ca198c893e43363"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 2ae00f58-4a0a-44c3-89c5-8ed4fccadbf3
+      - 12d0e2bf-2463-4c3c-a61f-155e66a94959
       X-Runtime:
-      - '0.040993'
+      - '0.049200'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":69,"user_1":8166,"user_2":9902,"application_id":5173,"subject":"You''ll
-        find I''m full of surprises!","created_at":"2018-11-06T16:24:04.715Z","updated_at":"2018-11-06T16:24:04.715Z","conversation_type":"official","archived":false,"archived_at":null}'
+      string: '{"id":97,"user_1":3229,"user_2":1619,"application_id":5493,"subject":"Aren''t
+        you a little short for a Stormtrooper?","created_at":"2018-11-29T03:25:30.499Z","updated_at":"2018-11-29T03:25:30.499Z","conversation_type":"official","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+  recorded_at: Thu, 29 Nov 2018 03:25:30 GMT
 recorded_with: VCR 4.0.0

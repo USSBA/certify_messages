@@ -5,11 +5,11 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"1696","subject":"Well, you said you wanted to be
-        around when I made a mistake.","user_1":"5159","user_2":"7507"}'
+      string: '{"application_id":"9534","subject":"You do have your moments. Not many,
+        but you have them.","user_1":"8671","user_2":"8086"}'
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Content-Type:
       - application/json
       Accept:
@@ -22,17 +22,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"d1f02844e18c6cae83d51c5eb81a63a6"
+      - W/"b11ac49cccb9d02d99c1f7b9912b3315"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 905ad2c7-6764-483c-9798-57fd9bcd4684
+      - ceb6700c-e31f-4892-9fc2-07656d98ac4c
       X-Runtime:
-      - '0.029490'
+      - '0.019797'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":71,"user_1":5159,"user_2":7507,"application_id":1696,"subject":"Well,
-        you said you wanted to be around when I made a mistake.","created_at":"2018-11-06T16:24:04.811Z","updated_at":"2018-11-06T16:24:04.811Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":99,"user_1":8671,"user_2":8086,"application_id":9534,"subject":"You
+        do have your moments. Not many, but you have them.","created_at":"2018-11-29T03:25:30.579Z","updated_at":"2018-11-29T03:25:30.579Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+  recorded_at: Thu, 29 Nov 2018 03:25:30 GMT
 recorded_with: VCR 4.0.0
