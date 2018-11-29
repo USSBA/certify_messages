@@ -2,8 +2,21 @@ module CertifyMessages
   # conversation class that handles getting and posting new conversations
   # rubocop:disable Metrics/ClassLength
   class Conversation < Resource
-    # base conversation finder
     # rubocop:disable Metrics/AbcSize
+
+    # filtered index
+    def self.where(params = nil)
+      return CertifyMessages.bad_request if empty_params(params)
+      safe_params = conversation_safe_params params
+      return CertifyMessages.unprocessable if safe_params.empty?
+      response = connection.request(method: :get,
+                                    path: build_where_conversations_path(safe_params))
+      return_response(json(response.data[:body]), response.data[:status])
+    rescue Excon::Error => error
+      handle_excon_error(error)
+    end
+
+    # retrieve a specific conversation
     def self.find(params = nil)
       return CertifyMessages.bad_request if empty_params(params)
       safe_params = conversation_safe_params params
@@ -84,19 +97,27 @@ module CertifyMessages
     # helper for white listing parameters
     def self.conversation_safe_params(params)
       params = sanitize_params params
-      permitted_keys_v1 = %w[id application_id user_1 user_2]
-      permitted_keys_v3 = %w[conversation_uuid application_uuid user1_uuid user2_uuid]
       permitted_keys = %w[subject conversation_type archived include_archived order]
-      # NOTE: ternary statement will need to be replaced once we have more than two versions to support
-      msg_api_version == 3 ? permitted_keys.push(*permitted_keys_v3) : permitted_keys.push(*permitted_keys_v1)
+      permitted_keys.push(*version_specific_keys)
       params.select { |key, _| permitted_keys.include? key.to_s }
+    end
+
+    def self.version_specific_keys
+      case msg_api_version
+      when 1
+        %w[id application_id user_1 user_2]
+      when 2
+        %w[uuid application_id user1_uuid user2_uuid]
+      when 3
+        %w[uuid application_uuid user1_uuid user2_uuid]
+      end
     end
 
     # helper for white listing parameters
     def self.archive_conversation_safe_params(params)
       params = sanitize_params params
-      permitted_keys_v1 = %w[conversation_id]
-      permitted_keys_v3 = %w[conversation_uuid]
+      permitted_keys_v1 = %w[id]
+      permitted_keys_v3 = %w[uuid]
       permitted_keys = %w[archived]
       # NOTE: ternary statement will need to be replaced once we have more than two versions to support
       msg_api_version == 3 ? permitted_keys.push(*permitted_keys_v3) : permitted_keys.push(*permitted_keys_v1)
@@ -123,8 +144,12 @@ module CertifyMessages
       sanitized_params
     end
 
-    def self.build_find_conversations_path(params)
+    def self.build_where_conversations_path(params)
       "#{path_prefix}/#{conversations_path}?#{URI.encode_www_form(params)}"
+    end
+
+    def self.build_find_conversations_path(params)
+      "#{path_prefix}/#{conversations_path}/#{conversation_param_value(params)}?#{URI.encode_www_form(params)}"
     end
 
     def self.build_create_conversations_path
@@ -137,6 +162,29 @@ module CertifyMessages
 
     def self.build_unread_message_counts_path(params)
       "#{path_prefix}/#{unread_message_counts_path}?#{URI.encode_www_form(params)}"
+    end
+
+    # Returns ID or UUID value based on version
+    def self.conversation_param_value(params)
+      case msg_api_version
+      when 1
+        params[:id]
+      when 2
+        params[:uuid]
+      when 3
+        params[:uuid]
+      end
+    end
+
+    # Returns T/F if ID or UUID value was in set of params
+    def self.conversation_param_included(params)
+      status =
+        if CertifyMessages.configuration.msg_api_version == 3
+          params.keys.include? :uuid
+        else
+          params.keys.include? :id
+        end
+      status
     end
   end
   # rubocop:enable Metrics/ClassLength

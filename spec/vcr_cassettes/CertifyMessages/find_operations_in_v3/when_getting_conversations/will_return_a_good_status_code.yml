@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:3001/msg/conversations?application_uuid=de891425-de6a-41b9-90e3-0b3e1edd5807
+    uri: http://localhost:3001/msg/conversations/?application_uuid=de891425-de6a-41b9-90e3-0b3e1edd5807
     body:
       encoding: US-ASCII
       string: ''
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Accept:
       - application/sba.msg-api.v3
   response:
@@ -19,16 +19,16 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"4f53cda18c2baa0c0354bb5f9a3ecbe5"
+      - W/"ebf9832165b4af90ee8f5385b180bb80"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - e62f6da0-d9b4-4d95-a2d1-28b6e0fd9e31
+      - 4ecd359e-070e-4749-8269-3af95ea36285
       X-Runtime:
-      - '0.009654'
+      - '0.012541'
     body:
       encoding: ASCII-8BIT
-      string: "[]"
+      string: '{"conversations":[]}'
     http_version: 
-  recorded_at: Wed, 14 Nov 2018 19:39:01 GMT
+  recorded_at: Thu, 29 Nov 2018 03:25:31 GMT
 recorded_with: VCR 4.0.0

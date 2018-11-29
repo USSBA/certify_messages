@@ -8,7 +8,7 @@ RSpec.describe CertifyMessages, type: :feature do
         let(:new_message_response) { CertifyMessages::Message.create(new_message) }
 
         it 'will return a status code of 201' do
-          expect(new_message_response[:status]).to be 201
+          expect(new_message_response[:status]).to eq 201
         end
       end
 

@@ -5,11 +5,11 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"1696","subject":"Well, you said you wanted to be
-        around when I made a mistake.","user_1":"5159","user_2":"7507"}'
+      string: '{"application_id":"9534","subject":"You do have your moments. Not many,
+        but you have them.","user_1":"8671","user_2":"8086"}'
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Content-Type:
       - application/json
       Accept:
@@ -22,29 +22,28 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"608544bdd1e729cea8e82629e4837e5d"
+      - W/"a1d5fecacee7fd33f0304a1fc31a0c5d"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 97ea785c-9574-48c6-ac0f-85c77ea16800
+      - 1392af5e-9b34-4935-a338-c83b36e5634d
       X-Runtime:
-      - '0.016850'
+      - '0.020673'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":73,"user_1":5159,"user_2":7507,"application_id":1696,"subject":"Well,
-        you said you wanted to be around when I made a mistake.","created_at":"2018-11-06T16:24:04.895Z","updated_at":"2018-11-06T16:24:04.895Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":101,"user_1":8671,"user_2":8086,"application_id":9534,"subject":"You
+        do have your moments. Not many, but you have them.","created_at":"2018-11-29T03:25:30.642Z","updated_at":"2018-11-29T03:25:30.642Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+  recorded_at: Thu, 29 Nov 2018 03:25:30 GMT
 - request:
     method: post
-    uri: http://localhost:3001/msg/conversations/73/messages
+    uri: http://localhost:3001/msg/conversations/101/messages
     body:
       encoding: UTF-8
-      string: '{"body":"Just because you have the emotional range of a teaspoon doesn’t
-        mean we all have.","conversation_id":73}'
+      string: '{"body":"After all this time? Always.","conversation_id":101}'
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Content-Type:
       - application/json
       Accept:
@@ -59,14 +58,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 8a645657-5e41-4010-ba6f-13cdc9f2e071
+      - ca9e39d3-d4d6-4f14-82d3-c59c911d2335
       X-Runtime:
-      - '0.023930'
+      - '0.013643'
     body:
       encoding: ASCII-8BIT
-      string: '{"sender_id":["can''t be blank","sender_id must be a user from conversation"],"recipient_id":["can''t
-        be blank","recipient_id must be a user from conversation"],"user":["sender_id
-        and recipient_id cannot be equal"]}'
+      string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
+        must be a user from conversation"],"recipient_id":["recipient must be a user
+        from conversation"]}'
     http_version: 
-  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+  recorded_at: Thu, 29 Nov 2018 03:25:30 GMT
 recorded_with: VCR 4.0.0

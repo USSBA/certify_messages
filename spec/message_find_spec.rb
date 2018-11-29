@@ -2,6 +2,10 @@ require 'spec_helper'
 
 RSpec.describe CertifyMessages, type: :feature do
   describe 'Getting messages in v1', :vcr do
+    before do
+      CertifyMessages.configuration.msg_api_version = 1
+    end
+
     context 'when getting messages' do
       let(:mock) { MessageSpecHelper.mock_messages_sym 1 }
       let(:messages) { CertifyMessages::Message.find(conversation_id: 1) }
@@ -86,7 +90,7 @@ RSpec.describe CertifyMessages, type: :feature do
 
     context 'when getting messages' do
       let(:mock) { MessageSpecHelper.mock_messages_sym 1 }
-      let(:messages) { CertifyMessages::Message.find(conversation_uuid: "de891425-de6a-41b9-90e3-0b3e1edd5807") }
+      let(:messages) { CertifyMessages::Message.find(conversation_uuid: "b3edf1aa-c34f-49df-9bb1-4d189fd63cb2") }
 
       it 'will have a ok status' do
         expect(messages[:status]).to be 200
@@ -96,7 +100,7 @@ RSpec.describe CertifyMessages, type: :feature do
     context "with the priority_read_receipt_parameter" do
       let(:mock) do
         {
-          conversation_uuid: "de891425-de6a-41b9-90e3-0b3e1edd5807",
+          conversation_uuid: "b3edf1aa-c34f-49df-9bb1-4d189fd63cb2",
           priority_read_receipt: true
         }
       end
