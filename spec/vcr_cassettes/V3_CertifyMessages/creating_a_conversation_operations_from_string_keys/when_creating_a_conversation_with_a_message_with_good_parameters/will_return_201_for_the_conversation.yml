@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_uuid":"6ba496cf-34a9-4bcb-89c5-63f0b8275027","subject":"Judge
+        me by my size, do you?","user1_uuid":"4c312dd2-1f3a-4550-9756-699ce40e5c5f","user2_uuid":"ae40d8cc-bb5e-452d-9788-49b191484479"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"733ddf9fbbf19d3897d08d1c0a3b1d5c"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - babd2e37-9152-4bbf-8b66-fb21e61e6953
+      X-Runtime:
+      - '0.021134'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"ea6be5d7-df2b-4144-a85c-a676e1e5a158","user1_uuid":"4c312dd2-1f3a-4550-9756-699ce40e5c5f","user2_uuid":"ae40d8cc-bb5e-452d-9788-49b191484479","application_uuid":"6ba496cf-34a9-4bcb-89c5-63f0b8275027","subject":"Judge
+        me by my size, do you?","created_at":"2018-12-03T13:24:15.283Z","updated_at":"2018-12-03T13:24:15.283Z","conversation_type":"application","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Mon, 03 Dec 2018 13:24:15 GMT
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations/ea6be5d7-df2b-4144-a85c-a676e1e5a158/messages
+    body:
+      encoding: UTF-8
+      string: '{"body":"No story lives unless someone wants to listen. The stories
+        we love best do live in us forever. So whether you come back by page or by
+        the big screen, Hogwarts will always be there to welcome you home.","conversation_uuid":"ea6be5d7-df2b-4144-a85c-a676e1e5a158"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - d159daeb-4c43-4887-9e33-e7cafa0b4bba
+      X-Runtime:
+      - '0.011078'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
+        must be a user from conversation"],"recipient_id":["recipient must be a user
+        from conversation"]}'
+    http_version: 
+  recorded_at: Mon, 03 Dec 2018 13:24:15 GMT
+recorded_with: VCR 4.0.0

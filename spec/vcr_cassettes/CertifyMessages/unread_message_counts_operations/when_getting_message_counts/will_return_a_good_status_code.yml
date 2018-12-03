@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3001/msg/unread_message_counts?application_ids=1%2C2&recipient_id=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Accept:
+      - application/sba.msg-api.v1
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"ec51583a3d082a487c5fa93d539d940f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - e9a32409-ad7e-4aaa-a7b5-3ba7de8202c2
+      X-Runtime:
+      - '0.009576'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"applications":[{"application_id":1,"recipient_id":1,"unread_message_count":0},{"application_id":2,"recipient_id":1,"unread_message_count":0}]}'
+    http_version: 
+  recorded_at: Mon, 03 Dec 2018 13:24:14 GMT
+recorded_with: VCR 4.0.0

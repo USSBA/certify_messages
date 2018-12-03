@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_uuid":"6ba496cf-34a9-4bcb-89c5-63f0b8275027","subject":"Judge
+        me by my size, do you?","user1_uuid":"4c312dd2-1f3a-4550-9756-699ce40e5c5f","user2_uuid":"ae40d8cc-bb5e-452d-9788-49b191484479","conversation_type":"official"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"f7c7a8ce370c88cee4f07c1176597574"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 9a4e50f5-a90a-42c1-9c9c-d61a9078733a
+      X-Runtime:
+      - '0.017768'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"a77f8330-0536-4888-a55f-05ebab0adf20","user1_uuid":"4c312dd2-1f3a-4550-9756-699ce40e5c5f","user2_uuid":"ae40d8cc-bb5e-452d-9788-49b191484479","application_uuid":"6ba496cf-34a9-4bcb-89c5-63f0b8275027","subject":"Judge
+        me by my size, do you?","created_at":"2018-12-03T13:24:15.257Z","updated_at":"2018-12-03T13:24:15.257Z","conversation_type":"official","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Mon, 03 Dec 2018 13:24:15 GMT
+recorded_with: VCR 4.0.0

@@ -5,8 +5,7 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"5493","subject":"Aren''t you a little short for
-        a Stormtrooper?","user_1":"3229","user_2":"1619"}'
+      string: '{"application_id":"3135","subject":"That is why you fail.","user_1":"2567","user_2":"7117"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,26 +21,26 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"4723589c8f5fab9a75200b187b25d2fa"
+      - W/"8615e72563ae118af6dc95d1c5d79348"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 4d4a6d66-7602-4f0b-bc92-e23a5d7d2e0b
+      - ec436620-8f99-4931-8801-9507f29e3827
       X-Runtime:
-      - '0.018370'
+      - '0.016344'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":98,"user_1":3229,"user_2":1619,"application_id":5493,"subject":"Aren''t
-        you a little short for a Stormtrooper?","created_at":"2018-11-29T03:25:30.529Z","updated_at":"2018-11-29T03:25:30.529Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":352,"user_1":2567,"user_2":7117,"application_id":3135,"subject":"That
+        is why you fail.","created_at":"2018-12-03T13:24:14.605Z","updated_at":"2018-12-03T13:24:14.605Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Thu, 29 Nov 2018 03:25:30 GMT
+  recorded_at: Mon, 03 Dec 2018 13:24:14 GMT
 - request:
     method: post
-    uri: http://localhost:3001/msg/conversations/98/messages
+    uri: http://localhost:3001/msg/conversations/352/messages
     body:
       encoding: UTF-8
-      string: '{"body":"Just because you have the emotional range of a teaspoon doesn’t
-        mean we all have.","conversation_id":98}'
+      string: '{"body":"Never trust anything that can think for itself if you can''t
+        see where it keeps its brain.","conversation_id":352}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -59,14 +58,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 636c3e27-a0e8-4c94-903d-bdf37c1ca5d4
+      - 260751fa-671e-4324-9554-ce44f1d9187f
       X-Runtime:
-      - '0.014743'
+      - '0.008880'
     body:
       encoding: ASCII-8BIT
       string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
         must be a user from conversation"],"recipient_id":["recipient must be a user
         from conversation"]}'
     http_version: 
-  recorded_at: Thu, 29 Nov 2018 03:25:30 GMT
+  recorded_at: Mon, 03 Dec 2018 13:24:14 GMT
 recorded_with: VCR 4.0.0

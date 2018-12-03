@@ -5,8 +5,8 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"2896","subject":"If they follow standard Imperial
-        procedure, they''ll dump their garbage before they go to light-speed.","user_1":"7692","user_2":"3816"}'
+      string: '{"application_id":"3481","subject":"Aren''t you a little short for
+        a Stormtrooper?","user_1":"3027","user_2":"8937"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,18 +22,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"29dc535a6b4889afcd6dfe51936857a3"
+      - W/"240ed7facb547c83ab573987475a4e5a"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - ae703d19-e56a-48e0-9773-990fac39b021
+      - f3e3e7f8-f7ec-44e4-9bfc-a3a0e0831623
       X-Runtime:
-      - '0.016069'
+      - '0.012366'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":93,"user_1":7692,"user_2":3816,"application_id":2896,"subject":"If
-        they follow standard Imperial procedure, they''ll dump their garbage before
-        they go to light-speed.","created_at":"2018-11-29T03:25:29.820Z","updated_at":"2018-11-29T03:25:29.820Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":347,"user_1":3027,"user_2":8937,"application_id":3481,"subject":"Aren''t
+        you a little short for a Stormtrooper?","created_at":"2018-12-03T13:24:14.060Z","updated_at":"2018-12-03T13:24:14.060Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Thu, 29 Nov 2018 03:25:29 GMT
+  recorded_at: Mon, 03 Dec 2018 13:24:14 GMT
 recorded_with: VCR 4.0.0

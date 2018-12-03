@@ -3,8 +3,10 @@ require "certify_messages"
 require "byebug"
 require "faker"
 require "vcr"
+require "./spec/support/vcr_helper.rb"
 
-Dir['./spec/support/**/*.rb'].each { |f| require f }
+# Don't load all support files, let specs pick and choose
+# Dir['./spec/support/**/*.rb'].each { |f| require f }
 
 # configure the CertifyMessages module for testing
 CertifyMessages.configure do |config|

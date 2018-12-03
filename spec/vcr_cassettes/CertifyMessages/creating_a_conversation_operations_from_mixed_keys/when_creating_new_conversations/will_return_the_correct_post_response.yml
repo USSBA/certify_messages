@@ -5,8 +5,8 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"9534","subject":"You do have your moments. Not many,
-        but you have them.","user_1":"8671","user_2":"8086"}'
+      string: '{"application_id":"4118","subject":"Would somebody get this big walking
+        carpet out of my way?","user_1":"6315","user_2":"7449"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,17 +22,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"b11ac49cccb9d02d99c1f7b9912b3315"
+      - W/"f936c60a78af854d4151128a8ea0eff2"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - ceb6700c-e31f-4892-9fc2-07656d98ac4c
+      - 7842b3ed-549e-430f-87bc-2fe56d4ecf62
       X-Runtime:
-      - '0.019797'
+      - '0.021195'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":99,"user_1":8671,"user_2":8086,"application_id":9534,"subject":"You
-        do have your moments. Not many, but you have them.","created_at":"2018-11-29T03:25:30.579Z","updated_at":"2018-11-29T03:25:30.579Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":353,"user_1":6315,"user_2":7449,"application_id":4118,"subject":"Would
+        somebody get this big walking carpet out of my way?","created_at":"2018-12-03T13:24:14.642Z","updated_at":"2018-12-03T13:24:14.642Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Thu, 29 Nov 2018 03:25:30 GMT
+  recorded_at: Mon, 03 Dec 2018 13:24:14 GMT
 recorded_with: VCR 4.0.0
