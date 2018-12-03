@@ -23,12 +23,12 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 0e9b0036-4cb4-41cf-b03e-f0ac02b74849
+      - 6472f3fb-364d-4441-98e0-280ee36c62d9
       X-Runtime:
-      - '0.020040'
+      - '0.020522'
     body:
       encoding: ASCII-8BIT
       string: '[{"id":1,"body":"This is another message","conversation_id":1,"sender_id":null,"recipient_id":null,"read":true,"sent":false,"created_at":"2018-11-28T20:57:49.550Z","updated_at":"2018-11-28T21:25:49.505Z","priority_read_receipt":false}]'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 13:24:15 GMT
+  recorded_at: Mon, 03 Dec 2018 16:24:19 GMT
 recorded_with: VCR 4.0.0

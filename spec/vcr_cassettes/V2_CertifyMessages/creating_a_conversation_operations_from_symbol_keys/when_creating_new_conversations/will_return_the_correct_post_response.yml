@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_id":"3984","subject":"Do. Or do not. There is no try.","user1_uuid":"7f6625f7-3d60-418d-9dac-3bc3267931f7","user2_uuid":"72f2404f-e84e-40e8-9b08-aabf7128c716"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v2
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"d0b50d293352a1142709ce2fea8c9862"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - e6a43931-7e2c-4a95-9dc8-e3692ab8b067
+      X-Runtime:
+      - '0.029602'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"23f11ac7-b758-4c9c-8f70-7e69f74b935a","user1_uuid":"7f6625f7-3d60-418d-9dac-3bc3267931f7","user2_uuid":"72f2404f-e84e-40e8-9b08-aabf7128c716","application_id":3984,"subject":"Do.
+        Or do not. There is no try.","created_at":"2018-12-03T16:24:19.481Z","updated_at":"2018-12-03T16:24:19.481Z","conversation_type":"application","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Mon, 03 Dec 2018 16:24:19 GMT
+recorded_with: VCR 4.0.0

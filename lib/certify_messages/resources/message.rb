@@ -1,5 +1,6 @@
 module CertifyMessages
   # message class that handles geting and posting messages
+  # rubocop:disable Metrics/ClassLength
   class Message < Resource
     # Basic message finder
     # rubocop:disable Metrics/AbcSize
@@ -123,5 +124,17 @@ module CertifyMessages
         params[:conversation_uuid]
       end
     end
+
+    def self.message_param_value(params)
+      case msg_api_version
+      when 1
+        params[:id]
+      when 2
+        params[:uuid]
+      when 3
+        params[:uuid]
+      end
+    end
   end
+  # rubocop:enable Metrics/ClassLength
 end

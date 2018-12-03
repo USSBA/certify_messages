@@ -10,11 +10,6 @@ module V3
 
     describe 'Updating messages', :vcr do
       context 'with read/unread status' do
-#        let(:read_message) do
-#          MessageSpecHelper.mock_message_sym(V3::MessageSpecHelper.mock_user1_uuid,
-#                                             V3::MessageSpecHelper.mock_user2_uuid,
-#                                             V3::MessageSpecHelper.mock_user1_uuid)
-#        end
         let(:params) do
           {
             uuid: V3::MessageSpecHelper.mock_message_uuid,

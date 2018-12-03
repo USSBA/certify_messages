@@ -22,25 +22,25 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"7ebcb84906292f54d4941ab05154f766"
+      - W/"b5a1fe44b66c717b9d5b8ad540b839ce"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 90d50acc-3231-4e3e-bb83-8df8c2c7dd85
+      - 89d18a9c-f69e-4029-8082-35068a311122
       X-Runtime:
-      - '0.016536'
+      - '0.024083'
     body:
       encoding: ASCII-8BIT
-      string: '{"uuid":"78c2040f-81fc-4087-9dd6-5d19ab0a610f","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
-        is the first subject","created_at":"2018-12-03T13:24:15.653Z","updated_at":"2018-12-03T13:24:15.653Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"uuid":"ea41b91a-387d-48d8-9c1d-75d0faf380cb","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
+        is the first subject","created_at":"2018-12-03T16:24:20.979Z","updated_at":"2018-12-03T16:24:20.979Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 13:24:15 GMT
+  recorded_at: Mon, 03 Dec 2018 16:24:21 GMT
 - request:
     method: put
-    uri: http://localhost:3001/msg/conversations/78c2040f-81fc-4087-9dd6-5d19ab0a610f
+    uri: http://localhost:3001/msg/conversations/ea41b91a-387d-48d8-9c1d-75d0faf380cb
     body:
       encoding: UTF-8
-      string: '{"uuid":"78c2040f-81fc-4087-9dd6-5d19ab0a610f","archived":true}'
+      string: '{"uuid":"ea41b91a-387d-48d8-9c1d-75d0faf380cb","archived":true}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -56,17 +56,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"7b8224cde780987f1e739e35208edc6d"
+      - W/"2351513d4eba95b6026d1ec27f62de8d"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - e41bec8f-3624-4c28-851a-c8715c16321c
+      - 4ef5a32f-2da2-4032-ab22-a4cf62de70ff
       X-Runtime:
-      - '0.015352'
+      - '0.021264'
     body:
       encoding: ASCII-8BIT
-      string: '{"uuid":"78c2040f-81fc-4087-9dd6-5d19ab0a610f","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
-        is the first subject","created_at":"2018-12-03T13:24:15.653Z","updated_at":"2018-12-03T13:24:15.675Z","conversation_type":"application","archived":true,"archived_at":"2018-12-03T13:24:15.674Z"}'
+      string: '{"uuid":"ea41b91a-387d-48d8-9c1d-75d0faf380cb","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
+        is the first subject","created_at":"2018-12-03T16:24:20.979Z","updated_at":"2018-12-03T16:24:21.011Z","conversation_type":"application","archived":true,"archived_at":"2018-12-03T16:24:21.009Z"}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 13:24:15 GMT
+  recorded_at: Mon, 03 Dec 2018 16:24:21 GMT
 recorded_with: VCR 4.0.0

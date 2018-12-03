@@ -24,6 +24,7 @@ module V1
 
     describe 'starting a new conversation', :vcr do
       let(:conversation) { CertifyMessages::Conversation.create params }
+
       it 'will return with the correct status' do
         expect(conversation[:status]).to eq(201)
       end

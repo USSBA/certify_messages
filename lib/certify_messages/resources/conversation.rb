@@ -178,12 +178,15 @@ module CertifyMessages
 
     # Returns T/F if ID or UUID value was in set of params
     def self.conversation_param_included(params)
-      status =
-        if CertifyMessages.configuration.msg_api_version == 3
-          params.keys.include? :uuid
-        else
-          params.keys.include? :id
-        end
+      status = false
+      case msg_api_version
+      when 1
+        status = params.keys.include? :id
+      when 2
+        status = params.keys.include? :uuid
+      when 3
+        status = params.keys.include? :uuid
+      end
       status
     end
   end

@@ -5,8 +5,7 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"4118","subject":"Would somebody get this big walking
-        carpet out of my way?","user_1":"6315","user_2":"7449"}'
+      string: '{"application_id":"2142","subject":"I have a bad feeling about this.","user_1":"5533","user_2":"8689"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,17 +21,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"f936c60a78af854d4151128a8ea0eff2"
+      - W/"6d6071636c99b4464fb0ea3953d05742"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 7842b3ed-549e-430f-87bc-2fe56d4ecf62
+      - 472de561-f3e1-4c56-b336-588ed3565500
       X-Runtime:
-      - '0.021195'
+      - '0.013189'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":353,"user_1":6315,"user_2":7449,"application_id":4118,"subject":"Would
-        somebody get this big walking carpet out of my way?","created_at":"2018-12-03T13:24:14.642Z","updated_at":"2018-12-03T13:24:14.642Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":510,"user_1":5533,"user_2":8689,"application_id":2142,"subject":"I
+        have a bad feeling about this.","created_at":"2018-12-03T16:24:18.934Z","updated_at":"2018-12-03T16:24:18.934Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 13:24:14 GMT
+  recorded_at: Mon, 03 Dec 2018 16:24:18 GMT
 recorded_with: VCR 4.0.0

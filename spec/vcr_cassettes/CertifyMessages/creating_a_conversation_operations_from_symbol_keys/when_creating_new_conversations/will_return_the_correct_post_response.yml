@@ -5,8 +5,7 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"3481","subject":"Aren''t you a little short for
-        a Stormtrooper?","user_1":"3027","user_2":"8937"}'
+      string: '{"application_id":"1039","subject":"Shut him up or shut him down.","user_1":"4844","user_2":"2504"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,17 +21,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"240ed7facb547c83ab573987475a4e5a"
+      - W/"6c6c6f716acd5d5eeadac90211e17532"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - f3e3e7f8-f7ec-44e4-9bfc-a3a0e0831623
+      - 0b2d535e-8151-409b-80d2-aba073272039
       X-Runtime:
-      - '0.012366'
+      - '0.294743'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":347,"user_1":3027,"user_2":8937,"application_id":3481,"subject":"Aren''t
-        you a little short for a Stormtrooper?","created_at":"2018-12-03T13:24:14.060Z","updated_at":"2018-12-03T13:24:14.060Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":504,"user_1":4844,"user_2":2504,"application_id":1039,"subject":"Shut
+        him up or shut him down.","created_at":"2018-12-03T16:24:18.199Z","updated_at":"2018-12-03T16:24:18.199Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 13:24:14 GMT
+  recorded_at: Mon, 03 Dec 2018 16:24:18 GMT
 recorded_with: VCR 4.0.0
