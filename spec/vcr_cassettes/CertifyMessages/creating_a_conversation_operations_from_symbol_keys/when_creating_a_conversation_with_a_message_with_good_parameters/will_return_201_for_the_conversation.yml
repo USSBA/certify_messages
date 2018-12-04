@@ -5,8 +5,7 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"2896","subject":"If they follow standard Imperial
-        procedure, they''ll dump their garbage before they go to light-speed.","user_1":"7692","user_2":"3816"}'
+      string: '{"application_id":"1039","subject":"Shut him up or shut him down.","user_1":"4844","user_2":"2504"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,27 +21,25 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"ad141bc763c6a206cfa24d4f0fcccd55"
+      - W/"58f5aeb9a6dbe30b1ef1e6fdc331d853"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - eaacd9df-18ab-4f7b-8c8f-c324f6328c2d
+      - 4ede0225-1d6a-4dae-b605-304e377dd997
       X-Runtime:
-      - '0.015327'
+      - '0.012601'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":95,"user_1":7692,"user_2":3816,"application_id":2896,"subject":"If
-        they follow standard Imperial procedure, they''ll dump their garbage before
-        they go to light-speed.","created_at":"2018-11-29T03:25:30.366Z","updated_at":"2018-11-29T03:25:30.366Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":506,"user_1":4844,"user_2":2504,"application_id":1039,"subject":"Shut
+        him up or shut him down.","created_at":"2018-12-03T16:24:18.774Z","updated_at":"2018-12-03T16:24:18.774Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Thu, 29 Nov 2018 03:25:30 GMT
+  recorded_at: Mon, 03 Dec 2018 16:24:18 GMT
 - request:
     method: post
-    uri: http://localhost:3001/msg/conversations/95/messages
+    uri: http://localhost:3001/msg/conversations/506/messages
     body:
       encoding: UTF-8
-      string: '{"body":"You sort of start thinking anything’s possible if you’ve got
-        enough nerve.","conversation_id":95}'
+      string: '{"body":"I solemnly swear I am up to no good.","conversation_id":506}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -60,14 +57,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 9d23af33-c3d7-4108-89ca-5d16cce598fc
+      - d6e045dd-cd07-49c8-9277-f280631d22c8
       X-Runtime:
-      - '0.039395'
+      - '0.040525'
     body:
       encoding: ASCII-8BIT
       string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
         must be a user from conversation"],"recipient_id":["recipient must be a user
         from conversation"]}'
     http_version: 
-  recorded_at: Thu, 29 Nov 2018 03:25:30 GMT
+  recorded_at: Mon, 03 Dec 2018 16:24:18 GMT
 recorded_with: VCR 4.0.0

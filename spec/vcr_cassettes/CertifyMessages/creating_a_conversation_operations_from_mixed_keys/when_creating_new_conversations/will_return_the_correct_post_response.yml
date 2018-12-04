@@ -5,8 +5,7 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"9534","subject":"You do have your moments. Not many,
-        but you have them.","user_1":"8671","user_2":"8086"}'
+      string: '{"application_id":"2142","subject":"I have a bad feeling about this.","user_1":"5533","user_2":"8689"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,17 +21,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"b11ac49cccb9d02d99c1f7b9912b3315"
+      - W/"6d6071636c99b4464fb0ea3953d05742"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - ceb6700c-e31f-4892-9fc2-07656d98ac4c
+      - 472de561-f3e1-4c56-b336-588ed3565500
       X-Runtime:
-      - '0.019797'
+      - '0.013189'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":99,"user_1":8671,"user_2":8086,"application_id":9534,"subject":"You
-        do have your moments. Not many, but you have them.","created_at":"2018-11-29T03:25:30.579Z","updated_at":"2018-11-29T03:25:30.579Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":510,"user_1":5533,"user_2":8689,"application_id":2142,"subject":"I
+        have a bad feeling about this.","created_at":"2018-12-03T16:24:18.934Z","updated_at":"2018-12-03T16:24:18.934Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Thu, 29 Nov 2018 03:25:30 GMT
+  recorded_at: Mon, 03 Dec 2018 16:24:18 GMT
 recorded_with: VCR 4.0.0

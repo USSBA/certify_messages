@@ -5,8 +5,8 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations/10/messages
     body:
       encoding: UTF-8
-      string: '{"conversation_id":10,"body":"Ru roooarrgh ru wyaaaaaa roo hnn-rowr
-        wua youw ooma ma!","sender_id":1000,"recipient_id":2000,"read":false,"sent":false}'
+      string: '{"conversation_id":10,"body":"Ur wua roooarrgh kabukk muaa wyaaaaaa
+        huewaa yrroonn ur?","sender_id":1000,"recipient_id":2000,"read":false,"sent":false}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,17 +22,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"47ef41219805fa786a6964432777e004"
+      - W/"22635f4893e599b0669e4eeb3b45ff18"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 7f8b22b9-3195-47c8-9b3f-ffa8dede239e
+      - 341a5b0f-7722-4de5-8826-e515ef831460
       X-Runtime:
-      - '0.027692'
+      - '0.031144'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":16,"body":"Ru roooarrgh ru wyaaaaaa roo hnn-rowr wua youw ooma
-        ma!","conversation_id":10,"sender_id":1000,"recipient_id":2000,"read":false,"sent":false,"created_at":"2018-11-29T03:25:31.513Z","updated_at":"2018-11-29T03:25:31.513Z","priority_read_receipt":false}'
+      string: '{"id":137,"body":"Ur wua roooarrgh kabukk muaa wyaaaaaa huewaa yrroonn
+        ur?","conversation_id":10,"sender_id":1000,"recipient_id":2000,"read":false,"sent":false,"created_at":"2018-12-03T16:24:19.335Z","updated_at":"2018-12-03T16:24:19.335Z","priority_read_receipt":false}'
     http_version: 
-  recorded_at: Thu, 29 Nov 2018 03:25:31 GMT
+  recorded_at: Mon, 03 Dec 2018 16:24:19 GMT
 recorded_with: VCR 4.0.0

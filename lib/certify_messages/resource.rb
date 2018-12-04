@@ -102,11 +102,6 @@ module CertifyMessages
     def self.return_response(body, status)
       {body: body, status: status}
     end
-
-    def self.message_param_value(params)
-      # NOTE: ternary statement will need to be replaced once we have more than two versions to support
-      msg_api_version == 3 ? params[:uuid] : params[:id]
-    end
   end
   # rubocop:enable Style/ClassVars
 end

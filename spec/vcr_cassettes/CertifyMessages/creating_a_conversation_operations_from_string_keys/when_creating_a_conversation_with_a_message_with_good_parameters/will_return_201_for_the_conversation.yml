@@ -5,8 +5,8 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"5493","subject":"Aren''t you a little short for
-        a Stormtrooper?","user_1":"3229","user_2":"1619"}'
+      string: '{"application_id":"1273","subject":"Adventure. Excitement. A Jedi craves
+        not these things.","user_1":"8241","user_2":"7436"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,26 +22,26 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"4723589c8f5fab9a75200b187b25d2fa"
+      - W/"fbf95a1c2dc7efd33e25eb37bf1ed539"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 4d4a6d66-7602-4f0b-bc92-e23a5d7d2e0b
+      - c3c41eb3-f954-4982-8655-8588fc33a3a3
       X-Runtime:
-      - '0.018370'
+      - '0.017552'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":98,"user_1":3229,"user_2":1619,"application_id":5493,"subject":"Aren''t
-        you a little short for a Stormtrooper?","created_at":"2018-11-29T03:25:30.529Z","updated_at":"2018-11-29T03:25:30.529Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":509,"user_1":8241,"user_2":7436,"application_id":1273,"subject":"Adventure.
+        Excitement. A Jedi craves not these things.","created_at":"2018-12-03T16:24:18.896Z","updated_at":"2018-12-03T16:24:18.896Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Thu, 29 Nov 2018 03:25:30 GMT
+  recorded_at: Mon, 03 Dec 2018 16:24:18 GMT
 - request:
     method: post
-    uri: http://localhost:3001/msg/conversations/98/messages
+    uri: http://localhost:3001/msg/conversations/509/messages
     body:
       encoding: UTF-8
-      string: '{"body":"Just because you have the emotional range of a teaspoon doesn’t
-        mean we all have.","conversation_id":98}'
+      string: '{"body":"Things we lose have a way of coming back to us in the end,
+        if not always in the way we expect.","conversation_id":509}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -59,14 +59,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 636c3e27-a0e8-4c94-903d-bdf37c1ca5d4
+      - 34613c42-1b3b-4462-a979-8d3650ca1c1d
       X-Runtime:
-      - '0.014743'
+      - '0.009404'
     body:
       encoding: ASCII-8BIT
       string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
         must be a user from conversation"],"recipient_id":["recipient must be a user
         from conversation"]}'
     http_version: 
-  recorded_at: Thu, 29 Nov 2018 03:25:30 GMT
+  recorded_at: Mon, 03 Dec 2018 16:24:18 GMT
 recorded_with: VCR 4.0.0

@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_id":"5457","subject":"Truly wonderful, the mind of a
+        child is.","user1_uuid":"0db45c26-55d0-40d5-888d-7af9d3de10a2","user2_uuid":"fc2f321c-956b-4280-a818-0afcef7f1cd4","conversation_type":"official"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v2
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"a14963e200e4f755d644d082a540d1a7"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - b61a843f-3526-4ed3-aad5-9f2d47d50695
+      X-Runtime:
+      - '0.021427'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"0d51710a-9f70-46c7-90b7-4237f1441a4f","user1_uuid":"0db45c26-55d0-40d5-888d-7af9d3de10a2","user2_uuid":"fc2f321c-956b-4280-a818-0afcef7f1cd4","application_id":5457,"subject":"Truly
+        wonderful, the mind of a child is.","created_at":"2018-12-03T16:24:19.601Z","updated_at":"2018-12-03T16:24:19.601Z","conversation_type":"official","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Mon, 03 Dec 2018 16:24:19 GMT
+recorded_with: VCR 4.0.0

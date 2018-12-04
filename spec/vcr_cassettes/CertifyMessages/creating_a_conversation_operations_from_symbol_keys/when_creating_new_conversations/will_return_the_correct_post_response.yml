@@ -5,8 +5,7 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"2896","subject":"If they follow standard Imperial
-        procedure, they''ll dump their garbage before they go to light-speed.","user_1":"7692","user_2":"3816"}'
+      string: '{"application_id":"1039","subject":"Shut him up or shut him down.","user_1":"4844","user_2":"2504"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,18 +21,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"29dc535a6b4889afcd6dfe51936857a3"
+      - W/"6c6c6f716acd5d5eeadac90211e17532"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - ae703d19-e56a-48e0-9773-990fac39b021
+      - 0b2d535e-8151-409b-80d2-aba073272039
       X-Runtime:
-      - '0.016069'
+      - '0.294743'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":93,"user_1":7692,"user_2":3816,"application_id":2896,"subject":"If
-        they follow standard Imperial procedure, they''ll dump their garbage before
-        they go to light-speed.","created_at":"2018-11-29T03:25:29.820Z","updated_at":"2018-11-29T03:25:29.820Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":504,"user_1":4844,"user_2":2504,"application_id":1039,"subject":"Shut
+        him up or shut him down.","created_at":"2018-12-03T16:24:18.199Z","updated_at":"2018-12-03T16:24:18.199Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Thu, 29 Nov 2018 03:25:29 GMT
+  recorded_at: Mon, 03 Dec 2018 16:24:18 GMT
 recorded_with: VCR 4.0.0
