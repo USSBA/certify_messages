@@ -19,20 +19,20 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"95179b6bf8e8d019baebd95202437c05"
+      - W/"e67af31c355cbb28735de1814a0455bd"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a80ffbf6-774f-4742-8f4a-d8854939dba6
+      - 22edd242-83d0-4112-876b-944a79e53fdb
       X-Runtime:
-      - '0.032383'
+      - '0.030345'
     body:
       encoding: ASCII-8BIT
       string: '[{"id":10,"user_1":1000,"user_2":2000,"application_id":1,"subject":"for
-        vcr tests","created_at":"2018-11-28T20:52:28.533Z","updated_at":"2018-11-28T20:52:28.533Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"id":128,"body":"Roo
-        wyogg kabukk ru ga?","conversation_id":10,"sender_id":1000,"recipient_id":2000,"read":false,"sent":false,"created_at":"2018-12-03T16:08:26.824Z","updated_at":"2018-12-03T16:08:26.824Z","priority_read_receipt":false}},{"id":2,"user_1":null,"user_2":null,"application_id":1,"subject":"foo","created_at":"2018-11-28T20:52:28.533Z","updated_at":"2018-11-28T20:52:28.533Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"id":17,"body":"testing
+        vcr tests","created_at":"2018-11-28T20:52:28.533Z","updated_at":"2018-11-28T20:52:28.533Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"id":137,"body":"Ur
+        wua roooarrgh kabukk muaa wyaaaaaa huewaa yrroonn ur?","conversation_id":10,"sender_id":1000,"recipient_id":2000,"read":false,"sent":false,"created_at":"2018-12-03T16:24:19.335Z","updated_at":"2018-12-03T16:24:19.335Z","priority_read_receipt":false}},{"id":2,"user_1":null,"user_2":null,"application_id":1,"subject":"foo","created_at":"2018-11-28T20:52:28.533Z","updated_at":"2018-11-28T20:52:28.533Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"id":17,"body":"testing
         the parameters sent to API","conversation_id":2,"sender_id":null,"recipient_id":null,"read":false,"sent":false,"created_at":"2018-11-29T16:07:27.894Z","updated_at":"2018-11-29T16:07:27.894Z","priority_read_receipt":false}},{"id":1,"user_1":null,"user_2":null,"application_id":1,"subject":"foo","created_at":"2018-11-28T20:51:48.393Z","updated_at":"2018-11-28T20:51:48.393Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"id":1,"body":"This
         is another message","conversation_id":1,"sender_id":null,"recipient_id":null,"read":true,"sent":false,"created_at":"2018-11-28T20:57:49.550Z","updated_at":"2018-11-28T21:25:49.505Z","priority_read_receipt":false}}]'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:19 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 recorded_with: VCR 4.0.0

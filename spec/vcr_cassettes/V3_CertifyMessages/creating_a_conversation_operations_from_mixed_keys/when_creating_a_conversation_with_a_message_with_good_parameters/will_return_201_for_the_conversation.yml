@@ -5,9 +5,8 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_uuid":"d48c238e-f454-4b04-8987-84018c324882","subject":"If
-        you''re saying that coming here was a bad idea, I''m starting to agree with
-        you.","user1_uuid":"01e840db-2b77-4750-8cae-8ed7dd13cab3","user2_uuid":"df13b830-ac42-4f3f-aa16-182c116e2bd3"}'
+      string: '{"application_uuid":"43073367-144c-47d7-a7de-1a78d5f0500c","subject":"A
+        Jedi uses the Force for knowledge and defense, never for attack.","user1_uuid":"f8788800-8655-47ef-9fa0-39fb72d1df09","user2_uuid":"ee404f44-672a-4225-8b30-194ed703ae24"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -23,26 +22,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"e57dcc3c570b453319a76012a1e1cffe"
+      - W/"96caf6239e36d548bde4d9f35a14a0c7"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - cffeb372-7d25-42b4-9bc3-c60c5d8a7637
+      - 96adb927-adba-4b43-8544-3b38c935da88
       X-Runtime:
-      - '0.022699'
+      - '0.022451'
     body:
       encoding: ASCII-8BIT
-      string: '{"uuid":"1e03669c-02de-466b-96ae-bbe9c57ea5e6","user1_uuid":"01e840db-2b77-4750-8cae-8ed7dd13cab3","user2_uuid":"df13b830-ac42-4f3f-aa16-182c116e2bd3","application_uuid":"d48c238e-f454-4b04-8987-84018c324882","subject":"If
-        you''re saying that coming here was a bad idea, I''m starting to agree with
-        you.","created_at":"2018-12-03T16:24:20.649Z","updated_at":"2018-12-03T16:24:20.649Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"uuid":"a2d5f984-68a3-4704-a649-2459d2d4b16f","user1_uuid":"f8788800-8655-47ef-9fa0-39fb72d1df09","user2_uuid":"ee404f44-672a-4225-8b30-194ed703ae24","application_uuid":"43073367-144c-47d7-a7de-1a78d5f0500c","subject":"A
+        Jedi uses the Force for knowledge and defense, never for attack.","created_at":"2018-12-04T16:14:09.781Z","updated_at":"2018-12-04T16:14:09.781Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:20 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
 - request:
     method: post
-    uri: http://localhost:3001/msg/conversations/1e03669c-02de-466b-96ae-bbe9c57ea5e6/messages
+    uri: http://localhost:3001/msg/conversations/a2d5f984-68a3-4704-a649-2459d2d4b16f/messages
     body:
       encoding: UTF-8
-      string: '{"body":"I solemnly swear I am up to no good.","conversation_uuid":"1e03669c-02de-466b-96ae-bbe9c57ea5e6"}'
+      string: '{"body":"No story lives unless someone wants to listen. The stories
+        we love best do live in us forever. So whether you come back by page or by
+        the big screen, Hogwarts will always be there to welcome you home.","conversation_uuid":"a2d5f984-68a3-4704-a649-2459d2d4b16f"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -60,14 +60,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - e557b8fc-8553-4f25-95d3-48ea4196b4cb
+      - 299e210d-8845-4066-a9cf-0b780cd743c8
       X-Runtime:
-      - '0.009108'
+      - '0.007877'
     body:
       encoding: ASCII-8BIT
       string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
         must be a user from conversation"],"recipient_id":["recipient must be a user
         from conversation"]}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:20 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
 recorded_with: VCR 4.0.0

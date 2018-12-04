@@ -23,12 +23,12 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - c6d48f0f-1da0-4bc1-9cf4-d2609681323d
+      - b758b005-50e5-408f-8ba8-cd5b623a3df6
       X-Runtime:
-      - '0.020055'
+      - '0.018173'
     body:
       encoding: ASCII-8BIT
       string: '{"applications":[{"application_id":1,"recipient_id":1,"unread_message_count":0},{"application_id":2,"recipient_id":1,"unread_message_count":0}]}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:19 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 recorded_with: VCR 4.0.0

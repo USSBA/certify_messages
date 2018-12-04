@@ -5,9 +5,8 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_uuid":"d48c238e-f454-4b04-8987-84018c324882","subject":"If
-        you''re saying that coming here was a bad idea, I''m starting to agree with
-        you.","user1_uuid":"01e840db-2b77-4750-8cae-8ed7dd13cab3","user2_uuid":"df13b830-ac42-4f3f-aa16-182c116e2bd3","conversation_type":"official"}'
+      string: '{"application_uuid":"43073367-144c-47d7-a7de-1a78d5f0500c","subject":"A
+        Jedi uses the Force for knowledge and defense, never for attack.","user1_uuid":"f8788800-8655-47ef-9fa0-39fb72d1df09","user2_uuid":"ee404f44-672a-4225-8b30-194ed703ae24","conversation_type":"official"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -23,18 +22,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"78a8e64ef16968c6bf9acfb14a01ca77"
+      - W/"ec9f7f6b2939b348d41271fc1d525cdb"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 6b3dbf73-f6c8-45d5-acad-a850ad484df3
+      - eeb033b2-4559-498b-96d9-f816443f5cbd
       X-Runtime:
-      - '0.021264'
+      - '0.023779'
     body:
       encoding: ASCII-8BIT
-      string: '{"uuid":"d69b3ff1-e985-4263-b8cc-462147c6f707","user1_uuid":"01e840db-2b77-4750-8cae-8ed7dd13cab3","user2_uuid":"df13b830-ac42-4f3f-aa16-182c116e2bd3","application_uuid":"d48c238e-f454-4b04-8987-84018c324882","subject":"If
-        you''re saying that coming here was a bad idea, I''m starting to agree with
-        you.","created_at":"2018-12-03T16:24:20.613Z","updated_at":"2018-12-03T16:24:20.613Z","conversation_type":"official","archived":false,"archived_at":null}'
+      string: '{"uuid":"578a5d14-6511-4a33-9f4a-5d0c5ca66e98","user1_uuid":"f8788800-8655-47ef-9fa0-39fb72d1df09","user2_uuid":"ee404f44-672a-4225-8b30-194ed703ae24","application_uuid":"43073367-144c-47d7-a7de-1a78d5f0500c","subject":"A
+        Jedi uses the Force for knowledge and defense, never for attack.","created_at":"2018-12-04T16:14:09.752Z","updated_at":"2018-12-04T16:14:09.752Z","conversation_type":"official","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:20 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
 recorded_with: VCR 4.0.0

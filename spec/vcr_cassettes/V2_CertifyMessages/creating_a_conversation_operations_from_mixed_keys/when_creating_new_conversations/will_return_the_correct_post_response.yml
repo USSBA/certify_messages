@@ -5,8 +5,7 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"7418","subject":"Fear is the path to the dark side...
-        fear leads to anger... anger leads to hate... hate leads to suffering.","user1_uuid":"3fdaacc2-073c-433e-be3c-5e1d2b90778f","user2_uuid":"0637d00c-411a-412b-b853-f8f8b3721f03"}'
+      string: '{"application_id":"4820","subject":"I have a bad feeling about this.","user1_uuid":"dfd33fb9-cba8-4c9c-855b-9a0f50774436","user2_uuid":"2e1b3199-add7-4746-9400-e50dc2c091c0"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,18 +21,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"000f1ed0e765cf41191dff998599dcee"
+      - W/"9f9f3cbdad0a35822ba6d175d3a08f6a"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 82659929-3ec9-427e-aeab-db6ba5842209
+      - '09cdad04-3146-4022-aa8d-50a470b7ee5a'
       X-Runtime:
-      - '0.013813'
+      - '0.017929'
     body:
       encoding: ASCII-8BIT
-      string: '{"uuid":"ce111b96-131a-4efd-a3a4-04665f539d73","user1_uuid":"3fdaacc2-073c-433e-be3c-5e1d2b90778f","user2_uuid":"0637d00c-411a-412b-b853-f8f8b3721f03","application_id":7418,"subject":"Fear
-        is the path to the dark side... fear leads to anger... anger leads to hate...
-        hate leads to suffering.","created_at":"2018-12-03T16:24:19.671Z","updated_at":"2018-12-03T16:24:19.671Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"uuid":"71ed8e35-d893-4aef-8623-8784c8547bf7","user1_uuid":"dfd33fb9-cba8-4c9c-855b-9a0f50774436","user2_uuid":"2e1b3199-add7-4746-9400-e50dc2c091c0","application_id":4820,"subject":"I
+        have a bad feeling about this.","created_at":"2018-12-04T16:14:08.792Z","updated_at":"2018-12-04T16:14:08.792Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:19 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 recorded_with: VCR 4.0.0

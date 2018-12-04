@@ -5,8 +5,9 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_uuid":"202614c2-6234-4149-937a-9c59b7f5c239","subject":"Never
-        tell me the odds!","user1_uuid":"bbe27e08-c570-4829-a4e2-a461fe228468","user2_uuid":"f3c37831-de0a-4e66-8044-1b876e081da8"}'
+      string: '{"application_uuid":"24cb5cce-adf9-44bd-b9f3-a96599f41c88","subject":"If
+        they follow standard Imperial procedure, they''ll dump their garbage before
+        they go to light-speed.","user1_uuid":"ce30fb63-ae07-49b7-b522-9d2d9d73e17d","user2_uuid":"13593507-2d27-4d82-830a-e7e57f97794a"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,26 +23,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"c83023c1e304c5372bc6dfb449707d62"
+      - W/"fddea340379c961ddc01ba634394c618"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a52d11c7-ea52-4fd8-9c02-6a9088206ef8
+      - 27c5b443-ad84-4e34-b54b-154bd525728e
       X-Runtime:
-      - '0.025700'
+      - '0.014828'
     body:
       encoding: ASCII-8BIT
-      string: '{"uuid":"45efe44b-96c1-4794-b02c-c71a423ac6d8","user1_uuid":"bbe27e08-c570-4829-a4e2-a461fe228468","user2_uuid":"f3c37831-de0a-4e66-8044-1b876e081da8","application_uuid":"202614c2-6234-4149-937a-9c59b7f5c239","subject":"Never
-        tell me the odds!","created_at":"2018-12-03T16:24:20.544Z","updated_at":"2018-12-03T16:24:20.544Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"uuid":"e8803f2e-77ad-41c5-84c8-4fccfffae8e3","user1_uuid":"ce30fb63-ae07-49b7-b522-9d2d9d73e17d","user2_uuid":"13593507-2d27-4d82-830a-e7e57f97794a","application_uuid":"24cb5cce-adf9-44bd-b9f3-a96599f41c88","subject":"If
+        they follow standard Imperial procedure, they''ll dump their garbage before
+        they go to light-speed.","created_at":"2018-12-04T16:14:09.686Z","updated_at":"2018-12-04T16:14:09.686Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:20 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
 - request:
     method: post
-    uri: http://localhost:3001/msg/conversations/45efe44b-96c1-4794-b02c-c71a423ac6d8/messages
+    uri: http://localhost:3001/msg/conversations/e8803f2e-77ad-41c5-84c8-4fccfffae8e3/messages
     body:
       encoding: UTF-8
-      string: '{"body":"Words are in my not-so-humble opinion, the most inexhaustible
-        form of magic we have, capable both of inflicting injury and remedying it.","conversation_uuid":"45efe44b-96c1-4794-b02c-c71a423ac6d8"}'
+      string: '{"body":"Of course it is happening inside your head, Harry, but why
+        on earth should that mean that it is not real?","conversation_uuid":"e8803f2e-77ad-41c5-84c8-4fccfffae8e3"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -59,14 +61,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 0f11627e-759b-4bea-a2a4-1f5a3e08693e
+      - 1ceee415-2031-44b4-ad3c-f28d3a3e59c8
       X-Runtime:
-      - '0.008924'
+      - '0.009962'
     body:
       encoding: ASCII-8BIT
       string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
         must be a user from conversation"],"recipient_id":["recipient must be a user
         from conversation"]}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:20 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
 recorded_with: VCR 4.0.0
