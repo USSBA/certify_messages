@@ -5,9 +5,8 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_uuid":"d48c238e-f454-4b04-8987-84018c324882","subject":"If
-        you''re saying that coming here was a bad idea, I''m starting to agree with
-        you.","user1_uuid":"01e840db-2b77-4750-8cae-8ed7dd13cab3","user2_uuid":"df13b830-ac42-4f3f-aa16-182c116e2bd3"}'
+      string: '{"application_uuid":"43073367-144c-47d7-a7de-1a78d5f0500c","subject":"A
+        Jedi uses the Force for knowledge and defense, never for attack.","user1_uuid":"f8788800-8655-47ef-9fa0-39fb72d1df09","user2_uuid":"ee404f44-672a-4225-8b30-194ed703ae24"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -23,18 +22,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"919df8a29f947f4f1df05a6835cf1697"
+      - W/"ed0b055f8d72b0a5416f46f51a8105d5"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 71c76d52-bf78-4821-aed4-b2d4e233bdaf
+      - 0a0c4f15-0e63-472b-a6ca-267ac1830f20
       X-Runtime:
-      - '0.017491'
+      - '0.017519'
     body:
       encoding: ASCII-8BIT
-      string: '{"uuid":"db0ea045-44c3-403d-8687-cddc08bc7b7b","user1_uuid":"01e840db-2b77-4750-8cae-8ed7dd13cab3","user2_uuid":"df13b830-ac42-4f3f-aa16-182c116e2bd3","application_uuid":"d48c238e-f454-4b04-8987-84018c324882","subject":"If
-        you''re saying that coming here was a bad idea, I''m starting to agree with
-        you.","created_at":"2018-12-03T16:24:20.585Z","updated_at":"2018-12-03T16:24:20.585Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"uuid":"0a86e0df-5908-491c-bfdb-df12fcebc353","user1_uuid":"f8788800-8655-47ef-9fa0-39fb72d1df09","user2_uuid":"ee404f44-672a-4225-8b30-194ed703ae24","application_uuid":"43073367-144c-47d7-a7de-1a78d5f0500c","subject":"A
+        Jedi uses the Force for knowledge and defense, never for attack.","created_at":"2018-12-04T16:14:09.725Z","updated_at":"2018-12-04T16:14:09.725Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:20 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
 recorded_with: VCR 4.0.0

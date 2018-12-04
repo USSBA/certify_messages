@@ -5,7 +5,8 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"3984","subject":"Do. Or do not. There is no try.","user1_uuid":"7f6625f7-3d60-418d-9dac-3bc3267931f7","user2_uuid":"72f2404f-e84e-40e8-9b08-aabf7128c716"}'
+      string: '{"application_id":"2795","subject":"You do have your moments. Not many,
+        but you have them.","user1_uuid":"f7b67bbc-9686-4f00-bcd7-09ceca1fff8c","user2_uuid":"18c468ec-bc0b-4bca-801d-d95d83f79156"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -21,25 +22,25 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"1c460e08285a545a2bce8a7e9daa1a0c"
+      - W/"059e2b44bdf19492b404f4a41170d241"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 054f4a4d-59fa-4c28-8b56-4de5f293dc5b
+      - e359a00c-95eb-42a2-813b-9730f96ef2ff
       X-Runtime:
-      - '0.021351'
+      - '0.015063'
     body:
       encoding: ASCII-8BIT
-      string: '{"uuid":"0608c7f9-607c-4c18-80ea-1eabd3fca708","user1_uuid":"7f6625f7-3d60-418d-9dac-3bc3267931f7","user2_uuid":"72f2404f-e84e-40e8-9b08-aabf7128c716","application_id":3984,"subject":"Do.
-        Or do not. There is no try.","created_at":"2018-12-03T16:24:19.544Z","updated_at":"2018-12-03T16:24:19.544Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"uuid":"7bde62e3-f954-4dfc-a37c-33db8acf216b","user1_uuid":"f7b67bbc-9686-4f00-bcd7-09ceca1fff8c","user2_uuid":"18c468ec-bc0b-4bca-801d-d95d83f79156","application_id":2795,"subject":"You
+        do have your moments. Not many, but you have them.","created_at":"2018-12-04T16:14:08.658Z","updated_at":"2018-12-04T16:14:08.658Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:19 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 - request:
     method: post
-    uri: http://localhost:3001/msg/conversations//messages
+    uri: http://localhost:3001/msg/conversations/7bde62e3-f954-4dfc-a37c-33db8acf216b/messages
     body:
       encoding: UTF-8
-      string: '{"body":"We could all have been killed - or worse, expelled."}'
+      string: '{"body":"I solemnly swear I am up to no good.","conversation_uuid":"7bde62e3-f954-4dfc-a37c-33db8acf216b"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -49,7 +50,7 @@ http_interactions:
       - application/sba.msg-api.v2
   response:
     status:
-      code: 404
+      code: 400
       message: 
     headers:
       Content-Type:
@@ -57,12 +58,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 2d7c7e07-2b31-4ef3-aa7a-10c64f181f08
+      - b6188fc3-bd19-485a-bd44-fd4a8e7cb802
       X-Runtime:
-      - '0.003436'
+      - '0.015451'
     body:
       encoding: ASCII-8BIT
-      string: '{"message":"route was not found"}'
+      string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
+        must be a user from conversation"],"recipient_id":["recipient must be a user
+        from conversation"]}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:19 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 recorded_with: VCR 4.0.0

@@ -5,8 +5,7 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"7418","subject":"Fear is the path to the dark side...
-        fear leads to anger... anger leads to hate... hate leads to suffering.","user1_uuid":"3fdaacc2-073c-433e-be3c-5e1d2b90778f","user2_uuid":"0637d00c-411a-412b-b853-f8f8b3721f03","conversation_type":"official"}'
+      string: '{"application_id":"4820","subject":"I have a bad feeling about this.","user1_uuid":"dfd33fb9-cba8-4c9c-855b-9a0f50774436","user2_uuid":"2e1b3199-add7-4746-9400-e50dc2c091c0","conversation_type":"official"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,18 +21,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"172ca900a3c4ae9ab30847eac448d4b6"
+      - W/"2da0c2c82370f426bb2248e1e8a899a7"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 458cc48f-7f0d-4702-b239-c8af1fea1cd6
+      - fae8928f-1b4b-42e2-aa56-102247042861
       X-Runtime:
-      - '0.023942'
+      - '0.022566'
     body:
       encoding: ASCII-8BIT
-      string: '{"uuid":"6760ac29-52dd-4567-bb11-4070c34b6511","user1_uuid":"3fdaacc2-073c-433e-be3c-5e1d2b90778f","user2_uuid":"0637d00c-411a-412b-b853-f8f8b3721f03","application_id":7418,"subject":"Fear
-        is the path to the dark side... fear leads to anger... anger leads to hate...
-        hate leads to suffering.","created_at":"2018-12-03T16:24:19.695Z","updated_at":"2018-12-03T16:24:19.695Z","conversation_type":"official","archived":false,"archived_at":null}'
+      string: '{"uuid":"8a5060e5-6dce-4d42-823f-af7f34075921","user1_uuid":"dfd33fb9-cba8-4c9c-855b-9a0f50774436","user2_uuid":"2e1b3199-add7-4746-9400-e50dc2c091c0","application_id":4820,"subject":"I
+        have a bad feeling about this.","created_at":"2018-12-04T16:14:08.817Z","updated_at":"2018-12-04T16:14:08.817Z","conversation_type":"official","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:19 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 recorded_with: VCR 4.0.0

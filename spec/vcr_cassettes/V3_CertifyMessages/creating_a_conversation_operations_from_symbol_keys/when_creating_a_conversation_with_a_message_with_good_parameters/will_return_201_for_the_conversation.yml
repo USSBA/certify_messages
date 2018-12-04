@@ -5,8 +5,8 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_uuid":"d69449ff-e022-48ab-8c3f-1789514accb2","subject":"No
-        reward is worth this.","user1_uuid":"d8757b56-5e27-4a23-9d83-379c982ccf6e","user2_uuid":"1f7fb945-f3a7-4f02-8216-3c3ba129782b"}'
+      string: '{"application_uuid":"a8b42725-c864-42f8-aba3-366d05ff595d","subject":"No
+        reward is worth this.","user1_uuid":"30ff65c3-dc6e-40e6-87ad-2fffbb8a36f0","user2_uuid":"bef9018b-60dc-4044-9b6e-c3ec48ba65d0"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -22,27 +22,26 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"fbde4894054541f29dc8012edd01007d"
+      - W/"958520dbc02d8209a1bb53b060b54bca"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 9e61b1d8-73db-4acd-81f0-049a42070d8a
+      - d32645e4-4e12-4dce-b4cc-de3b03284c66
       X-Runtime:
-      - '0.018533'
+      - '0.019027'
     body:
       encoding: ASCII-8BIT
-      string: '{"uuid":"6513777e-4a12-4768-bbc2-995c7c9a85df","user1_uuid":"d8757b56-5e27-4a23-9d83-379c982ccf6e","user2_uuid":"1f7fb945-f3a7-4f02-8216-3c3ba129782b","application_uuid":"d69449ff-e022-48ab-8c3f-1789514accb2","subject":"No
-        reward is worth this.","created_at":"2018-12-03T16:24:20.435Z","updated_at":"2018-12-03T16:24:20.435Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"uuid":"51ff27dd-8371-4511-9d44-851e95c8279e","user1_uuid":"30ff65c3-dc6e-40e6-87ad-2fffbb8a36f0","user2_uuid":"bef9018b-60dc-4044-9b6e-c3ec48ba65d0","application_uuid":"a8b42725-c864-42f8-aba3-366d05ff595d","subject":"No
+        reward is worth this.","created_at":"2018-12-04T16:14:09.588Z","updated_at":"2018-12-04T16:14:09.588Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:20 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
 - request:
     method: post
-    uri: http://localhost:3001/msg/conversations/6513777e-4a12-4768-bbc2-995c7c9a85df/messages
+    uri: http://localhost:3001/msg/conversations/51ff27dd-8371-4511-9d44-851e95c8279e/messages
     body:
       encoding: UTF-8
-      string: '{"body":"Harry, suffering like this proves you are still a man! This
-        pain is part of being human … the fact that you can feel pain like this is
-        your greatest strength.","conversation_uuid":"6513777e-4a12-4768-bbc2-995c7c9a85df"}'
+      string: '{"body":"If you want to know what a man’s like, take a good look at
+        how he treats his inferiors, not his equals.","conversation_uuid":"51ff27dd-8371-4511-9d44-851e95c8279e"}'
     headers:
       x-api-key:
       - my-special-api-key
@@ -60,14 +59,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 05cb626a-8a43-4d8d-9d41-ac9cd24894e6
+      - 490589eb-82a0-46d1-90b7-d2c383fe5b05
       X-Runtime:
-      - '0.016210'
+      - '0.016773'
     body:
       encoding: ASCII-8BIT
       string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
         must be a user from conversation"],"recipient_id":["recipient must be a user
         from conversation"]}'
     http_version: 
-  recorded_at: Mon, 03 Dec 2018 16:24:20 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
 recorded_with: VCR 4.0.0
