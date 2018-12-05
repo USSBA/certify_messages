@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_uuid":"a8b42725-c864-42f8-aba3-366d05ff595d","subject":"No
+        reward is worth this.","user1_uuid":"30ff65c3-dc6e-40e6-87ad-2fffbb8a36f0","user2_uuid":"bef9018b-60dc-4044-9b6e-c3ec48ba65d0"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"958520dbc02d8209a1bb53b060b54bca"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - d32645e4-4e12-4dce-b4cc-de3b03284c66
+      X-Runtime:
+      - '0.019027'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"51ff27dd-8371-4511-9d44-851e95c8279e","user1_uuid":"30ff65c3-dc6e-40e6-87ad-2fffbb8a36f0","user2_uuid":"bef9018b-60dc-4044-9b6e-c3ec48ba65d0","application_uuid":"a8b42725-c864-42f8-aba3-366d05ff595d","subject":"No
+        reward is worth this.","created_at":"2018-12-04T16:14:09.588Z","updated_at":"2018-12-04T16:14:09.588Z","conversation_type":"application","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations/51ff27dd-8371-4511-9d44-851e95c8279e/messages
+    body:
+      encoding: UTF-8
+      string: '{"body":"If you want to know what a man’s like, take a good look at
+        how he treats his inferiors, not his equals.","conversation_uuid":"51ff27dd-8371-4511-9d44-851e95c8279e"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 490589eb-82a0-46d1-90b7-d2c383fe5b05
+      X-Runtime:
+      - '0.016773'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
+        must be a user from conversation"],"recipient_id":["recipient must be a user
+        from conversation"]}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
+recorded_with: VCR 4.0.0

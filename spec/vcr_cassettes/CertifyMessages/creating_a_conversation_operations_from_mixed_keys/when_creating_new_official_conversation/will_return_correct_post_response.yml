@@ -5,11 +5,11 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"1696","subject":"Well, you said you wanted to be
-        around when I made a mistake.","user_1":"5159","user_2":"7507","conversation_type":"official"}'
+      string: '{"application_id":"4969","subject":"If they follow standard Imperial
+        procedure, they''ll dump their garbage before they go to light-speed.","user_1":"6381","user_2":"9241","conversation_type":"official"}'
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Content-Type:
       - application/json
       Accept:
@@ -22,17 +22,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"8dba7e6a7c84f9c7480aad1a1e318045"
+      - W/"07c11799f8182d9564461e6da4a48054"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 8387697e-b945-4c77-8d3e-9cea9243c9c0
+      - cf4c8bad-1e3b-4654-99e3-07abf1084df5
       X-Runtime:
-      - '0.025664'
+      - '0.016928'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":72,"user_1":5159,"user_2":7507,"application_id":1696,"subject":"Well,
-        you said you wanted to be around when I made a mistake.","created_at":"2018-11-06T16:24:04.859Z","updated_at":"2018-11-06T16:24:04.859Z","conversation_type":"official","archived":false,"archived_at":null}'
+      string: '{"id":544,"user_1":6381,"user_2":9241,"application_id":4969,"subject":"If
+        they follow standard Imperial procedure, they''ll dump their garbage before
+        they go to light-speed.","created_at":"2018-12-04T16:14:08.114Z","updated_at":"2018-12-04T16:14:08.114Z","conversation_type":"official","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 recorded_with: VCR 4.0.0

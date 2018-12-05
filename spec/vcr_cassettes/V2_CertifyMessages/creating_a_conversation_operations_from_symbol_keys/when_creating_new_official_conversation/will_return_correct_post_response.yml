@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_id":"2795","subject":"You do have your moments. Not many,
+        but you have them.","user1_uuid":"f7b67bbc-9686-4f00-bcd7-09ceca1fff8c","user2_uuid":"18c468ec-bc0b-4bca-801d-d95d83f79156","conversation_type":"official"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v2
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"a7d6c0257ea11272d689a8abad71f056"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 65d2b674-1aac-468b-a95b-fde6725367ee
+      X-Runtime:
+      - '0.018870'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"937016e5-005d-4819-87e2-4eefcd67195e","user1_uuid":"f7b67bbc-9686-4f00-bcd7-09ceca1fff8c","user2_uuid":"18c468ec-bc0b-4bca-801d-d95d83f79156","application_id":2795,"subject":"You
+        do have your moments. Not many, but you have them.","created_at":"2018-12-04T16:14:08.628Z","updated_at":"2018-12-04T16:14:08.628Z","conversation_type":"official","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
+recorded_with: VCR 4.0.0

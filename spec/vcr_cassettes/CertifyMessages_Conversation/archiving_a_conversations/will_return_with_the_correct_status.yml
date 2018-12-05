@@ -9,7 +9,7 @@ http_interactions:
         is the first subject","conversation_type":"application"}'
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Content-Type:
       - application/json
       Accept:
@@ -22,28 +22,28 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"4db82065414edf929f530b4f1053b07d"
+      - W/"5169e4b56dd60a6f2d269a98a7afcfb3"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - ce84edf1-6cf5-4bd8-b2fe-34c120a5cc51
+      - '08df5cc5-1170-413f-91d7-a38c0c44ffc5'
       X-Runtime:
-      - '0.033665'
+      - '0.017747'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":75,"user_1":1000,"user_2":2000,"application_id":10000,"subject":"This
-        is the first subject","created_at":"2018-11-06T16:32:19.190Z","updated_at":"2018-11-06T16:32:19.190Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":547,"user_1":1000,"user_2":2000,"application_id":10000,"subject":"This
+        is the first subject","created_at":"2018-12-04T16:14:08.306Z","updated_at":"2018-12-04T16:14:08.306Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Tue, 06 Nov 2018 16:32:19 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 - request:
     method: put
-    uri: http://localhost:3001/msg/conversations/75
+    uri: http://localhost:3001/msg/conversations/547
     body:
       encoding: UTF-8
-      string: '{"archived":true}'
+      string: '{"id":547,"archived":true}'
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Content-Type:
       - application/json
       Accept:
@@ -56,17 +56,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"db98cbb55abd1057cb66a8c699187b1d"
+      - W/"92265ec6061c0691d124e2b45d42c2f5"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - d33b9b38-2bf8-4327-a4d8-6cc7e6461829
+      - 86aef074-5f08-42b9-8f80-1bb97df20d05
       X-Runtime:
-      - '0.036511'
+      - '0.020905'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":75,"user_1":1000,"user_2":2000,"application_id":10000,"subject":"This
-        is the first subject","created_at":"2018-11-06T16:32:19.190Z","updated_at":"2018-11-06T16:32:19.240Z","conversation_type":"application","archived":true,"archived_at":"2018-11-06T16:32:19.238Z"}'
+      string: '{"id":547,"user_1":1000,"user_2":2000,"application_id":10000,"subject":"This
+        is the first subject","created_at":"2018-12-04T16:14:08.306Z","updated_at":"2018-12-04T16:14:08.333Z","conversation_type":"application","archived":true,"archived_at":"2018-12-04T16:14:08.331Z"}'
     http_version: 
-  recorded_at: Tue, 06 Nov 2018 16:32:19 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 recorded_with: VCR 4.0.0

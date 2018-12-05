@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Accept:
       - application/sba.msg-api.v1
   response:
@@ -23,12 +23,12 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 8c72e26a-15b7-40a5-85c9-5f93054cd39b
+      - b758b005-50e5-408f-8ba8-cd5b623a3df6
       X-Runtime:
-      - '0.013385'
+      - '0.018173'
     body:
       encoding: ASCII-8BIT
       string: '{"applications":[{"application_id":1,"recipient_id":1,"unread_message_count":0},{"application_id":2,"recipient_id":1,"unread_message_count":0}]}'
     http_version: 
-  recorded_at: Tue, 06 Nov 2018 16:35:37 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 recorded_with: VCR 4.0.0

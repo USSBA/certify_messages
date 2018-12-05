@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_id":"4820","subject":"I have a bad feeling about this.","user1_uuid":"dfd33fb9-cba8-4c9c-855b-9a0f50774436","user2_uuid":"2e1b3199-add7-4746-9400-e50dc2c091c0"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v2
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"5e292e88329f390f40d36e392bfaf8eb"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - af56c142-3755-4805-bc3c-b23c5ffc16e3
+      X-Runtime:
+      - '0.027728'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"7c949d54-d53f-41df-9d8f-591e94245b19","user1_uuid":"dfd33fb9-cba8-4c9c-855b-9a0f50774436","user2_uuid":"2e1b3199-add7-4746-9400-e50dc2c091c0","application_id":4820,"subject":"I
+        have a bad feeling about this.","created_at":"2018-12-04T16:14:08.853Z","updated_at":"2018-12-04T16:14:08.853Z","conversation_type":"application","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations/7c949d54-d53f-41df-9d8f-591e94245b19/messages
+    body:
+      encoding: UTF-8
+      string: '{"body":"No story lives unless someone wants to listen. The stories
+        we love best do live in us forever. So whether you come back by page or by
+        the big screen, Hogwarts will always be there to welcome you home.","conversation_uuid":"7c949d54-d53f-41df-9d8f-591e94245b19"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v2
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - a251293e-87c6-44a1-bbc8-2f22ca3da5ae
+      X-Runtime:
+      - '0.013355'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
+        must be a user from conversation"],"recipient_id":["recipient must be a user
+        from conversation"]}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
+recorded_with: VCR 4.0.0

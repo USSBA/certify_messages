@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3001/msg/conversations/?application_uuid=87654321-4321-4321-4321-cba987654321&order=descending
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"72b336c4361d3f03a56efb70db132a79"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - fb1d9741-91fb-4f26-8fc2-60daac5dc387
+      X-Runtime:
+      - '0.058055'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"conversations":[{"uuid":"12345678-1234-1234-1234-123456789abc","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"If
+        they follow standard Imperial procedure, they''ll dump their garbage before
+        they go to light-speed.","created_at":"2018-12-03T13:05:55.485Z","updated_at":"2018-12-03T13:05:55.485Z","conversation_type":"application","archived":false,"archived_at":null,"most_recent_message":{"uuid":"f584c9e7-1d46-42e4-96e4-db573375b000","body":"Hnn-rowr
+        huewaa.","conversation_uuid":"12345678-1234-1234-1234-123456789abc","sender_uuid":"11111111-1111-1111-1111-111111111111","recipient_uuid":"22222222-2222-2222-2222-222222222222","read":false,"sent":false,"created_at":"2018-12-04T16:14:09.223Z","updated_at":"2018-12-04T16:14:09.223Z","priority_read_receipt":true}},{"uuid":"19236e3e-f914-4283-93a3-f01fce5d5dbe","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
+        is the first subject","created_at":"2018-12-03T16:24:20.947Z","updated_at":"2018-12-03T16:24:20.947Z","conversation_type":"application","archived":false,"archived_at":null},{"uuid":"1857c158-bcac-4afb-8b31-683bd0435260","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
+        is the first subject","created_at":"2018-12-03T16:08:28.228Z","updated_at":"2018-12-03T16:08:28.228Z","conversation_type":"application","archived":false,"archived_at":null},{"uuid":"da27b913-bc21-46cc-92de-10a0d710639f","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
+        is the first subject","created_at":"2018-12-03T13:24:15.628Z","updated_at":"2018-12-03T13:24:15.628Z","conversation_type":"application","archived":false,"archived_at":null},{"uuid":"9c48661e-10a1-4d92-a024-144716fa1181","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
+        is the first subject","created_at":"2018-12-03T13:21:57.278Z","updated_at":"2018-12-03T13:21:57.278Z","conversation_type":"application","archived":false,"archived_at":null},{"uuid":"11dce279-1a99-414a-ac0a-46e219149918","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
+        is the first subject","created_at":"2018-12-03T13:19:21.621Z","updated_at":"2018-12-03T13:19:21.621Z","conversation_type":"application","archived":false,"archived_at":null},{"uuid":"61298a88-37ce-47c1-853b-c512789ba8e8","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
+        is the first subject","created_at":"2018-12-03T13:08:06.051Z","updated_at":"2018-12-03T13:08:06.051Z","conversation_type":"application","archived":false,"archived_at":null},{"uuid":"d29ab2f0-7df2-4a55-968d-eb0659b8576b","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
+        is the first subject","created_at":"2018-12-03T13:06:38.355Z","updated_at":"2018-12-03T13:06:38.355Z","conversation_type":"application","archived":false,"archived_at":null},{"uuid":"d6303238-39bf-4d9b-be9b-827b7151ee2a","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
+        is the first subject","created_at":"2018-12-03T12:57:51.558Z","updated_at":"2018-12-03T12:57:51.558Z","conversation_type":"application","archived":false,"archived_at":null},{"uuid":"e9778cd1-4489-4056-8064-6ceba04bae82","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
+        is the first subject","created_at":"2018-12-03T12:54:13.873Z","updated_at":"2018-12-03T12:54:13.873Z","conversation_type":"application","archived":false,"archived_at":null},{"uuid":"b6c0bfbe-54f2-4be9-aaba-8828307ffb9e","user1_uuid":"11111111-1111-1111-1111-111111111111","user2_uuid":"22222222-2222-2222-2222-222222222222","application_uuid":"87654321-4321-4321-4321-cba987654321","subject":"This
+        is the first subject","created_at":"2018-12-03T12:54:08.554Z","updated_at":"2018-12-03T12:54:08.554Z","conversation_type":"application","archived":false,"archived_at":null}]}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:10 GMT
+recorded_with: VCR 4.0.0

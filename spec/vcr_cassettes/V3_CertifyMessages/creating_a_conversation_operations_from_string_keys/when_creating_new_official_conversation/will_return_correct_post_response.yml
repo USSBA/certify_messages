@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_uuid":"24cb5cce-adf9-44bd-b9f3-a96599f41c88","subject":"If
+        they follow standard Imperial procedure, they''ll dump their garbage before
+        they go to light-speed.","user1_uuid":"ce30fb63-ae07-49b7-b522-9d2d9d73e17d","user2_uuid":"13593507-2d27-4d82-830a-e7e57f97794a","conversation_type":"official"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"a2c6cbf40480171b8d7096f4c4283b91"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 96c57021-570c-4738-96df-7ed29dfe1e6e
+      X-Runtime:
+      - '0.017440'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"83f351f2-1663-4533-81fa-55bbb7287916","user1_uuid":"ce30fb63-ae07-49b7-b522-9d2d9d73e17d","user2_uuid":"13593507-2d27-4d82-830a-e7e57f97794a","application_uuid":"24cb5cce-adf9-44bd-b9f3-a96599f41c88","subject":"If
+        they follow standard Imperial procedure, they''ll dump their garbage before
+        they go to light-speed.","created_at":"2018-12-04T16:14:09.660Z","updated_at":"2018-12-04T16:14:09.660Z","conversation_type":"official","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
+recorded_with: VCR 4.0.0

@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations/12345678-1234-1234-1234-123456789abc/messages
+    body:
+      encoding: UTF-8
+      string: '{"conversation_uuid":"12345678-1234-1234-1234-123456789abc","body":"Ma.","sender_uuid":"11111111-1111-1111-1111-111111111111","recipient_uuid":"22222222-2222-2222-2222-222222222222","read":false,"sent":false,"priority_read_receipt":true}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"1c76779ab47e9a39342c9c0bf1df2688"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - a3df5caa-a0d6-40a6-9b1e-9d99e28af3e0
+      X-Runtime:
+      - '0.022559'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"1778bad7-7c19-46ef-9a1a-0132bf45a7bf","body":"Ma.","conversation_uuid":"12345678-1234-1234-1234-123456789abc","sender_uuid":"11111111-1111-1111-1111-111111111111","recipient_uuid":"22222222-2222-2222-2222-222222222222","read":false,"sent":false,"created_at":"2018-12-04T16:14:10.244Z","updated_at":"2018-12-04T16:14:10.244Z","priority_read_receipt":true}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:10 GMT
+recorded_with: VCR 4.0.0

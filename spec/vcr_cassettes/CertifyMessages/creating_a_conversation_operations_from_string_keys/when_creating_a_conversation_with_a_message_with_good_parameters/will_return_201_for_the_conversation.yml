@@ -5,10 +5,11 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"5173","subject":"You''ll find I''m full of surprises!","user_1":"8166","user_2":"9902"}'
+      string: '{"application_id":"9085","subject":"You do have your moments. Not many,
+        but you have them.","user_1":"2009","user_2":"4263"}'
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Content-Type:
       - application/json
       Accept:
@@ -21,29 +22,29 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"2f8be9fc9b04e2829346b66c167668bc"
+      - W/"69ecf12ebfff1db9e9dc18d852f3bf02"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 5e1b419c-fa69-4829-90ae-1cec7dc9b75c
+      - fcfd3ed0-e934-4588-b83a-92913c820941
       X-Runtime:
-      - '0.029348'
+      - '0.012896'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":70,"user_1":8166,"user_2":9902,"application_id":5173,"subject":"You''ll
-        find I''m full of surprises!","created_at":"2018-11-06T16:24:04.757Z","updated_at":"2018-11-06T16:24:04.757Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":542,"user_1":2009,"user_2":4263,"application_id":9085,"subject":"You
+        do have your moments. Not many, but you have them.","created_at":"2018-12-04T16:14:08.056Z","updated_at":"2018-12-04T16:14:08.056Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 - request:
     method: post
-    uri: http://localhost:3001/msg/conversations/70/messages
+    uri: http://localhost:3001/msg/conversations/542/messages
     body:
       encoding: UTF-8
-      string: '{"body":"Of course it is happening inside your head, Harry, but why
-        on Earth should that mean that it is not real?","conversation_id":70}'
+      string: '{"body":"It is our choices, Harry, that show what we truly are, far
+        more than our abilities.","conversation_id":542}'
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Content-Type:
       - application/json
       Accept:
@@ -58,14 +59,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - ba50aef2-d627-4977-b301-e74697929138
+      - 1f861085-86a2-492f-811f-6ae97b655566
       X-Runtime:
-      - '0.014344'
+      - '0.012589'
     body:
       encoding: ASCII-8BIT
-      string: '{"sender_id":["can''t be blank","sender_id must be a user from conversation"],"recipient_id":["can''t
-        be blank","recipient_id must be a user from conversation"],"user":["sender_id
-        and recipient_id cannot be equal"]}'
+      string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
+        must be a user from conversation"],"recipient_id":["recipient must be a user
+        from conversation"]}'
     http_version: 
-  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 recorded_with: VCR 4.0.0

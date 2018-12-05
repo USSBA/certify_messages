@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_id":"2795","subject":"You do have your moments. Not many,
+        but you have them.","user1_uuid":"f7b67bbc-9686-4f00-bcd7-09ceca1fff8c","user2_uuid":"18c468ec-bc0b-4bca-801d-d95d83f79156"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v2
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"059e2b44bdf19492b404f4a41170d241"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - e359a00c-95eb-42a2-813b-9730f96ef2ff
+      X-Runtime:
+      - '0.015063'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"7bde62e3-f954-4dfc-a37c-33db8acf216b","user1_uuid":"f7b67bbc-9686-4f00-bcd7-09ceca1fff8c","user2_uuid":"18c468ec-bc0b-4bca-801d-d95d83f79156","application_id":2795,"subject":"You
+        do have your moments. Not many, but you have them.","created_at":"2018-12-04T16:14:08.658Z","updated_at":"2018-12-04T16:14:08.658Z","conversation_type":"application","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations/7bde62e3-f954-4dfc-a37c-33db8acf216b/messages
+    body:
+      encoding: UTF-8
+      string: '{"body":"I solemnly swear I am up to no good.","conversation_uuid":"7bde62e3-f954-4dfc-a37c-33db8acf216b"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v2
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - b6188fc3-bd19-485a-bd44-fd4a8e7cb802
+      X-Runtime:
+      - '0.015451'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
+        must be a user from conversation"],"recipient_id":["recipient must be a user
+        from conversation"]}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
+recorded_with: VCR 4.0.0

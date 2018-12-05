@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_uuid":"43073367-144c-47d7-a7de-1a78d5f0500c","subject":"A
+        Jedi uses the Force for knowledge and defense, never for attack.","user1_uuid":"f8788800-8655-47ef-9fa0-39fb72d1df09","user2_uuid":"ee404f44-672a-4225-8b30-194ed703ae24","conversation_type":"official"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"ec9f7f6b2939b348d41271fc1d525cdb"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - eeb033b2-4559-498b-96d9-f816443f5cbd
+      X-Runtime:
+      - '0.023779'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"578a5d14-6511-4a33-9f4a-5d0c5ca66e98","user1_uuid":"f8788800-8655-47ef-9fa0-39fb72d1df09","user2_uuid":"ee404f44-672a-4225-8b30-194ed703ae24","application_uuid":"43073367-144c-47d7-a7de-1a78d5f0500c","subject":"A
+        Jedi uses the Force for knowledge and defense, never for attack.","created_at":"2018-12-04T16:14:09.752Z","updated_at":"2018-12-04T16:14:09.752Z","conversation_type":"official","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
+recorded_with: VCR 4.0.0

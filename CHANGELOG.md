@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2018-12-07
+### shared-services-sprint-57
+  - Added
+    - HUB-1718: added support for message-api v2
+  - Changed
+    - HUB-1648: corrected the use of id/uuid in the conversation paths
+
 ## [2.0.0] - 2018-11-21
 ### shared-services-sprint-56
   - Added

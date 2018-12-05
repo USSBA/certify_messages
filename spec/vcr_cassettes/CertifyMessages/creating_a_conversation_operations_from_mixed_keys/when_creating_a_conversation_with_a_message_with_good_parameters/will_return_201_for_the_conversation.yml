@@ -5,11 +5,11 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations
     body:
       encoding: UTF-8
-      string: '{"application_id":"1696","subject":"Well, you said you wanted to be
-        around when I made a mistake.","user_1":"5159","user_2":"7507"}'
+      string: '{"application_id":"4969","subject":"If they follow standard Imperial
+        procedure, they''ll dump their garbage before they go to light-speed.","user_1":"6381","user_2":"9241"}'
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Content-Type:
       - application/json
       Accept:
@@ -22,29 +22,29 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"608544bdd1e729cea8e82629e4837e5d"
+      - W/"04d82dacda1b92271b4667fe0f49779e"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 97ea785c-9574-48c6-ac0f-85c77ea16800
+      - 94858d7e-20c0-4b5f-84fc-0b07bf266b3d
       X-Runtime:
-      - '0.016850'
+      - '0.014857'
     body:
       encoding: ASCII-8BIT
-      string: '{"id":73,"user_1":5159,"user_2":7507,"application_id":1696,"subject":"Well,
-        you said you wanted to be around when I made a mistake.","created_at":"2018-11-06T16:24:04.895Z","updated_at":"2018-11-06T16:24:04.895Z","conversation_type":"application","archived":false,"archived_at":null}'
+      string: '{"id":545,"user_1":6381,"user_2":9241,"application_id":4969,"subject":"If
+        they follow standard Imperial procedure, they''ll dump their garbage before
+        they go to light-speed.","created_at":"2018-12-04T16:14:08.138Z","updated_at":"2018-12-04T16:14:08.138Z","conversation_type":"application","archived":false,"archived_at":null}'
     http_version: 
-  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 - request:
     method: post
-    uri: http://localhost:3001/msg/conversations/73/messages
+    uri: http://localhost:3001/msg/conversations/545/messages
     body:
       encoding: UTF-8
-      string: '{"body":"Just because you have the emotional range of a teaspoon doesn’t
-        mean we all have.","conversation_id":73}'
+      string: '{"body":"You''re a wizard, Harry.","conversation_id":545}'
     headers:
       x-api-key:
-      - fake_api_key
+      - my-special-api-key
       Content-Type:
       - application/json
       Accept:
@@ -59,14 +59,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 8a645657-5e41-4010-ba6f-13cdc9f2e071
+      - e4109648-25b3-40b9-9130-321088853090
       X-Runtime:
-      - '0.023930'
+      - '0.008316'
     body:
       encoding: ASCII-8BIT
-      string: '{"sender_id":["can''t be blank","sender_id must be a user from conversation"],"recipient_id":["can''t
-        be blank","recipient_id must be a user from conversation"],"user":["sender_id
-        and recipient_id cannot be equal"]}'
+      string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
+        must be a user from conversation"],"recipient_id":["recipient must be a user
+        from conversation"]}'
     http_version: 
-  recorded_at: Tue, 06 Nov 2018 16:24:04 GMT
+  recorded_at: Tue, 04 Dec 2018 16:14:08 GMT
 recorded_with: VCR 4.0.0

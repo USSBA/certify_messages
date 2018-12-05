@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations/12345678-1234-1234-1234-123456789abc/messages
+    body:
+      encoding: UTF-8
+      string: '{"conversation_uuid":"12345678-1234-1234-1234-123456789abc","body":"Hnn-rowr
+        huewaa.","sender_uuid":"11111111-1111-1111-1111-111111111111","recipient_uuid":"22222222-2222-2222-2222-222222222222","read":false,"sent":false,"priority_read_receipt":true}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v2
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"5a141069f666abfc67a43a1da6588e66"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 376f41e9-fba4-4e3c-a74e-f6a94272e026
+      X-Runtime:
+      - '0.020595'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"f584c9e7-1d46-42e4-96e4-db573375b000","body":"Hnn-rowr huewaa.","conversation_uuid":"12345678-1234-1234-1234-123456789abc","sender_uuid":"11111111-1111-1111-1111-111111111111","recipient_uuid":"22222222-2222-2222-2222-222222222222","read":false,"sent":false,"created_at":"2018-12-04T16:14:09.223Z","updated_at":"2018-12-04T16:14:09.223Z","priority_read_receipt":true}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
+recorded_with: VCR 4.0.0

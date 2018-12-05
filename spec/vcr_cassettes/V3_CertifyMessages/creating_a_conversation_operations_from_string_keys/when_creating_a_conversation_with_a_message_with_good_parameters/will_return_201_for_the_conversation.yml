@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations
+    body:
+      encoding: UTF-8
+      string: '{"application_uuid":"24cb5cce-adf9-44bd-b9f3-a96599f41c88","subject":"If
+        they follow standard Imperial procedure, they''ll dump their garbage before
+        they go to light-speed.","user1_uuid":"ce30fb63-ae07-49b7-b522-9d2d9d73e17d","user2_uuid":"13593507-2d27-4d82-830a-e7e57f97794a"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"fddea340379c961ddc01ba634394c618"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 27c5b443-ad84-4e34-b54b-154bd525728e
+      X-Runtime:
+      - '0.014828'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"e8803f2e-77ad-41c5-84c8-4fccfffae8e3","user1_uuid":"ce30fb63-ae07-49b7-b522-9d2d9d73e17d","user2_uuid":"13593507-2d27-4d82-830a-e7e57f97794a","application_uuid":"24cb5cce-adf9-44bd-b9f3-a96599f41c88","subject":"If
+        they follow standard Imperial procedure, they''ll dump their garbage before
+        they go to light-speed.","created_at":"2018-12-04T16:14:09.686Z","updated_at":"2018-12-04T16:14:09.686Z","conversation_type":"application","archived":false,"archived_at":null}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations/e8803f2e-77ad-41c5-84c8-4fccfffae8e3/messages
+    body:
+      encoding: UTF-8
+      string: '{"body":"Of course it is happening inside your head, Harry, but why
+        on earth should that mean that it is not real?","conversation_uuid":"e8803f2e-77ad-41c5-84c8-4fccfffae8e3"}'
+    headers:
+      x-api-key:
+      - my-special-api-key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 1ceee415-2031-44b4-ad3c-f28d3a3e59c8
+      X-Runtime:
+      - '0.009962'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"user":["sender not specified","recipient not specified"],"sender_id":["sender
+        must be a user from conversation"],"recipient_id":["recipient must be a user
+        from conversation"]}'
+    http_version: 
+  recorded_at: Tue, 04 Dec 2018 16:14:09 GMT
+recorded_with: VCR 4.0.0
