@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3001/msg/conversations/d8badb44-566e-4969-a1b4-784d6008bad8/messages/2d7ec51c-e20c-4552-bc29-0e4047626ec4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      x-api-key:
+      - fake_api_key
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"7ad3b19d6b764704a32c61b35be41b64"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - ad1236ac-080d-44f3-a7d0-63d905f5c888
+      X-Runtime:
+      - '0.017427'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"2d7ec51c-e20c-4552-bc29-0e4047626ec4","body":"This is a delegate
+        message.","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"d7ebe2fa-f67a-4431-817a-6574b8dab412","read":false,"sent":false,"created_at":"2018-12-14T19:57:32.510Z","updated_at":"2018-12-14T19:57:32.510Z","priority_read_receipt":false,"has_delegate":true}'
+    http_version: 
+  recorded_at: Sat, 15 Dec 2018 15:47:01 GMT
+recorded_with: VCR 4.0.0
