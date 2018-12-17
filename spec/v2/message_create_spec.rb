@@ -9,14 +9,18 @@ module V2
     end
 
     MessageSpecHelper.mock_message_types.each do |type, msg_mock|
-      describe "Creating messages for #{type}", :vcr do
+      describe "Creating non-delegated messages for #{type}", :vcr do
         context 'when creating valid new messages' do
           # let(:new_message) { MessageSpecHelper.symbolize msg_mock }
           let(:new_message_response) { CertifyMessages::Message.create(msg_mock) }
 
+          # NOTE: having 2nd expectation in its own example resulted in a separate HTTP request and `has_delegate` nil value.
+          # rubocop:disable RSpec/MultipleExpectations
           it 'will return a status code of 201' do
             expect(new_message_response[:status]).to eq(201)
+            expect(new_message_response[:body]['has_delegate']).to eq(false)
           end
+          # rubocop:enable RSpec/MultipleExpectations
         end
 
         context 'when attempting to create a message with no params' do
@@ -70,6 +74,47 @@ module V2
 
           it "will return an error message" do
             expect(message_response[:body]).to match(/#{error_type}/)
+          end
+        end
+      end
+    end
+
+    MessageSpecHelper.mock_delegate_message_types.each do |type, msg_mock|
+      describe "Creating delegated messages for #{type}", :vcr do
+        context 'when creating valid new messages' do
+          # let(:new_message) { MessageSpecHelper.symbolize msg_mock }
+          let(:new_message_response) { CertifyMessages::Message.create(msg_mock) }
+
+          # NOTE: having 2nd expectation in its own example resulted in a separate HTTP request and `has_delegate` nil value.
+          # rubocop:disable RSpec/MultipleExpectations
+          it 'will return a status code of 201' do
+            expect(new_message_response[:status]).to eq(201)
+            expect(new_message_response[:body]['has_delegate']).to eq(true)
+          end
+          # rubocop:enable RSpec/MultipleExpectations
+        end
+
+        context 'when attempting to create a message with no params' do
+          let(:bad_message_response) { CertifyMessages::Message.create }
+
+          it 'will return a status code of 400' do
+            expect(bad_message_response[:status]).to eq(CertifyMessages.bad_request[:status])
+          end
+
+          it 'will return an error message' do
+            expect(bad_message_response[:body]).to eq(CertifyMessages.bad_request[:body])
+          end
+        end
+
+        context 'when attempting to create an invalid new message' do
+          let(:bad_message_response) { CertifyMessages::Message.create(foo: 'bar') }
+
+          it 'will return a status code of 422' do
+            expect(bad_message_response[:status]).to eq(CertifyMessages.unprocessable[:status])
+          end
+
+          it 'will return an error message' do
+            expect(bad_message_response[:body]).to eq(CertifyMessages.unprocessable[:body])
           end
         end
       end
