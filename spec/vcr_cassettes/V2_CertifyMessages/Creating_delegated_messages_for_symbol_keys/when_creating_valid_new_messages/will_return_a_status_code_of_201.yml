@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations/d8badb44-566e-4969-a1b4-784d6008bad8/messages
+    body:
+      encoding: UTF-8
+      string: '{"uuid":"50448231-80b1-4761-8fcd-578f85ebb778","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","body":"Ru
+        ooma.","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"d7ebe2fa-f67a-4431-817a-6574b8dab412","read":false,"sent":false,"priority_read_receipt":true}'
+    headers:
+      x-api-key:
+      - fake_api_key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v2
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"9124978e800a2ffe936343b285e6ca47"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 71b845b0-37f7-4d2f-8d5e-23332be6ebb1
+      X-Runtime:
+      - '0.032293'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"50448231-80b1-4761-8fcd-578f85ebb778","body":"Ru ooma.","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"d7ebe2fa-f67a-4431-817a-6574b8dab412","read":false,"sent":false,"created_at":"2018-12-17T14:08:47.577Z","updated_at":"2018-12-17T14:08:47.577Z","priority_read_receipt":true,"has_delegate":true}'
+    http_version: 
+  recorded_at: Mon, 17 Dec 2018 14:08:47 GMT
+recorded_with: VCR 4.0.0
