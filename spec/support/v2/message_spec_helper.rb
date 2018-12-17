@@ -16,19 +16,27 @@ module V2
     end
 
     def self.mock_user1_uuid
-      "11111111-1111-1111-1111-111111111111"
+      "cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb"
     end
 
     def self.mock_user2_uuid
-      "22222222-2222-2222-2222-222222222222"
+      "08d64f43-a326-498d-9d9a-4b03f1ff486b"
+    end
+
+    def self.mock_author1_uuid
+      "2d7ec51c-e20c-4552-bc29-0e4047626ec4"
+    end
+
+    def self.mock_author2_uuid
+      "d7ebe2fa-f67a-4431-817a-6574b8dab412"
     end
 
     def self.mock_conversation_uuid
-      "12345678-1234-1234-1234-123456789abc"
+      "d8badb44-566e-4969-a1b4-784d6008bad8"
     end
 
     def self.mock_message_uuid
-      "beefbeef-beef-beef-beef-beefbeefbeef"
+      "2d7ec51c-e20c-4552-bc29-0e4047626ec4"
     end
 
     def self.mock_application_id
@@ -52,6 +60,17 @@ module V2
         body: Faker::StarWars.wookie_sentence,
         sender_uuid: mock_user1_uuid,
         recipient_uuid: mock_user2_uuid
+      }
+    end
+
+    def self.mock_delegate_message_params
+      {
+        uuid: mock_message_uuid,
+        conversation_uuid: mock_conversation_uuid,
+        body: Faker::StarWars.wookie_sentence,
+        sender_uuid: mock_user1_uuid,
+        recipient_uuid: mock_user2_uuid,
+        author_uuid: mock_author1_uuid
       }
     end
 
@@ -100,12 +119,31 @@ module V2
       ]
     end
 
+    # mocks for messages
+    def self.mock_delegate_messages_sym
+      [
+        mock_delegate_message_sym(mock_user1_uuid, mock_user2_uuid, mock_author2_uuid),
+        mock_delegate_message_sym(mock_user2_uuid, mock_user1_uuid, mock_author2_uuid)
+      ]
+    end
+
     # messages can be parameterized with keys as symbols, keys as strings or a mix of symbols and strings
+    # TODO: make messages using delegates
     def self.mock_message_types
       {
         symbol_keys: mock_message_sym(mock_user1_uuid, mock_user2_uuid, mock_user1_uuid),
         string_keys: mock_message_string(mock_user1_uuid, mock_user2_uuid, mock_user1_uuid),
         mixed_keys: mock_message_mixed(mock_user1_uuid, mock_user2_uuid, mock_user1_uuid)
+      }
+    end
+
+    # messages can be parameterized with keys as symbols, keys as strings or a mix of symbols and strings
+    # TODO: make messages using delegates
+    def self.mock_delegate_message_types
+      {
+        symbol_keys: mock_delegate_message_sym(mock_user1_uuid, mock_user2_uuid, mock_author2_uuid),
+        string_keys: mock_delegate_message_string(mock_user1_uuid, mock_user2_uuid, mock_author2_uuid),
+        mixed_keys: mock_delegate_message_mixed(mock_user1_uuid, mock_user2_uuid, mock_author2_uuid)
       }
     end
 
@@ -149,6 +187,51 @@ module V2
         created_at: Date.today,
         updated_at: Date.today,
         sender: owner == sender,
+        "priority_read_receipt" => true }
+    end
+
+    def self.mock_delegate_message_sym(sender, recipient, delegate)
+      { uuid: SecureRandom.uuid,
+        conversation_uuid: mock_conversation_uuid,
+        body: Faker::StarWars.wookie_sentence,
+        sender_uuid: sender,
+        recipient_uuid: recipient,
+        author_uuid: delegate,
+        read: false,
+        sent: false,
+        created_at: Date.today,
+        updated_at: Date.today,
+        sender: delegate == sender,
+        priority_read_receipt: true }
+    end
+
+    def self.mock_delegate_message_string(sender, recipient, delegate)
+      { "message_uuid" => SecureRandom.uuid,
+        "conversation_uuid" => mock_conversation_uuid,
+        "body" => Faker::StarWars.wookie_sentence,
+        "sender_uuid" => sender,
+        "recipient_uuid" => recipient,
+        "author_uuid" => delegate,
+        "read" => false,
+        "sent" => false,
+        "created_at" => Date.today,
+        "updated_at" => Date.today,
+        "sender" => delegate == sender,
+        "priority_read_receipt" => true }
+    end
+
+    def self.mock_delegate_message_mixed(sender, recipient, delegate)
+      { message_uuid: SecureRandom.uuid,
+        "conversation_uuid" => mock_conversation_uuid,
+        "body" => Faker::StarWars.wookie_sentence,
+        sender_uuid: sender,
+        recipient_uuid: recipient,
+        author_uuid: delegate,
+        read: false,
+        sent: false,
+        created_at: Date.today,
+        updated_at: Date.today,
+        sender: delegate == sender,
         "priority_read_receipt" => true }
     end
     # rubocop:enable Metrics/MethodLength
