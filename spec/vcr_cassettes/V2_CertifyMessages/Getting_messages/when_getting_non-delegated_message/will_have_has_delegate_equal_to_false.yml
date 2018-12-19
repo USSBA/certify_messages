@@ -29,7 +29,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"uuid":"57efd9d1-86ea-46bb-8906-e95984c52505","body":"This is a delegate
-        message.","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","read":false,"sent":false,"created_at":"2018-12-14T19:57:35.929Z","updated_at":"2018-12-14T19:57:35.934Z","priority_read_receipt":false,"has_delegate":false}'
+        message.","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","read":false,"sent":false,"created_at":"2018-12-14T19:57:35.929Z","updated_at":"2018-12-14T19:57:35.934Z","priority_read_receipt":false,"delegate?":false}'
     http_version: 
   recorded_at: Sat, 15 Dec 2018 15:47:42 GMT
 recorded_with: VCR 4.0.0
