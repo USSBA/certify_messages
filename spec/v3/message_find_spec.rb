@@ -25,8 +25,8 @@ module V3
           expect(messages[:status]).to eq(200)
         end
 
-        it 'will have has_delegate equal to false' do
-          expect(messages[:body]['has_delegate']).to eq(false)
+        it 'will have delegate? equal to false' do
+          expect(messages[:body]['delegate?']).to eq(false)
         end
       end
 
@@ -38,8 +38,8 @@ module V3
           expect(messages[:status]).to eq(200)
         end
 
-        it 'will have has_delegate equal to true' do
-          expect(messages[:body]['has_delegate']).to eq(true)
+        it 'will have delegate? equal to true' do
+          expect(messages[:body]['delegate?']).to eq(true)
         end
       end
 

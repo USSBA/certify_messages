@@ -5,8 +5,7 @@ http_interactions:
     uri: http://localhost:3001/msg/conversations/d8badb44-566e-4969-a1b4-784d6008bad8/messages
     body:
       encoding: UTF-8
-      string: '{"uuid":"75c78382-43ac-4008-8aae-46df2201b899","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","body":"Ahuma
-        wua mumwa rarr ur roo huewaa kabukk!","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"d7ebe2fa-f67a-4431-817a-6574b8dab412","read":false,"sent":false,"priority_read_receipt":true}'
+      string: '{"uuid":"04f872e9-22b5-4266-9c57-37d6d49bade8","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","body":"Roooarrgh.","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"d7ebe2fa-f67a-4431-817a-6574b8dab412","read":false,"sent":false,"priority_read_receipt":true}'
     headers:
       x-api-key:
       - fake_api_key
@@ -22,17 +21,16 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"eb868af54d5ef2874c3b8d46de144c19"
+      - W/"aad157e1345f766c3b878a77482c9deb"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - a6509694-1679-447e-93cc-67723c6e8ff9
+      - ee294a04-6e3f-49fe-80f6-542f91780207
       X-Runtime:
-      - '0.026260'
+      - '0.014686'
     body:
       encoding: ASCII-8BIT
-      string: '{"uuid":"75c78382-43ac-4008-8aae-46df2201b899","body":"Ahuma wua mumwa
-        rarr ur roo huewaa kabukk!","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"d7ebe2fa-f67a-4431-817a-6574b8dab412","read":false,"sent":false,"created_at":"2018-12-17T17:00:29.180Z","updated_at":"2018-12-17T17:00:29.180Z","priority_read_receipt":true,"has_delegate":true}'
+      string: '{"uuid":"04f872e9-22b5-4266-9c57-37d6d49bade8","body":"Roooarrgh.","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"d7ebe2fa-f67a-4431-817a-6574b8dab412","read":false,"sent":false,"created_at":"2018-12-19T14:57:07.412Z","updated_at":"2018-12-19T14:57:07.412Z","priority_read_receipt":true,"delegate?":true}'
     http_version: 
-  recorded_at: Mon, 17 Dec 2018 17:00:29 GMT
+  recorded_at: Wed, 19 Dec 2018 14:57:07 GMT
 recorded_with: VCR 4.0.0

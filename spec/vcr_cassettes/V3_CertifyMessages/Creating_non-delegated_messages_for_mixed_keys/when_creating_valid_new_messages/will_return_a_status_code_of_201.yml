@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","body":"Ur
-        nng!","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","read":false,"sent":false,"priority_read_receipt":true}'
+        yrroonn nng ru muaa wyogg youw hnn-rowr?","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","read":false,"sent":false,"priority_read_receipt":true}'
     headers:
       x-api-key:
       - fake_api_key
@@ -22,16 +22,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       ETag:
-      - W/"05d491afb7234d7c595ec97da69ff160"
+      - W/"47b5131bcdc28761c142dc04d0a3a62e"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - b8cb8f6c-f039-436a-999a-f0ba4d9e0fe3
+      - bed2049c-52ff-4a13-9212-eba5a183fbcc
       X-Runtime:
-      - '0.031582'
+      - '0.012093'
     body:
       encoding: ASCII-8BIT
-      string: '{"uuid":"ba9af097-8875-466a-b625-7c56f226dc4a","body":"Ur nng!","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","read":false,"sent":false,"created_at":"2018-12-17T16:58:52.797Z","updated_at":"2018-12-17T16:58:52.804Z","priority_read_receipt":true,"has_delegate":false}'
+      string: '{"uuid":"fac4d9d5-a508-4e3c-9a74-7f76dda0d53b","body":"Ur yrroonn nng
+        ru muaa wyogg youw hnn-rowr?","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","read":false,"sent":false,"created_at":"2018-12-19T14:57:07.351Z","updated_at":"2018-12-19T14:57:07.351Z","priority_read_receipt":true,"delegate?":false}'
     http_version: 
-  recorded_at: Mon, 17 Dec 2018 16:58:52 GMT
+  recorded_at: Wed, 19 Dec 2018 14:57:07 GMT
 recorded_with: VCR 4.0.0

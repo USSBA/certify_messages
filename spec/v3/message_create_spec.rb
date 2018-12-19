@@ -14,11 +14,11 @@ module V3
           # let(:new_message) { MessageSpecHelper.symbolize msg_mock }
           let(:new_message_response) { CertifyMessages::Message.create(msg_mock) }
 
-          # NOTE: having 2nd expectation in its own example resulted in a separate HTTP request and `has_delegate` nil value.
+          # NOTE: having 2nd expectation in its own example resulted in a separate HTTP request and `delegate?` nil value.
           # rubocop:disable RSpec/MultipleExpectations
           it 'will return a status code of 201' do
             expect(new_message_response[:status]).to eq(201)
-            expect(new_message_response[:body]['has_delegate']).to eq(false)
+            expect(new_message_response[:body]['delegate?']).to eq(false)
           end
           # rubocop:enable RSpec/MultipleExpectations
         end
@@ -85,11 +85,11 @@ module V3
           # let(:new_message) { MessageSpecHelper.symbolize msg_mock }
           let(:new_message_response) { CertifyMessages::Message.create(msg_mock) }
 
-          # NOTE: having 2nd expectation in its own example resulted in a separate HTTP request and `has_delegate` nil value.
+          # NOTE: having 2nd expectation in its own example resulted in a separate HTTP request and `delegate?` nil value.
           # rubocop:disable RSpec/MultipleExpectations
           it 'will return a status code of 201' do
             expect(new_message_response[:status]).to eq(201)
-            expect(new_message_response[:body]['has_delegate']).to eq(true)
+            expect(new_message_response[:body]['delegate?']).to eq(true)
           end
           # rubocop:enable RSpec/MultipleExpectations
         end
