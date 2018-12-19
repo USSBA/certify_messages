@@ -128,7 +128,6 @@ module V2
     end
 
     # messages can be parameterized with keys as symbols, keys as strings or a mix of symbols and strings
-    # TODO: make messages using delegates
     def self.mock_message_types
       {
         symbol_keys: mock_message_sym(mock_user1_uuid, mock_user2_uuid, mock_user1_uuid),

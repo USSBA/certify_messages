@@ -11,6 +11,7 @@ module V2
     MessageSpecHelper.mock_message_types.each do |type, msg_mock|
       describe "Creating non-delegated messages for #{type}", :vcr do
         context 'when creating valid new messages' do
+          # TODO: have request call be made in a before do clause to allow for separate expectations
           # let(:new_message) { MessageSpecHelper.symbolize msg_mock }
           let(:new_message_response) { CertifyMessages::Message.create(msg_mock) }
 
@@ -82,6 +83,7 @@ module V2
     MessageSpecHelper.mock_delegate_message_types.each do |type, msg_mock|
       describe "Creating delegated messages for #{type}", :vcr do
         context 'when creating valid new messages' do
+          # TODO: have request call be made in a before do clause to allow for separate expectations
           # let(:new_message) { MessageSpecHelper.symbolize msg_mock }
           let(:new_message_response) { CertifyMessages::Message.create(msg_mock) }
 
