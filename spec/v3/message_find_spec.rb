@@ -13,8 +13,33 @@ module V3
         let(:messages) { CertifyMessages::Message.find(conversation_uuid: V3::MessageSpecHelper.mock_conversation_uuid) }
 
         it 'will have a ok status' do
-          expect(messages[:status]).to be 200
+          expect(messages[:status]).to eq(200)
         end
+      end
+
+      context 'when getting non-delegated message' do
+        let(:mock) { MessageSpecHelper.mock_messages_sym 1 }
+        let(:messages) { CertifyMessages::Message.find(conversation_uuid: "d8badb44-566e-4969-a1b4-784d6008bad8", uuid: "57efd9d1-86ea-46bb-8906-e95984c52505") }
+
+        it 'will have a ok status' do
+          expect(messages[:status]).to eq(200)
+        end
+
+        it 'will have delegate? equal to false' do
+          expect(messages[:body]['delegate?']).to eq(false)
+        end
+      end
+
+      context 'when getting delegate message' do
+        let(:mock) { MessageSpecHelper.mock_messages_sym 1 }
+        let(:messages) { CertifyMessages::Message.find(conversation_uuid: "d8badb44-566e-4969-a1b4-784d6008bad8", uuid: "2d7ec51c-e20c-4552-bc29-0e4047626ec4") }
+
+        # rubocop:disable RSpec/MultipleExpectations
+        it 'will have a ok status' do
+          expect(messages[:status]).to eq(200)
+          expect(messages[:body]['delegate?']).to eq(true)
+        end
+        # rubocop:enable RSpec/MultipleExpectations
       end
 
       context "with the priority_read_receipt_parameter" do

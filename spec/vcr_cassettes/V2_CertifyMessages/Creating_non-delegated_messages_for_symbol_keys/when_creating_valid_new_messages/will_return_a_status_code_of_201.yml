@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations/d8badb44-566e-4969-a1b4-784d6008bad8/messages
+    body:
+      encoding: UTF-8
+      string: '{"uuid":"396a302d-4f2c-4da0-9446-4cf031b5abac","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","body":"Wyogg
+        wua ma yrroonn huewaa rarr roo muaa muaa nng roo!","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","read":false,"sent":false,"priority_read_receipt":true}'
+    headers:
+      x-api-key:
+      - fake_api_key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v2
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"e7bf703e2b204ca8a23f706167e03ce2"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 2e61c60f-4d44-45ac-bcb6-fd3ac9923227
+      X-Runtime:
+      - '0.018970'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"396a302d-4f2c-4da0-9446-4cf031b5abac","body":"Wyogg wua ma
+        yrroonn huewaa rarr roo muaa muaa nng roo!","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","read":false,"sent":false,"created_at":"2018-12-19T14:57:13.106Z","updated_at":"2018-12-19T14:57:13.106Z","priority_read_receipt":true,"delegate?":false}'
+    http_version: 
+  recorded_at: Wed, 19 Dec 2018 14:57:13 GMT
+recorded_with: VCR 4.0.0

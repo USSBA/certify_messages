@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/msg/conversations/d8badb44-566e-4969-a1b4-784d6008bad8/messages
+    body:
+      encoding: UTF-8
+      string: '{"conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","body":"Gwyaaaag
+        ahuma roo hnn-rowr ahuma kabukk muaa ruh.","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"d7ebe2fa-f67a-4431-817a-6574b8dab412","read":false,"sent":false,"priority_read_receipt":true}'
+    headers:
+      x-api-key:
+      - fake_api_key
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.msg-api.v3
+  response:
+    status:
+      code: 201
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      ETag:
+      - W/"000ebb0b5b4ed84d23fb7e7dd1ece258"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - b998a273-76bb-4719-83a0-c5d601ca5c7e
+      X-Runtime:
+      - '0.014456'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"uuid":"1eba4a0b-3847-4743-a05f-5b82db9e116b","body":"Gwyaaaag ahuma
+        roo hnn-rowr ahuma kabukk muaa ruh.","conversation_uuid":"d8badb44-566e-4969-a1b4-784d6008bad8","sender_uuid":"cc2cc3d7-1bfe-44ac-8cbe-ff15403299eb","recipient_uuid":"08d64f43-a326-498d-9d9a-4b03f1ff486b","author_uuid":"d7ebe2fa-f67a-4431-817a-6574b8dab412","read":false,"sent":false,"created_at":"2018-12-19T14:57:07.456Z","updated_at":"2018-12-19T14:57:07.456Z","priority_read_receipt":true,"delegate?":true}'
+    http_version: 
+  recorded_at: Wed, 19 Dec 2018 14:57:07 GMT
+recorded_with: VCR 4.0.0

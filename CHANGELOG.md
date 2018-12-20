@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.2.0] - 2018-12-21
+### shared-services-sprint-58
+  - Added
+    - HUB-1688: [v2/3] added `author_uuid` to collection of permitted keys
+
 ## [2.1.0] - 2018-12-07
 ### shared-services-sprint-57
   - Added
