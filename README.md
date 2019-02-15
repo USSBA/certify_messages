@@ -35,18 +35,13 @@ gem 'certify_documents', git: 'git@github.com:USSBA/certify_documents.git', bran
 
 This will pull the head of the develop branch in as a gem.  If there are updates to the gem repository, you will need to run `bundle update certify_documents` to get them.
 
-### Building it manually
+### Using it locally
 
-* Pull down the latest branch for the gem
-* `bundle install` to build it
-* You can run tests `rspec` to make sure it built okay.
-* Then `rake build` to build the gem, this builds the .gem file in /pkg
-* Jump over to the folder of the the app where you want to use them and follow the instructions below within that app/repo, for example, if working with the [Shared-Services Prototype](https://github.com/USSBA/shared-services-prototype):
-  * Copy the .gem into the folder `vendor/gems/certify_documents`
-  * In the app where you want to use the gem, do `gem install <path to gem>` e.g. `gem install vendor/gems/certify_documents/certify_documents-0.1.0.gem`
-  * add `gem 'certify_documents'` to your Gemfile
-  * `bundle install`
-  * If this worked correctly, you should see `certify_documents` in your `Gemfile.lock`
+* Clone this repository
+* Add it to the Gemfile with the path:
+```
+gem 'certify_messages', path: '<path-to-the-gem-on-your-system>'
+```
 
 ### GemInABox
 
