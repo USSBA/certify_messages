@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "measurementType": {
+    "method": "projects"
+  },
+  "agency": "SBA",
+  "releases": [
+    {
+      "name": "Certify Messaging",
+      "description": "SBA Certify Messaging gem is a thin wrapper for the [Certify Messaging API](https://github.com/USSBA/message-api) to handle basic GET and POST operations for messaging entries.",
+      "permissions": {
+        "licenses": [
+          {
+            "name": "Apache License 2.0",
+            "URL": "https://www.apache.org/licenses/LICENSE-2.0.html"
+          }
+        ],
+        "usageType": "openSource",
+        "exemptionText": null
+      },
+      "tags": [
+        "SBA",
+        "Certify",
+        "Rails",
+        "Messaging"
+      ],
+      "contact": {
+        "email": "Beau.Houser@sba.gov"
+      },
+      "repositoryURL": "https://github.com/USSBA/message-api",
+      "laborHours": 1390,
+      "vcs": "git"
+    }
+  ]
+}

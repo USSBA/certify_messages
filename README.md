@@ -271,3 +271,26 @@ At this point, our CI process will kick-off, run the tests, and push the built g
 
 ## Changelog
 Refer to the changelog for details on gem updates. [CHANGELOG](CHANGELOG.md)
+
+## License
+The Activity-Api is licensed permissively under the Apache License v2.0.
+A copy of that license is distributed with this software.
+
+## Contributing
+We welcome contributions. Please read [CONTRIBUTING](CONTRIBUTING.md) for how to contribute.
+
+### Code Of Conduct
+
+We strive for a welcoming and inclusive environment for the Activity-Api project.
+
+Please follow this guidelines in all interactions:
+
+1. Be Respectful: use welcoming and inclusive language.
+2. Assume best intentions: seek to understand other's opinions.
+
+## Security Issues
+Please do not submit an issue on GitHub for a security vulnerability. Please contact the development team through the Certify Help Desk at [help@certify.sba.gov](mailto:help@certify.sba.gov).
+
+Be sure to include all the pertinent information.
+
+<sub>The agency reserves the right to change this policy at any time.</sub>
