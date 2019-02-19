@@ -109,7 +109,7 @@ After checking out the repo, run `bundle install` to install dependencies. Then,
 
 Use `bin/console` to access the pry console and add the API URL to the gem's config to be able to correctly test commands:
 ```
-CertifyMessages.configuration.api_url="http://localhost:3000"
+CertifyMessages.configuration.api_url="http://localhost:3001"
 ```
 While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console.  This should not reset the manual edits to the `configuration` as noted above.
 
