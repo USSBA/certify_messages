@@ -123,4 +123,4 @@ To release a new version:
 At this point, our CI process will kick-off, run the tests, and push the built gem into our Private Gem server.
 
 ## Changelog
-Refer to the [changelog](CHANGELOG.md) for details on API updates.
+Refer to the [changelog](CHANGELOG.md) for details on gem updates.
