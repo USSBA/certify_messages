@@ -78,9 +78,9 @@ module CertifyMessages
       when 1
         %w[sender_id recipient_id conversation_id id]
       when 2
-        %w[sender_uuid recipient_uuid conversation_uuid uuid]
+        %w[sender_uuid recipient_uuid conversation_uuid uuid author_uuid]
       when 3
-        %w[sender_uuid recipient_uuid conversation_uuid uuid]
+        %w[sender_uuid recipient_uuid conversation_uuid uuid author_uuid]
       end
     end
 
