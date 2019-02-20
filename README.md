@@ -8,7 +8,12 @@
 - [Logging](#logging)
 - [Development](#development)
 - [Publishing](#user-content-publishing)
+- [Tests](#tests)
 - [Changelog](#changelog)
+- [License](#license)
+- [Contributing](#contributing)
+  - [Code of Conduct](#code-of-conduct)
+- [Security Issues](#security-issues)
 
 This is a thin wrapper for the [Certify Messaging API](https://github.com/USSBA/message-api) to handle basic GET and POST operations for both conversations/threads and messages.
 
@@ -30,7 +35,7 @@ end
 Add the following to your Gemfile to bring in the gem from GitHub:
 
 ```
-gem 'certify_documents', git: 'git@github.com:USSBA/certify_documents.git', branch: 'develop' # Certify activity log service
+gem 'certify_messages', git: 'git@github.com:USSBA/certify_messages.git', branch: 'develop' # Certify messages service
 ```
 
 This will pull the head of the develop branch in as a gem.  If there are updates to the gem repository, you will need to run `bundle update certify_documents` to get them.
@@ -300,7 +305,7 @@ Poirot will return an error status if it finds any secrets in the commit history
 Refer to the changelog for details on gem updates. [CHANGELOG](CHANGELOG.md)
 
 ## License
-The Activity-Api is licensed permissively under the Apache License v2.0.
+Certify Message is licensed permissively under the Apache License v2.0.
 A copy of that license is distributed with this software.
 
 ## Contributing
@@ -308,7 +313,7 @@ We welcome contributions. Please read [CONTRIBUTING](CONTRIBUTING.md) for how to
 
 ### Code Of Conduct
 
-We strive for a welcoming and inclusive environment for the Activity-Api project.
+We strive for a welcoming and inclusive environment for the Certify Message project.
 
 Please follow this guidelines in all interactions:
 

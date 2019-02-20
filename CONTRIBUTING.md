@@ -6,9 +6,9 @@ Developing in the open creates a healthier working environment, a more collabora
 
 We welcome contributions.
 
-The Activity-API team handles development of this project in the open. As such, the development team uses GitHub to keep track of project development. We may not accept contributions if they introduce operational complexity or don't align with the goals of the project. All contributions are subject to the license and in no way imply compensation for contributions.
+The Message-API team handles development of this project in the open. As such, the development team uses GitHub to keep track of project development. We may not accept contributions if they introduce operational complexity or don't align with the goals of the project. All contributions are subject to the license and in no way imply compensation for contributions.
 
-Contributions that include appropriate unit tests are more likely to be accepted by the Activity-API team.
+Contributions that include appropriate unit tests are more likely to be accepted by the Message-API team.
 
 ## Feedback
 
