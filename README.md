@@ -293,7 +293,7 @@ rubocop -D
 ```
 
  #### Poirot Secrets Testing
-A secrets pattern file `hubzone-poiroit-patterns.txt` is included with the app to assist with running [Poirot](https://github.com/emanuelfeld/poirot) to scan commit history for secrets.  It is recommended to run this only the current branch only:
+A secrets pattern file `poirot-patterns.txt` is included with the app to assist with running [Poirot](https://github.com/emanuelfeld/poirot) to scan commit history for secrets.  It is recommended to run this only the current branch only:
 ```
   poirot --patterns poirot-patterns.txt --revlist="develop^..HEAD"
 ```
