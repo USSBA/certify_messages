@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    certify_messages (2.2.0)
+    certify_messages (2.2.1)
       excon
       excon-rails
       json
@@ -134,4 +134,4 @@ DEPENDENCIES
   vcr
 
 BUNDLED WITH
-   1.16.4
+   1.17.1
