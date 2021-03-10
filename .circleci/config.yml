@@ -5,7 +5,6 @@ workflows:
     jobs:
     - rubocop
     - rspec
-    - poirot
   build-push:
     jobs:
     - rubocop:
@@ -85,29 +84,7 @@ jobs:
           name: run tests
           command: |
             bundle exec rspec --format progress spec
-  poirot:
-    docker:
-      # specify the version you desire here
-       - image: ussba/cc-python:3
-         environment:
-           DOC_API_DB_USER: postgres
-           DOC_API_DB_PASSWORD: postgres
-           RAILS_ENV: test
 
-    steps:
-    - checkout
-
-     # run tests!
-    - run:
-        name: run tests
-        command: |
-          poirot --patterns poirot-patterns.txt
-    # collect reports
-    - store_test_results:
-        path: /tmp/test-results
-    - store_artifacts:
-        path: /tmp/test-results
-        destination: test-results
   gembuilder:
     docker:
     - image: ussba/cc-ruby:2.4
